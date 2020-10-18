@@ -1,0 +1,15 @@
+.logo {
+    height: 32px;
+    margin: 16px;
+    color: gold;
+    font-weight: bold;
+    font-size: large;
+  }
+  
+  .site-layout-sub-header-background {
+    background: #fff;
+  }
+  
+  .site-layout-background {
+    background: #fff;
+  }
