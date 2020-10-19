@@ -24,9 +24,6 @@ const Inventory = () => {
       
     }, []);
     
-
-
-
     return(
         <div>
 
