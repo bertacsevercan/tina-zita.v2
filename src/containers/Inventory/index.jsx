@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import db from "../../firebaseConfig"
 import InventoryTable from "../../components/InventoryTable";
+import { Typography, Button } from 'antd';
+import "../../containers/Inventory/index.css";
+
+const { Title } = Typography;
 const Inventory = () => {
     const [item, setItem] = useState([]);
 
@@ -25,8 +29,14 @@ const Inventory = () => {
 
     return(
         <div>
-        <h1>Inventory</h1>
+
+       
+        <Title level={3}>Inventory</Title>
+       
+        <Button className="button" type="primary">Add new item</Button>
+        
         <InventoryTable item={item} />
+      
         </div>
     )
 }
