@@ -94,6 +94,7 @@ const InventoryTable = ({item}) => {
         title: 'Category',
         dataIndex: 'category',
         key: 'category',
+        responsive: ['md'],
         ...getColumnSearchProps('category')
       },
       {
@@ -101,7 +102,17 @@ const InventoryTable = ({item}) => {
         key: 'measurementUnit',
         dataIndex: 'measurementUnit',
         responsive: ['md'],
-        ...getColumnSearchProps('measurementUnit')
+        filters: [
+          {
+            text: 'gr',
+            value: 'gr',
+          },
+          {
+            text: 'lt',
+            value: 'lt',
+          },
+        ],
+        onFilter: (value, record) => record.measurementUnit.indexOf(value) === 0,
         
       },
       {
@@ -118,7 +129,6 @@ const InventoryTable = ({item}) => {
         title: 'Stock',
         key: 'stock',
         dataIndex: 'stock',
-        responsive: ['md'],
         sorter: (a, b) => a.stock - b.stock,
         sortDirections: ['descend'],
        
