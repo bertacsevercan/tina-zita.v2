@@ -100,6 +100,7 @@ const InventoryTable = ({item}) => {
         title: 'Unit',
         key: 'measurementUnit',
         dataIndex: 'measurementUnit',
+        responsive: ['md'],
         ...getColumnSearchProps('measurementUnit')
         
       },
@@ -107,6 +108,7 @@ const InventoryTable = ({item}) => {
         title: 'Price',
         key: 'price',
         dataIndex: 'price',
+        responsive: ['md'],
         ...getColumnSearchProps('price')
 
         
@@ -115,6 +117,7 @@ const InventoryTable = ({item}) => {
         title: 'Stock',
         key: 'stock',
         dataIndex: 'stock',
+        responsive: ['md'],
         ...getColumnSearchProps('stock')
 
         
@@ -122,6 +125,7 @@ const InventoryTable = ({item}) => {
       {
         title: 'Action',
         key: 'action',
+        responsive: ["md"],
         render: () => (
           <Space>
             <Button type="primary">Edit </Button>
