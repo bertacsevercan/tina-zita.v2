@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import db from "../../firebaseConfig"
 import InventoryTable from "../../components/InventoryTable";
-import { Typography, Button } from 'antd';
-import "../../containers/Inventory/index.css";
+import { Typography, Button, Spin } from 'antd';
+import "../../containers/Inventory/style.css";
 
 const { Title } = Typography;
 const Inventory = () => {
+    const [loading, setLoading] = useState(true);
     const [item, setItem] = useState([]);
 
     useEffect(()=> {
@@ -18,6 +19,7 @@ const Inventory = () => {
             dataArr.push({ ...doc.data() });
           });
           setItem(dataArr);
+          setLoading(false);
         });
         
       return unsubscribe;
@@ -32,7 +34,9 @@ const Inventory = () => {
        
         <Button className="button" type="primary">Add new item</Button>
         
-        <InventoryTable item={item} />
+        {loading ? <div className="spin"> <Spin size="large" tip="Loading..."/> </div> : 
+        <InventoryTable item={item} />}
+        
       
         </div>
     )
