@@ -5,28 +5,14 @@ const { Option } = Select;
 
 const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
 
+  
+    const handleChange = (e, key) => {
+      setInventoryFormState({
+          ...inventoryFormState,
+          [key]: (e.target ? e.target.value: e)
+      })
+  }
 
-    const handleChange = (e) => {
-        e.persist()
-        let category;
-        let name;
-        if(e.target.id === "category"){
-             category = e.target
-        } else if(e.target.id === "itemName"){
-            name = e.target
-        }
-         const iForInventory = "I";
-         const firstLetterCategory = category.value[0].toUpperCase();
-         const threeLetterName =  name.value.slice(0,3).toUpperCase();
-         const generatedItemCode =  iForInventory + firstLetterCategory +  threeLetterName;
-         console.log(generatedItemCode)
-        //console.log(  e.target.id === "itemName" ? inventoryFormState.itemName.slice(0,3).toUpperCase(): null)
-        setInventoryFormState({
-            ...inventoryFormState,
-            //itemCode : generatedItemCode,
-            [e.target.id]: e.target.value
-        })
-    }
 
     return(
         <Form
@@ -53,7 +39,26 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
         id="itemName"
         name="itemName"
         value={inventoryFormState.itemName}
-        onChange={handleChange}/>
+        onChange={(e) => handleChange(e, "itemName")}/>
+      </Form.Item>
+
+      <Form.Item
+        
+        label="Item Code"
+        name="itemCode"
+        rules={[
+          {
+            required: true,
+            message: 'Please input item code!',
+          },
+        ]}
+      >
+        <Input  
+        type="text"
+        id="itemCode"
+        name="itemCode"
+        value={inventoryFormState.itemCode}
+        onChange={(e) => handleChange(e, "itemCode")}/>
       </Form.Item>
 
       <Form.Item
@@ -66,7 +71,7 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
          id="category"
          name="category"
          value={inventoryFormState.category}
-         onChange={handleChange}/>
+         onChange={(e) => handleChange(e, "category")}/>
       </Form.Item>
 
       <Form.Item
@@ -79,7 +84,7 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
          id="price"
          name="price"
          value={inventoryFormState.price}
-         onChange={handleChange}/>
+         onChange={(e) => handleChange(e, "price")}/>
       </Form.Item>
 
       <Form.Item
@@ -98,7 +103,7 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
          id="stock"
          name="stock"
          value={inventoryFormState.stock}
-         onChange={handleChange}/>
+         onChange={(e) => handleChange(e, "stock")}/>
       </Form.Item>
 
       <Form.Item
@@ -112,16 +117,12 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
           },
         ]}
       >
-        {/* <Input 
-         type="text"
-         id="measurementUnit"
-         name="measurementUnit"
-         value={inventoryFormState.measurementUnit}
-         onChange={handleChange}/> */}
+      
 
-<Select defaultValue="gr" style={{ width: 120 }} onChange={handleChange}>
-      <Option id="measurementUnit" value="gr">Gr</Option>
-      <Option  id="measurementUnit" value="lt">Lt</Option>
+<Select defaultValue="gr" value={inventoryFormState.measurementUnit} 
+ style={{ width: 120 }} onChange={(e) => handleChange(e, "measurementUnit")}>
+      <Option  value="gr">Gr</Option>
+      <Option value="lt">Lt</Option>
     </Select>
       </Form.Item>
       

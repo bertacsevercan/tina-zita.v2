@@ -121,7 +121,6 @@ const InventoryTable = ({item}) => {
         dataIndex: 'price',
         responsive: ['md'],
         sorter: (a, b) => a.price - b.price,
-        sortDirections: ['descend'],
 
         
       },
@@ -130,7 +129,7 @@ const InventoryTable = ({item}) => {
         key: 'stock',
         dataIndex: 'stock',
         sorter: (a, b) => a.stock - b.stock,
-        sortDirections: ['descend'],
+       
        
 
         

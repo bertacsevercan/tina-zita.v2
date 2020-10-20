@@ -14,10 +14,12 @@ const Inventory = () => {
       category: "",
       itemCode: "",
       itemName: "",
-      measurementUnit: "",
+      measurementUnit: "gr",
       price: "",
       stock: "",
     });
+
+  
 
 
    const showModal = () => {
@@ -43,6 +45,7 @@ const Inventory = () => {
         stock: inventoryFormState.stock,
       }
     )
+
     handleOk();
   }
   
@@ -78,7 +81,7 @@ const Inventory = () => {
           onOk={addItem}
           onCancel={handleCancel}
         >
-          <InventoryForm item={item} inventoryFormState={inventoryFormState} setInventoryFormState={setInventoryFormState} />
+          <InventoryForm inventoryFormState={inventoryFormState} setInventoryFormState={setInventoryFormState} />
         </Modal>
         
         {loading ? <div className="spin"> <Spin size="large" tip="Loading..."/> </div> : 
