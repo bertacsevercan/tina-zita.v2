@@ -134,14 +134,12 @@ const InventoryTable = ({ item }) => {
       dataIndex: "price",
       responsive: ["md"],
       sorter: (a, b) => a.price - b.price,
-      sortDirections: ["descend"],
     },
     {
       title: "Stock",
       key: "stock",
       dataIndex: "stock",
       sorter: (a, b) => a.stock - b.stock,
-      sortDirections: ["descend"],
     },
     {
       title: "Action",
@@ -158,6 +156,12 @@ const InventoryTable = ({ item }) => {
       ),
     },
   ];
+
+  return (
+    <>
+      <Table columns={columns} dataSource={item} />
+    </>
+  );
 
   return (
     <>
