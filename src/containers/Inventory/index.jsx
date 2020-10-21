@@ -92,7 +92,7 @@ const Inventory = () => {
         </Modal>
         
         {loading ? <div className="spin"> <Spin size="large" tip="Loading..."/> </div> : 
-        <InventoryTable item={item} />}
+        <InventoryTable  item={item} />}
 
 
         

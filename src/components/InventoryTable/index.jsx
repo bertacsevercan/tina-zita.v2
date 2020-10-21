@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Table, Button, Input, Space } from "antd";
+import { Table, Button, Input, Space, Popconfirm } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
-
+import db from "../../firebaseConfig";
 const InventoryTable = ({ item }) => {
   const [search, setSearch] = useState({
     searchText: "",
@@ -10,6 +10,14 @@ const InventoryTable = ({ item }) => {
   });
 
   let searchInput;
+
+  const deleteItem = (key) => {
+    
+    db.collection("inventory").doc(key)
+    .delete().then(()=> console.log("Document deleted succesfully!"))
+    .catch((err)=> console.log("Error occured" , err))
+
+  }
 
   const getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({
@@ -145,29 +153,28 @@ const InventoryTable = ({ item }) => {
       title: "Action",
       key: "action",
       responsive: ["md"],
-      render: () => (
+      render: (record) => (
         <Space>
           <Button type="primary">Edit </Button>
-          <Button type="primary" danger>
+          <Popconfirm title="Sure to delete?" onConfirm={()=> deleteItem(record.itemCode)}>
+          <Button  type="primary" danger>
             {" "}
             Delete
           </Button>
+          </Popconfirm>
         </Space>
       ),
     },
   ];
 
-  return (
-    <>
-      <Table columns={columns} dataSource={item} />
-    </>
-  );
 
   return (
     <>
       <Table columns={columns} dataSource={item} />
     </>
   );
+
+  
 };
 
 export default InventoryTable;
