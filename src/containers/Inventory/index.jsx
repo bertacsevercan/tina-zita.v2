@@ -4,6 +4,10 @@ import InventoryTable from "../../components/InventoryTable";
 import { Typography, Button, Spin, Modal } from 'antd';
 import "../../containers/Inventory/style.css";
 import InventoryForm from "../../components/InventoryForm";
+import * as firebase from "firebase";
+
+
+const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
 const { Title } = Typography;
 const Inventory = () => {
@@ -11,7 +15,7 @@ const Inventory = () => {
     const [modalVisible, setModalVisible] = useState(false);
     const [item, setItem] = useState([]);
     const [inventoryFormState, setInventoryFormState] = useState({
-      category: "",
+      category: "sebze",
       itemCode: "",
       itemName: "",
       measurementUnit: "gr",
@@ -28,6 +32,7 @@ const Inventory = () => {
   
    const handleOk = e => {
       setModalVisible(false);
+      
     };
   
    const handleCancel = e => {
@@ -43,6 +48,7 @@ const Inventory = () => {
         measurementUnit: inventoryFormState.measurementUnit,
         price: inventoryFormState.price,
         stock: inventoryFormState.stock,
+        createdAt: timestamp()
       }
     )
 
@@ -54,6 +60,7 @@ const Inventory = () => {
         const unsubscribe =
         db
         .collection("inventory")
+        .orderBy("createdAt", "desc")
         .onSnapshot((snapshot) => {
           const dataArr = [];
           snapshot.forEach((doc) => {
