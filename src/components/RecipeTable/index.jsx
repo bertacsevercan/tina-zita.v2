@@ -1,23 +1,15 @@
 import React, { useState } from "react";
-import { Table, Button, Input, Space, Popconfirm } from "antd";
+import { Table, Button, Input, Space } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
-import db from "../../firebaseConfig";
-const InventoryTable = ({ item }) => {
+
+const RecipeTable = ({ recipe }) => {
   const [search, setSearch] = useState({
     searchText: "",
     searchedColumn: "",
   });
 
   let searchInput;
-
-  const deleteItem = (key) => {
-    
-    db.collection("inventory").doc(key)
-    .delete().then(()=> console.log("Document deleted succesfully!"))
-    .catch((err)=> console.log("Error occured" , err))
-
-  }
 
   const getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({
@@ -102,79 +94,38 @@ const InventoryTable = ({ item }) => {
   const columns = [
     {
       title: "Name",
-      dataIndex: "itemName",
-      key: "itemName",
-      ...getColumnSearchProps("itemName"),
+      dataIndex: "orderName",
+      key: "orderName",
+      ...getColumnSearchProps("orderName"),
     },
     {
       title: "Code",
-      dataIndex: "itemCode",
-      key: "itemCode",
-      ...getColumnSearchProps("itemCode"),
+      dataIndex: "orderCode",
+      key: "orderCode",
+      ...getColumnSearchProps("orderCode"),
     },
-    {
-      title: "Category",
-      dataIndex: "category",
-      key: "category",
-      responsive: ["md"],
-      ...getColumnSearchProps("category"),
-    },
-    {
-      title: "Unit",
-      key: "measurementUnit",
-      dataIndex: "measurementUnit",
-      responsive: ["md"],
-      filters: [
-        {
-          text: "gr",
-          value: "gr",
-        },
-        {
-          text: "lt",
-          value: "lt",
-        },
-      ],
-      onFilter: (value, record) => record.measurementUnit.indexOf(value) === 0,
-    },
-    {
-      title: "Price",
-      key: "price",
-      dataIndex: "price",
-      responsive: ["md"],
-      sorter: (a, b) => a.price - b.price,
-    },
-    {
-      title: "Stock",
-      key: "stock",
-      dataIndex: "stock",
-      sorter: (a, b) => a.stock - b.stock,
-    },
+
     {
       title: "Action",
       key: "action",
       responsive: ["md"],
-      render: (record) => (
+      render: () => (
         <Space>
           <Button type="primary">Edit </Button>
-          <Popconfirm title="Sure to delete?" onConfirm={()=> deleteItem(record.itemCode)}>
-          <Button  type="primary" danger>
+          <Button type="primary" danger>
             {" "}
             Delete
           </Button>
-          </Popconfirm>
         </Space>
       ),
     },
   ];
 
-
   return (
     <>
-      <Table columns={columns} dataSource={item} />
+      <Table columns={columns} dataSource={recipe} />
     </>
   );
-
-  
 };
 
-export default InventoryTable;
+export default RecipeTable;
