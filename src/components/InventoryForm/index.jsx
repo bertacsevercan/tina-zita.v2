@@ -6,7 +6,7 @@ const { Option } = Select;
 const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
 
     const [code, setCode] = useState({
-      category: "S",
+      category: "SEB",
       name: "",
       generatedCode: ""
     })
@@ -26,7 +26,7 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
   
 
   const handleChangeCategory = (e,key) => {
-    const firstLetterCategory =  e[0].toUpperCase();
+    const firstLetterCategory =  e.slice(0,3).toUpperCase();
     setCode({
       ...code,
       category: firstLetterCategory
@@ -102,6 +102,7 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
       <Option  value="baharat">Baharat</Option>
       <Option value="konserve">Konserve</Option>
       <Option  value="kuru gıda">Kuru Gıda</Option>
+      <Option  value="meyve">Meyve</Option>
     </Select>
       </Form.Item>
 
