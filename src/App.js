@@ -11,7 +11,8 @@ import Admin from "./containers/Admin";
 import Order from "./containers/Order";
 import Inventory from "./containers/Inventory";
 import Recipe from "./containers/Recipe";
-
+import Home from "./containers/Home";
+import Login from './containers/Login';
 
 const { Header, Footer,Content } = Layout;
 
@@ -30,7 +31,8 @@ function App() {
         <Route path="/inventory" component={Inventory} />
         <Route path="/order" component={Order} />
         <Route path="/recipe" component={Recipe} />
-     
+        <Route path="/home" component={Home} />
+        <Route path="/login" component={Login}/>
         </div>
       </Content>
       <Footer style={{ textAlign: 'center' }}>KardeşlerCoding Design ©2020 Created by KardeşlerCoding</Footer>
