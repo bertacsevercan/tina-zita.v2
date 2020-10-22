@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { Card, Col, Row } from 'antd';
 import { Button, Radio, Space } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
-import AddNewNoteButton from "./AddNewNoteButton"
+
 
 
 export default function NoteCard() {

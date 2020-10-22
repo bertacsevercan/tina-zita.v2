@@ -1,19 +1,17 @@
 import React from 'react'
 import { Table, Tag, Space } from 'antd';
 
-export default function ExpiryTable() {
+export default function OutOfStockTable() {
     const dataSource = [
         {
           key: '1',
           code: 'MAY20102020',
           name: "Maydonoz",
-          expireIn: 2,
         },
         {
           key: '2',
           code: 'BUL19102020',
           name: "Bulgur",
-          expireIn: 3,
         },
       ];
 
@@ -27,11 +25,6 @@ export default function ExpiryTable() {
           title: 'Name',
           dataIndex: 'name',
           key: 'name',
-        },
-        {
-          title: 'Expire in',
-          dataIndex: 'expireIn',
-          key: 'expireIn',
         },
       ];
 

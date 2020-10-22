@@ -70,7 +70,6 @@ const Inventory = () => {
     return(
         <div>
 
-       
         <Title level={3}>Inventory</Title>
        
         <Button onClick={showModal} className="button" type="primary">Add new item</Button>
@@ -87,9 +86,6 @@ const Inventory = () => {
         {loading ? <div className="spin"> <Spin size="large" tip="Loading..."/> </div> : 
         <InventoryTable item={item} />}
 
-
-        
-      
         </div>
     )
 }
