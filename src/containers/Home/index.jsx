@@ -10,7 +10,7 @@ const Home = ()=>{
     return(
         <div className="home">
             <div className="hero-text">
-            <Title><h1 >Tina zita's inventory</h1></Title>
+            <Title><h1 >TINA ZITA'S INVENTORY</h1></Title>
                 <p>Please insert Tina Zita's credentials</p>
                 <Login />
                 <Text type="secondary">Don't you have credentials? Ask <Text type="danger">Rawan</Text></Text>

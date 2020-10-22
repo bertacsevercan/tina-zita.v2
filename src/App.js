@@ -17,18 +17,14 @@ import Login from './containers/Login';
 const { Header, Footer,Content } = Layout;
 
 function App() {
-
-  const [isLogged, setLog] = React.useState(false)
+//this is hard coded, change it with context api
+  const [isLogged, setLog] = React.useState(true)
 
   return (
     <div className="App">
       <Router>
        {
          isLogged? (
-           <Layout>
-             <Route exact path="/" component={Home} />
-           </Layout>
-         ) : (
           <Layout>
           <SideBar/>
         <Layout>
@@ -47,7 +43,11 @@ function App() {
         <Footer style={{ textAlign: 'center' }}>KardeşlerCoding Design ©2020 Created by KardeşlerCoding</Footer>
       </Layout>
       </Layout>
-         )
+         ) : (
+          <Layout>
+            <Route exact path="/" component={Home} />
+          </Layout>
+        ) 
        }
      
     </Router>

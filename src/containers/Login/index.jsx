@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 import {Auth} from "../../firebaseConfig";
-import { Button } from 'antd';
+import { Button, Space, Input } from 'antd';
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 
+import "./index.css";
 
 const Login = () => {
    
-    
+//we need the user state in other components too   
 const [user, setUser] = useState("");
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
 const [emailError, setEmailError] = useState("");
 const [passwordError, setPasswordError] = useState("");
 const [hasAccount, setHasAccount] = useState(false);
-
+//to change log status and routing, we need this state in many component
+const [isLogged, setLog] = useState(false)
 const clearInputs = () => {
   setEmail("");
   setPassword("");
@@ -27,7 +30,10 @@ const handleLogin = () => {
   clearErrors();
   Auth()
     .signInWithEmailAndPassword(email, password)
-    .then(console.log("Signed in successfully"))
+    .then(
+      // console.log("Signed in successfully")
+      setLog(true)
+      )
     .catch((err) => {
       switch (err.code) {
         case "auth/invalid-email":
@@ -72,49 +78,46 @@ function handleResetPassword() {
 
   console.log("user", user)
 
-function handleLogout (){
-  Auth().signOut().then(function() {
-    console.log("Sign-out successful.")
-  }).catch(function(error) {
-    // An error happened.
-  });
-}
- 
+
     return(
         <section className="login">
           <div className="loginContainer">
             <label>E-mail</label>
-            <input
-              type="text"
+            <Input
+             placeholder="e-mail" 
+             className="input"
+             type="text"
               required
               autoFocus
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+              onChange={(e) => setEmail(e.target.value)} />
             <p className="errorMsg">{emailError}</p>
             <label>Password</label>
-            <input
+            
+             
+    <Input.Password 
+              placeholder="input password" 
+              maxlength="15"
+              className="input" 
               type="password"
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-            />
+              iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+              />
+    
             <p className="errorMsg">{passwordError}</p>
             <div className="btnContainer">
-          
+            <Space size={"middle"}>
             <Button 
-                  onClick={handleResetPassword} 
+                  onClick={handleResetPassword}
                   >Reset Password</Button>
-{/* 
-                  <button 
-                  onClick={handleLogout} 
-                  >Sign Out</button> */}
 
                 <Button type="primary"
                   onClick={handleLogin} 
                   disabled={user}
                   >Sign In</Button>
-                  
+            </Space>      
     
             </div>
           </div>
