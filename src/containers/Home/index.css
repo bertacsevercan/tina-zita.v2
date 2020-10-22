@@ -1,9 +1,12 @@
 .home{
+    height: 100vh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+
 }
 
 .home h1 {
-    color: gold;
+    color: rgb(12, 12, 58);
+    font-weight: bold;
 }

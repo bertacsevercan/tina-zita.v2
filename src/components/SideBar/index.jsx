@@ -2,7 +2,9 @@ import React from "react";
 import "../SideBar/index.css";
 import { Layout, Menu } from 'antd';
 import { DropboxOutlined, UserOutlined, ShopOutlined, BookOutlined,LoginOutlined, LogoutOutlined } from '@ant-design/icons';
-import {Link, Redirect}  from "react-router-dom";
+import {Link}  from "react-router-dom";
+import Logout from "../../containers/Logout"
+import Login from "../../containers/Login";
 const { Sider } = Layout;
 
 const SideBar = () => {
@@ -35,11 +37,8 @@ const SideBar = () => {
           <Menu.Item key="4" icon={<BookOutlined />}>
             <Link to="/recipe" >Recipe</Link>
           </Menu.Item>
-          <Menu.Item key="5" icon={<LoginOutlined />}>
-            <Link to="/login" >Log In</Link>
-          </Menu.Item>
           <Menu.Item key="6" icon={<LogoutOutlined />}>
-            <Link to="/home" >Log Out</Link>
+            <Logout />
           </Menu.Item>
         </Menu>
       </Sider>
