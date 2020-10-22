@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Auth} from "../../firebaseConfig";
+import { Button } from 'antd';
 
 
 const Login = () => {
@@ -82,7 +83,7 @@ function handleLogout (){
     return(
         <section className="login">
           <div className="loginContainer">
-            <label>Username</label>
+            <label>E-mail</label>
             <input
               type="text"
               required
@@ -101,19 +102,19 @@ function handleLogout (){
             <p className="errorMsg">{passwordError}</p>
             <div className="btnContainer">
           
-                  <button 
-                  onClick={handleLogin} 
-                  disabled={user}
-                  >Sign In</button>
-
+            <Button 
+                  onClick={handleResetPassword} 
+                  >Reset Password</Button>
+{/* 
                   <button 
                   onClick={handleLogout} 
-                  >Sign Out</button>
+                  >Sign Out</button> */}
 
+                <Button type="primary"
+                  onClick={handleLogin} 
+                  disabled={user}
+                  >Sign In</Button>
                   
-                  <button 
-                  onClick={handleResetPassword} 
-                  >Reset Password</button>
     
             </div>
           </div>

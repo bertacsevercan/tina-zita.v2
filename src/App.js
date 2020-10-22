@@ -17,27 +17,39 @@ import Login from './containers/Login';
 const { Header, Footer,Content } = Layout;
 
 function App() {
+
+  const [isLogged, setLog] = React.useState(false)
+
   return (
     <div className="App">
       <Router>
-      <Layout>
-        <SideBar/>
-      <Layout>
-      
-      <Content style={{ margin: '24px 16px 0' }}>
-        <div className="site-layout-background" style={{ padding: 24, minHeight: "88vh" }}>
+       {
+         isLogged? (
+           <Layout>
+             <Route exact path="/" component={Home} />
+           </Layout>
+         ) : (
+          <Layout>
+          <SideBar/>
+        <Layout>
         
-        <Route exact path="/" component={Admin} />
-        <Route path="/inventory" component={Inventory} />
-        <Route path="/order" component={Order} />
-        <Route path="/recipe" component={Recipe} />
-        <Route path="/home" component={Home} />
-        <Route path="/login" component={Login}/>
-        </div>
-      </Content>
-      <Footer style={{ textAlign: 'center' }}>KardeşlerCoding Design ©2020 Created by KardeşlerCoding</Footer>
-    </Layout>
-    </Layout>
+        <Content style={{ margin: '24px 16px 0' }}>
+          <div className="site-layout-background" style={{ padding: 24, minHeight: "88vh" }}>
+          
+          <Route exact path="/" component={Admin} />
+          <Route exact path="/inventory" component={Inventory} />
+          <Route exact path="/order" component={Order} />
+          <Route exact path="/recipe" component={Recipe} />
+          
+          <Route exact path="/login" component={Login}/>
+          </div>
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>KardeşlerCoding Design ©2020 Created by KardeşlerCoding</Footer>
+      </Layout>
+      </Layout>
+         )
+       }
+     
     </Router>
      
     </div>
