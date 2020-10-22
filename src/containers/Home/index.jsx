@@ -1,13 +1,21 @@
 import React from 'react'
+import "./index.css"
+import Login from "../Login"
+
+import { Typography } from 'antd';
+
+const { Text, Title } = Typography;
 
 const Home = ()=>{
     return(
-        <div>
-        <h1>Tina zita's inventory</h1>
-        <p>Only Tina zita's staff access</p>
-        <p>Please insert e-mail and password</p>
-        <p>don't you have them? Ask Rawan</p>
-        <p>eMail</p>
+        <div className="home">
+            <div className="hero-text">
+            <Title><h1 >Tina zita's inventory</h1></Title>
+                <p>Please insert Tina Zita's credentials</p>
+                <Login />
+                <Text type="secondary">Don't you have credentials? Ask <Text type="danger">Rawan</Text></Text>
+            </div>
+            <img src="./image/inventory.svg" alt="inventory" />
         </div>
     )
 }
