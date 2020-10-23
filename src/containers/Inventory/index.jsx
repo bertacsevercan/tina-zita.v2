@@ -19,8 +19,8 @@ const Inventory = () => {
       itemCode: "",
       itemName: "",
       measurementUnit: "gr",
-      price: "",
-      stock: "",
+      price: 0,
+      stock: 0,
     });
 
   
@@ -91,7 +91,7 @@ const Inventory = () => {
         </Modal>
         
         {loading ? <div className="spin"> <Spin size="large" tip="Loading..."/> </div> : 
-        <InventoryTable  item={item} />}
+        <InventoryTable inventoryFormState={inventoryFormState} setInventoryFormState={setInventoryFormState} item={item} />}
 
         </div>
     )

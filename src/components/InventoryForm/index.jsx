@@ -53,6 +53,12 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
         [key]: (e.target ? e.target.value: e)
     })
 }
+const handleChangePriceStock = (e) => {
+  setInventoryFormState({
+    ...inventoryFormState,
+    [e.target.id] : e.target.value < 0 ? 0 : e.target.value,
+  })
+}
 
 
     return(
@@ -112,7 +118,8 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
         
       >
         <Input
-         type="text"
+         min={0}
+         type="number"
          id="price"
          name="price"
          value={inventoryFormState.price}
@@ -130,8 +137,9 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
           },
         ]}
       >
-        <Input 
-         type="text"
+        <Input
+         min={0} 
+         type="number"
          id="stock"
          name="stock"
          value={inventoryFormState.stock}

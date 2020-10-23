@@ -1,14 +1,25 @@
 import React, { useState } from "react";
-import { Table, Button, Input, Space, Popconfirm } from "antd";
+import { Table, Button, Input, Space, Popconfirm, Modal } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import db from "../../firebaseConfig";
+import EditInventoryForm from "../EditInventoryForm";
+
 const InventoryTable = ({ item }) => {
   const [search, setSearch] = useState({
     searchText: "",
     searchedColumn: "",
   });
+  const [modalVisible, setModalVisible] = useState(false);
 
+  const [editInventoryFormState, setEditInventoryFormState] = useState({
+    measurementUnit: "gr",
+    price: 0,
+    stock: 0,
+  });
+
+  const [keyCode, setKeyCode] = useState("");
+  
   let searchInput;
 
   const deleteItem = (key) => {
@@ -18,6 +29,27 @@ const InventoryTable = ({ item }) => {
     .catch((err)=> console.log("Error occured" , err))
 
   }
+  const editItem = () => {
+    db.collection("inventory").doc(keyCode).update({
+      measurementUnit: editInventoryFormState.measurementUnit,
+      price: editInventoryFormState.price,
+      stock: editInventoryFormState.stock,
+    })
+    handleOk();
+  }
+  const showModal = (key) => {
+    setModalVisible(true);
+    setKeyCode(key)
+  };
+
+ const handleOk = e => {
+    setModalVisible(false);
+    
+  };
+
+ const handleCancel = e => {
+   setModalVisible(false);
+  };
 
   const getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({
@@ -104,6 +136,7 @@ const InventoryTable = ({ item }) => {
       title: "Name",
       dataIndex: "itemName",
       key: "itemName",
+      editable: true,
       ...getColumnSearchProps("itemName"),
     },
     {
@@ -117,6 +150,7 @@ const InventoryTable = ({ item }) => {
       dataIndex: "category",
       key: "category",
       responsive: ["md"],
+      editable: true,
       ...getColumnSearchProps("category"),
     },
     {
@@ -124,6 +158,7 @@ const InventoryTable = ({ item }) => {
       key: "measurementUnit",
       dataIndex: "measurementUnit",
       responsive: ["md"],
+      editable: true,
       filters: [
         {
           text: "gr",
@@ -141,12 +176,14 @@ const InventoryTable = ({ item }) => {
       key: "price",
       dataIndex: "price",
       responsive: ["md"],
+      editable: true,
       sorter: (a, b) => a.price - b.price,
     },
     {
       title: "Stock",
       key: "stock",
       dataIndex: "stock",
+      editable: true,
       sorter: (a, b) => a.stock - b.stock,
     },
     {
@@ -155,7 +192,7 @@ const InventoryTable = ({ item }) => {
       responsive: ["md"],
       render: (record) => (
         <Space>
-          <Button type="primary">Edit </Button>
+          <Button onClick={() => showModal(record.itemCode)} type="primary">Edit </Button>
           <Popconfirm title="Sure to delete?" onConfirm={()=> deleteItem(record.itemCode)}>
           <Button  type="primary" danger>
             {" "}
@@ -171,6 +208,15 @@ const InventoryTable = ({ item }) => {
   return (
     <>
       <Table columns={columns} dataSource={item} />
+      <Modal
+          title="Edit item info"
+          visible={modalVisible}
+          onOk={editItem}
+          onCancel={handleCancel}
+        >
+          <EditInventoryForm editInventoryFormState={editInventoryFormState} 
+          setEditInventoryFormState={setEditInventoryFormState} />
+        </Modal>
     </>
   );
 
