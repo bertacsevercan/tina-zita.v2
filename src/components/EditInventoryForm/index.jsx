@@ -20,7 +20,20 @@ const EditInventoryForm = ({ editInventoryFormState, setEditInventoryFormState})
 
     return(
     <div>
-        <Input
+           <Form
+      layout="vertical"
+      name="inventoryForm"
+      initialValues={{
+        remember: true,
+      }}
+      
+    >
+         <Form.Item
+        label="Price"
+        name="price"
+        
+      >
+           <Input
         placeholder="Price..."
         min={0}
         type="number"
@@ -29,7 +42,14 @@ const EditInventoryForm = ({ editInventoryFormState, setEditInventoryFormState})
         value={editInventoryFormState.price}
         onChange={(e) => handleChangeInput(e)}/>
 
-        <Input
+      </Form.Item>
+       
+      <Form.Item
+        
+        label="Stock"
+        name="stock" > 
+
+         <Input
         placeholder="Stock..."
          min={0} 
          type="number"
@@ -37,13 +57,24 @@ const EditInventoryForm = ({ editInventoryFormState, setEditInventoryFormState})
          name="stock"
          value={editInventoryFormState.stock}
          onChange={(e) => handleChangeInput(e)}/>
+        
+        </Form.Item>
+       
 
-
-<Select defaultValue="gr" value={editInventoryFormState.measurementUnit} 
+        <Form.Item
+        
+        label="Unit"
+        name="measurementUnit">
+            <Select defaultValue="gr" value={editInventoryFormState.measurementUnit} 
  style={{ width: 120 }} onChange={(e) => handleChange(e, "measurementUnit")}>
       <Option  value="gr">Gr</Option>
       <Option value="lt">Lt</Option>
     </Select>
+
+            
+        </Form.Item>
+
+    </Form>
 
 
     </div>
