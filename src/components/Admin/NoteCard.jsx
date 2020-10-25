@@ -2,21 +2,53 @@ import React, {useState, useEffect} from 'react'
 import { Card, Col, Row } from 'antd';
 import { Button, Radio, Space } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
+import Modal from 'antd/lib/modal/Modal';
+import EditNoteForm from './EditNoteForm';
 
 
+export default function NoteCard( {noteData} ) {
 
-export default function NoteCard() {
+    console.log(noteData)
     const [ size, setSize] = useState("medium");
+    const [ editNoteFormState, setEditNoteFormState] = useState({
+        title: "",
+        content: "",
+    })
+    const [modalVisible, setModalVisible] = useState(false);
 
+    const showModal = () => {
+        setModalVisible(true);
+      };
+    
+     const handleOk = e => {
+        setModalVisible(false);
+      };
+    
+     const handleCancel = e => {
+       setModalVisible(false);
+      };
+
+      const deleteNote = () => {
+
+      }
+
+      const editNote = () => {
+
+      }
     return (
-        <div className="site-card-border-less-wrapper">
-            <Card title="Card title" bordered={true} style={{ width: 300 }}>
-            <p>Card content</p>
-            <p>Card content</p>
-            <p>Card content</p>
-            <Button type="primary" size={size}>
-                Edit
-            </Button>
+        <div >
+            <Card title={noteData.title} bordered={true} style={{ width: 300 }}>
+            <p>{noteData.content}</p>
+           
+            <Modal
+                title="Edit"
+                visible={modalVisible}
+                onOk={editNote}
+                onCancel={handleCancel}
+                >
+                    <EditNoteForm editNoteFormState={editNoteFormState}
+                                  setEditNoteFormState={setEditNoteFormState} />
+            </Modal>
             <Button type="primary" danger>
                 Delete
             </Button>
