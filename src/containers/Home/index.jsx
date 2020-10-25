@@ -1,6 +1,7 @@
 import React from 'react'
 import "./index.css"
 import Login from "../Login"
+import { Image } from 'antd';
 
 import { Typography } from 'antd';
 
@@ -27,7 +28,13 @@ const Home = ({email,setEmail, password,isEmailSend, setIsEmailSend, setPassword
                />
                 <Text type="secondary">Don't you have credentials? Ask <Text type="danger">Rawan</Text></Text>
             </div>
-            <img src="./image/inventory.svg" alt="inventory" />
+            
+            <Image
+      width={600}
+      src={require("./image/inventory.png")} alt="Packaging vector created by stories - www.freepik.com" 
+    />
+            
+            
         </div>
     )
 }
