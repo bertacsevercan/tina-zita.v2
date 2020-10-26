@@ -4,12 +4,6 @@ import { Form, Input, Select } from 'antd';
 
 const EditNoteForm = ({ editNoteFormState, setEditNoteFormState}) => {
 
-    const handleChange = (e, key) => {
-        setEditNoteFormState({
-            ...editNoteFormState,
-            [key]: (e.target ? e.target.value: e)
-        })
-    };
     const handleChangeInput = (e) => {
         setEditNoteFormState({
             ...editNoteFormState,

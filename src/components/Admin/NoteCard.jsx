@@ -34,7 +34,7 @@ export default function NoteCard( {noteData} ) {
       }
 
       const editNote = () => {
-
+        
       }
     return (
         <div >

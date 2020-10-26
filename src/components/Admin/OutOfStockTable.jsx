@@ -1,37 +1,49 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import { Table, Tag, Space } from 'antd';
+import db from "../../firebaseConfig"
 
 export default function OutOfStockTable() {
-    const dataSource = [
-        {
-          key: '1',
-          code: 'MAY20102020',
-          name: "Maydonoz",
-        },
-        {
-          key: '2',
-          code: 'BUL19102020',
-          name: "Bulgur",
-        },
-      ];
 
+    const [outOfStock, setOutOfStock] = useState();
+   
       const columns = [
         {
-          title: 'Code',
-          dataIndex: 'code',
-          key: 'code',
+          title: 'Name',
+          dataIndex: 'itemName',
+          key: 'itemName',
         },
         {
-          title: 'Name',
-          dataIndex: 'name',
-          key: 'name',
+          title: 'Code',
+          dataIndex: 'itemCode',
+          key: 'itemCode',
+        },
+        {
+          title: 'Category',
+          dataIndex: 'category',
+          key: 'category',
         },
       ];
-
+      useEffect(()=> {
+        const OoS =
+        db
+        .collection("inventory")
+        .onSnapshot((snapshot) => {
+          const dataArr = [];
+          snapshot.forEach((doc) => {
+            if(doc.data().stock <= 10) {
+              dataArr.push(doc.data())
+            }
+          });
+          setOutOfStock(dataArr);
+        });
+        
+      return OoS;
+    }, []);
+    console.log(outOfStock)
 
     return (
         <div>
-            <Table dataSource={dataSource} columns={columns}/>
+            <Table dataSource={outOfStock} columns={columns}/>
         </div>
     )
 }
