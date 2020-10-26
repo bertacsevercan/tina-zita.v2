@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import { Card, Col, Row } from 'antd';
-import { Button, Radio, Space } from 'antd';
+import { Table, Button, Input, Space, Popconfirm, Modal } from "antd";
 import { DownloadOutlined } from '@ant-design/icons';
-import Modal from 'antd/lib/modal/Modal';
 import EditNoteForm from './EditNoteForm';
-
+import db from '../../firebaseConfig';
 
 export default function NoteCard( {noteData} ) {
 
@@ -28,8 +27,10 @@ export default function NoteCard( {noteData} ) {
        setModalVisible(false);
       };
 
-      const deleteNote = () => {
-
+      const deleteNote = (key) => {
+        db.collection("notes").doc(key)
+        .delete().then(()=> console.log("Document deleted succesfully!"))
+        .catch((err)=> console.log("Error occured" , err))
       }
 
       const editNote = () => {
@@ -41,17 +42,20 @@ export default function NoteCard( {noteData} ) {
             <p>{noteData.content}</p>
            
             <Modal
-                title="Edit"
-                visible={modalVisible}
-                onOk={editNote}
-                onCancel={handleCancel}
-                >
-                    <EditNoteForm editNoteFormState={editNoteFormState}
-                                  setEditNoteFormState={setEditNoteFormState} />
+              title="Edit"
+              visible={modalVisible}
+              onOk={editNote}
+              onCancel={handleCancel}
+            >
+                <EditNoteForm editNoteFormState={editNoteFormState}
+                    setEditNoteFormState={setEditNoteFormState} />
             </Modal>
-            <Button type="primary" danger>
+            <Popconfirm title="Sure to delete?" onConfirm={()=> deleteNote(noteData.id)}>
+            <Button  type="primary" danger>
+                {" "}
                 Delete
             </Button>
+            </Popconfirm>
             </Card>
             
         </div>
