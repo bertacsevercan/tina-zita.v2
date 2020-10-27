@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import SelectOrder from "../../components/SelectOrder/SelectOrder"
-import { Button, Input } from 'antd';
+import { Button, Input, Typography } from 'antd';
 import db from "../../firebaseConfig"
+
+const {Title} = Typography;
+
 const Order = () => {
   const [orders, setOrders] = useState([])
   const [orderMultiplier, setOrderMultiplier] = useState(1)
@@ -72,7 +75,7 @@ const Order = () => {
     },[]);
   return(
       <div >
-      <h1>Order page here!</h1>
+      <Title level={3}>Orders</Title>
       <div style={{display:"flex", justifyContent: "center"}}>
       <SelectOrder 
       onChange={onChange} 
@@ -87,22 +90,6 @@ const Order = () => {
 export default Order;
 
 
-/* const fetchData = async () => {
-        const res = await db.collection("recipe").doc("RSAL").get()
-        const data = res.data()
-        //const ref = await data.ingredients[0].SAL.get()
-        const ref = await db.collection("inventory").doc("SSAL").get()
-        const refData = ref.data()
-        console.log(refData)
-
-        db.collection("test").doc("KEY").set(({
-            ref: db.doc("/inventory/SSAL/")
-        }))
-    }
-    useEffect(() => {
-        fetchData();
-    },[])
- */
 
 
 

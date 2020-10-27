@@ -1,69 +1,86 @@
 import React, { useEffect, useState } from "react";
 import db from "../../firebaseConfig";
 import RecipeTable from "../../components/RecipeTable";
-import { Typography, Button, Spin } from "antd";
+import { Typography, Button, Spin, Drawer } from "antd";
+import RecipeForm from "../../components/RecipeForm";
 import "../../containers/Inventory/style.css";
 
 const { Title } = Typography;
 const Recipe = () => {
   const [loading, setLoading] = useState(true);
   const [recipe, setRecipe] = useState([]);
+  const [drawerVisible, setDrawerVisible] = useState(false);
+  const [recipeFormState, setRecipeFormState] = useState({
+    recipeName: "",
+    recipeCode: "",
+    ingredients: [],
+  });
 
-  useEffect(() => {
-    return db.collection("recipe").onSnapshot((snapshot) => {
-      if (snapshot.docChanges().length === 0) {
-      }
-      snapshot.docChanges().forEach((change) => {
-        if (change.type === "added") {
-          setRecipe((prevRecipe) => [
-            ...prevRecipe,
-            { ...change.doc.data(), id: change.doc.id },
-            // console.log(change.doc.data()),
-          ]);
+  const showDrawer = () => {
+    setDrawerVisible(true);
+  }
+
+
+  const onClose = () => {
+    setDrawerVisible(false);
+  }
+
+ 
+  const onFinish = values => {
+    console.log('Received values of form:', values);
+    //onClose();
+  };
+
+   useEffect(()=> {
+        const unsubscribe =
+        db
+        .collection("recipe")
+        .orderBy("orderName", "desc")
+        .onSnapshot((snapshot) => {
+          const dataArr = [];
+          snapshot.forEach((doc) => {
+            dataArr.push({ ...doc.data() });
+          });
+          setRecipe(dataArr);
           setLoading(false);
-        }
-        if (change.type === "modified") {
-          setRecipe((prevRecipe) => {
-            const newArrRecipes = [...prevRecipe];
-            let index = newArrRecipes.findIndex(
-              (el) => el.id === change.doc.id
-            );
-            if (index !== -1) {
-              newArrRecipes[index] = {
-                ...change.doc.data(),
-                id: change.doc.id,
-              };
-            }
-            setLoading(false);
-            return newArrRecipes;
-          });
-        }
-        if (change.type === "removed") {
-          setRecipe((prevRecipe) => {
-            const newArrRecipes = [...prevRecipe];
-            let index = newArrRecipes.findIndex(
-              (el) => el.id === change.doc.id
-            );
-
-            if (index !== -1) {
-              newArrRecipes.splice(index, 1);
-            }
-            setLoading(false);
-            return newArrRecipes;
-          });
-        }
-      });
-    });
-  }, []);
-  console.log(recipe);
+        });
+        
+      return unsubscribe;
+      
+    }, []);
+    
 
   return (
     <div>
       <Title level={3}>Recipe</Title>
 
-      <Button className="button" type="primary">
-        Add new item
+      <Button className="button" type="primary" onClick={showDrawer}>
+        Add new recipe
       </Button>
+
+      <Drawer
+          title="Create a new recipe"
+          width={720}
+          onClose={onClose}
+          visible={drawerVisible}
+          bodyStyle={{ paddingBottom: 80 }}
+          footer={
+            <div
+              style={{
+                height: "25px"
+              }}
+            >
+              {/* <Button onClick={onClose} style={{ marginRight: 8 }}>
+                Cancel
+              </Button>
+              <Button onClick={onFinish} type="primary">
+                Submit
+              </Button> */}
+            </div>
+          }
+        >
+          <RecipeForm setDrawerVisible={setDrawerVisible}/>
+          </Drawer>
 
       {loading ? (
         <div className="spin">
@@ -73,6 +90,7 @@ const Recipe = () => {
       ) : (
         <RecipeTable recipe={recipe} />
       )}
+      
     </div>
   );
 };
