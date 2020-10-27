@@ -111,7 +111,6 @@ const RecipeTable = ({ recipe }) => {
       responsive: ["md"],
       render: () => (
         <Space>
-          <Button type="primary">Edit </Button>
           <Button type="primary" danger>
             {" "}
             Delete
