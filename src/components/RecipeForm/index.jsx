@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Input, Button, Space, Select } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
+import db from "../../firebaseConfig"
 
 const { Option } = Select;
 
 const RecipeForm = ({setDrawerVisible}) => {
   const [form] = Form.useForm();
+  const [ingredientList, setIngredientList] = useState([]);
 
+  const fetchIngredients = async() => {
+    const res = await db.collection("inventory").get()
+    const datas = res.docs.map(data => data.data().itemName)
+    setIngredientList(datas);
+    
+  }
+
+  useEffect(()=> {
+    fetchIngredients();
+}, []);
 
   const onClose = () => {
     setDrawerVisible(false);
@@ -15,10 +27,6 @@ const RecipeForm = ({setDrawerVisible}) => {
   const onFinish = values => {
     console.log('Received values of form:', values);
   };
-
-  
-
-
 
   return (
     <Form form={form} name="dynamic_form_nest_item" onFinish={onFinish} autoComplete="off">
@@ -45,7 +53,7 @@ const RecipeForm = ({setDrawerVisible}) => {
                       rules={[{ required: true, message: 'Missing ingredient' }]}
                     >
                       <Select disabled={!form.getFieldValue('recipeName')} style={{ width: 130 }}>
-                        {(["asdf", "zxc"]).map(item => (
+                        {ingredientList.map(item => (
                           <Option key={item} value={item}>
                             {item}
                           </Option>
