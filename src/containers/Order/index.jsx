@@ -13,9 +13,9 @@ const Order = () => {
     const res = await db.collection("recipe").get()
     const data = res.docs.map(doc => doc.data());
     const data2 = data.map(obj => {
-      return {label: obj.orderName, value:obj.orderCode};
+      return {label: obj.recipeName, value:obj.recipeCode};
     })
-    console.log("data",data.find((order) => order.orderCode === "OSAL").ingredients);
+    // console.log("data",data.find((order) => order.recipeCode === "OSAL").ingredients);
     setOrders(data)
 
   }
@@ -23,14 +23,16 @@ const Order = () => {
   const addOrder = async() => {
     if (orders.length > 0){
       let isSufficient = true
-      const ingredientsArr = orders
-      .find((order) => order.orderCode === selectedOrder)
-      .ingredients;
       
+      const ingredientsArr = orders
+      .find((order) => order.recipeCode === selectedOrder)
+      .ingredients;
+      console.log("ingArr", ingredientsArr)
       ingredientsArr.forEach(async(orderItem) => {
       const res = await orderItem.itemDocRef.get()
+      console.log(res)
     const data = res.data()
-    console.log(data.stock);
+     console.log(data);
     if(data.stock - orderItem.requiredAmount * orderMultiplier < 0) {
       isSufficient = false
       console.log(isSufficient);
