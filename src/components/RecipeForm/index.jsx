@@ -13,7 +13,6 @@ const RecipeForm = ({setDrawerVisible}) => {
     const res = await db.collection("inventory").get()
     const datas = res.docs.map(data => data.data().itemName)
     setIngredientList(datas);
-    
   }
 
   useEffect(()=> {
@@ -52,7 +51,14 @@ const RecipeForm = ({setDrawerVisible}) => {
                       fieldKey={[field.fieldKey, 'ingredient']}
                       rules={[{ required: true, message: 'Missing ingredient' }]}
                     >
-                      <Select disabled={!form.getFieldValue('recipeName')} style={{ width: 130 }}>
+                      <Select     
+                      optionFilterProp="children"
+                        showSearch 
+                        disabled={!form.getFieldValue('recipeName')} 
+                        style={{ width: 200 }}
+                        filterOption={(input, option) =>
+                          option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                        }>
                         {ingredientList.map(item => (
                           <Option key={item} value={item}>
                             {item}
