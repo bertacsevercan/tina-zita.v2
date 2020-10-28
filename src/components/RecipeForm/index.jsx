@@ -102,7 +102,7 @@ const RecipeForm = ({setDrawerVisible}) => {
       </Form.List>
       <div style={{display: "flex" }}>
       <Form.Item>
-        <Button onClick={onClose} type="primary" htmlType="submit">
+        <Button disabled={!form.getFieldValue('ingredients')} onClick={onClose} type="primary" htmlType="submit">
           Submit
         </Button>
       </Form.Item>
