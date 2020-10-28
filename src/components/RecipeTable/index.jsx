@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Table, Button, Input, Space } from "antd";
+import { Table, Button, Input, Space, Popconfirm } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
+import db from "../../firebaseConfig";
 
 const RecipeTable = ({ recipe }) => {
   const [search, setSearch] = useState({
@@ -10,6 +11,12 @@ const RecipeTable = ({ recipe }) => {
   });
 
   let searchInput;
+
+  const deleteRecipe = (key) => {
+    db.collection("inventory").doc(key)
+    .delete().then(()=> console.log("Document deleted succesfully!"))
+    .catch((err)=> console.log("Error occured" , err))
+  }
 
   const getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({
@@ -109,12 +116,14 @@ const RecipeTable = ({ recipe }) => {
       title: "Action",
       key: "action",
       responsive: ["md"],
-      render: () => (
+      render: (record) => (
         <Space>
+          <Popconfirm title="Sure to delete?" onConfirm={()=> deleteRecipe(record.recipeCode)}>
           <Button type="primary" danger>
             {" "}
             Delete
           </Button>
+          </Popconfirm>
         </Space>
       ),
     },

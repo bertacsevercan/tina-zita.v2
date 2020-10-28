@@ -23,11 +23,9 @@ const InventoryTable = ({ item }) => {
   let searchInput;
 
   const deleteItem = (key) => {
-    
     db.collection("inventory").doc(key)
     .delete().then(()=> console.log("Document deleted succesfully!"))
     .catch((err)=> console.log("Error occured" , err))
-
   }
   const editItem = () => {
     db.collection("inventory").doc(keyCode).update({
