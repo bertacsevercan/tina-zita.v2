@@ -2,18 +2,27 @@ import React, { useState, useEffect } from "react";
 import { Form, Input, Button, Space, Select } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import db from "../../firebaseConfig"
+import * as firebase from "firebase";
+
+const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
 const { Option } = Select;
 
 const RecipeForm = ({setDrawerVisible}) => {
   const [form] = Form.useForm();
   const [ingredientList, setIngredientList] = useState([]);
-  const [code, setCode] = useState("");
+  const [submitRecipe, setSubmitRecipe] = useState({});
+  const [ingredientNames, setIngredientNames] = useState([])
 
   const fetchIngredients = async() => {
     const res = await db.collection("inventory").get()
-    const datas = res.docs.map(data => data.data().itemName)
-    setIngredientList(datas);
+    const onlyNames = await res.docs.map(name => name.data().itemName)
+    const datas = res.docs.map(data => {
+      return {itemName: data.data().itemName, itemCode: data.data().itemCode}
+    })
+    console.log("datas",datas);
+    setIngredientList(datas)
+    setIngredientNames(onlyNames);
   }
 
   useEffect(()=> {
@@ -34,7 +43,21 @@ const RecipeForm = ({setDrawerVisible}) => {
     const generatedCode = values.recipeName && values.recipeName.includes(space) ? rForRecipe + firstThreeLetter + 
     lettersAfterSpace : rForRecipe + firstThreeLetter;
     console.log(generatedCode)
-    setCode(generatedCode);
+    // const ingredientsArr = [...values.ingredients]
+    const modifiedIngredients = values.ingredients.map(item => {
+      const code = ingredientList.find((x) => x.itemName === item.itemName).itemCode
+      return {
+        itemName: item.itemName, 
+        requiredAmount: item.requiredAmount,
+        itemCode: code,
+        itemDocRef: db.doc(`/inventory/${code}/`)
+      }
+    })
+    console.log("marr",modifiedIngredients);
+    db.collection("recipe").doc(generatedCode).set({
+      ...values,recipeCode: generatedCode , createdAt: timestamp(), ingredients: modifiedIngredients
+    })
+    onClose()
   };
 
   return (
@@ -57,19 +80,20 @@ const RecipeForm = ({setDrawerVisible}) => {
                     <Form.Item
                       {...field}
                       label="Ingredient"
-                      name={[field.name, 'ingredient']}
-                      fieldKey={[field.fieldKey, 'ingredient']}
+                      name={[field.name, 'itemName']}
+                      fieldKey={[field.fieldKey, 'itemName']}
                       rules={[{ required: true, message: 'Missing ingredient' }]}
                     >
                       <Select     
                       optionFilterProp="children"
-                        showSearch 
+                        showSearch
+                        placeholder="Select an ingredient" 
                         disabled={!form.getFieldValue('recipeName')} 
                         style={{ width: 200 }}
                         filterOption={(input, option) =>
                           option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                         }>
-                        {ingredientList.map(item => (
+                        {ingredientNames.map(item => (
                           <Option key={item} value={item}>
                             {item}
                           </Option>
@@ -81,11 +105,11 @@ const RecipeForm = ({setDrawerVisible}) => {
                 <Form.Item
                   {...field}
                   label="Amount"
-                  name={[field.name, 'amount']}
-                  fieldKey={[field.fieldKey, 'amount']}
+                  name={[field.name, 'requiredAmount']}
+                  fieldKey={[field.fieldKey, 'requiredAmount']}
                   rules={[{ required: true, message: 'Missing amount' }]}
                 >
-                  <Input onChange={onFinish} />
+                  <Input  />
                 </Form.Item>
 
                 <MinusCircleOutlined onClick={() => remove(field.name)} />
@@ -102,7 +126,7 @@ const RecipeForm = ({setDrawerVisible}) => {
       </Form.List>
       <div style={{display: "flex" }}>
       <Form.Item>
-        <Button disabled={!form.getFieldValue('ingredients')} onClick={onClose} type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit">
           Submit
         </Button>
       </Form.Item>

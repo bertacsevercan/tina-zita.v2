@@ -24,7 +24,7 @@ const SelectOrder = (props) => {
         option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
         }
         >
-        {orders.map((order) => <Option value={order.orderCode}>{order.orderName}</Option>)}
+        {orders.map((order) => <Option value={order.recipeCode}>{order.recipeName}</Option>)}
       </Select>
       
     </div>

@@ -13,7 +13,8 @@ const RecipeTable = ({ recipe }) => {
   let searchInput;
 
   const deleteRecipe = (key) => {
-    db.collection("inventory").doc(key)
+    console.log("record", key)
+    db.collection("recipe").doc(key)
     .delete().then(()=> console.log("Document deleted succesfully!"))
     .catch((err)=> console.log("Error occured" , err))
   }
@@ -101,15 +102,15 @@ const RecipeTable = ({ recipe }) => {
   const columns = [
     {
       title: "Name",
-      dataIndex: "orderName",
-      key: "orderName",
-      ...getColumnSearchProps("orderName"),
+      dataIndex: "recipeName",
+      key: "recipeName",
+      ...getColumnSearchProps("recipeName"),
     },
     {
       title: "Code",
-      dataIndex: "orderCode",
-      key: "orderCode",
-      ...getColumnSearchProps("orderCode"),
+      dataIndex: "recipeCode",
+      key: "recipeCode",
+      ...getColumnSearchProps("recipeCode"),
     },
 
     {

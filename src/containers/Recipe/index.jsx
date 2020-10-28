@@ -10,11 +10,7 @@ const Recipe = () => {
   const [loading, setLoading] = useState(true);
   const [recipe, setRecipe] = useState([]);
   const [drawerVisible, setDrawerVisible] = useState(false);
-  const [recipeFormState, setRecipeFormState] = useState({
-    recipeName: "",
-    recipeCode: "",
-    ingredients: [],
-  });
+ 
 
   const showDrawer = () => {
     setDrawerVisible(true);
@@ -30,7 +26,7 @@ const Recipe = () => {
         const unsubscribe =
         db
         .collection("recipe")
-        .orderBy("orderName", "desc")
+        .orderBy("createdAt", "desc")
         .onSnapshot((snapshot) => {
           const dataArr = [];
           snapshot.forEach((doc) => {
