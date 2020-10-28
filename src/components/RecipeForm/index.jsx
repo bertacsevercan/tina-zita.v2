@@ -71,22 +71,24 @@ const RecipeForm = ({setDrawerVisible}) => {
 
             <Form.Item>
               <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
-                Add sights
+                Add ingredients
               </Button>
             </Form.Item>
           </>
         )}
       </Form.List>
+      <div style={{display: "flex" }}>
       <Form.Item>
         <Button type="primary" htmlType="submit">
           Submit
         </Button>
       </Form.Item>
       <Form.Item >
-      <Button onClick={onClose}>
+      <Button onClick={onClose} style={{marginLeft: "1em"}}>
                Cancel 
         </Button>
       </Form.Item>
+      </div>
     </Form>
   );
 };
