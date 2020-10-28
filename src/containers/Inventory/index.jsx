@@ -6,10 +6,9 @@ import "../../containers/Inventory/style.css";
 import InventoryForm from "../../components/InventoryForm";
 import * as firebase from "firebase";
 
-
 const timestamp = firebase.firestore.FieldValue.serverTimestamp;
-
 const { Title } = Typography;
+
 const Inventory = () => {
     const [loading, setLoading] = useState(true);
     const [modalVisible, setModalVisible] = useState(false);
@@ -22,9 +21,6 @@ const Inventory = () => {
       price: 0,
       stock: 0,
     });
-
-  
-
 
    const showModal = () => {
       setModalVisible(true);
@@ -55,7 +51,6 @@ const Inventory = () => {
     handleOk();
   }
   
-
     useEffect(()=> {
         const unsubscribe =
         db

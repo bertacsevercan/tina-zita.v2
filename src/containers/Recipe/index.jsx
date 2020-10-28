@@ -25,11 +25,6 @@ const Recipe = () => {
     setDrawerVisible(false);
   }
 
- 
-  const onFinish = values => {
-    console.log('Received values of form:', values);
-    //onClose();
-  };
 
    useEffect(()=> {
         const unsubscribe =
@@ -64,20 +59,6 @@ const Recipe = () => {
           onClose={onClose}
           visible={drawerVisible}
           bodyStyle={{ paddingBottom: 80 }}
-          footer={
-            <div
-              style={{
-                height: "25px"
-              }}
-            >
-              {/* <Button onClick={onClose} style={{ marginRight: 8 }}>
-                Cancel
-              </Button>
-              <Button onClick={onFinish} type="primary">
-                Submit
-              </Button> */}
-            </div>
-          }
         >
           <RecipeForm setDrawerVisible={setDrawerVisible}/>
           </Drawer>
