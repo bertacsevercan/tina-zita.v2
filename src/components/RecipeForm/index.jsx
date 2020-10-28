@@ -8,6 +8,7 @@ const { Option } = Select;
 const RecipeForm = ({setDrawerVisible}) => {
   const [form] = Form.useForm();
   const [ingredientList, setIngredientList] = useState([]);
+  const [code, setCode] = useState("");
 
   const fetchIngredients = async() => {
     const res = await db.collection("inventory").get()
@@ -25,6 +26,16 @@ const RecipeForm = ({setDrawerVisible}) => {
 
   const onFinish = values => {
     console.log('Received values of form:', values);
+    console.log(values.recipeName)
+    const space = " ";
+    const rForRecipe = "R";
+    const firstThreeLetter = values.recipeName ? values.recipeName.slice(0,3).toUpperCase(): null;
+    const indexSpace = values.recipeName ? values.recipeName.indexOf(space) : null
+    const lettersAfterSpace = values.recipeName ?  values.recipeName.slice(indexSpace + 1, indexSpace + 4).toUpperCase() : null
+    const generatedCode = values.recipeName && values.recipeName.includes(space) ? rForRecipe + firstThreeLetter + 
+    lettersAfterSpace : rForRecipe + firstThreeLetter;
+    console.log(generatedCode)
+    setCode(generatedCode);
   };
 
   return (
