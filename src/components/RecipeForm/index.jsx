@@ -14,7 +14,6 @@ const RecipeForm = ({setDrawerVisible}) => {
 
   const onFinish = values => {
     console.log('Received values of form:', values);
-    onClose();
   };
 
   
@@ -79,7 +78,7 @@ const RecipeForm = ({setDrawerVisible}) => {
       </Form.List>
       <div style={{display: "flex" }}>
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button onClick={onClose} type="primary" htmlType="submit">
           Submit
         </Button>
       </Form.Item>
