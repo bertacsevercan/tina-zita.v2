@@ -26,7 +26,6 @@ const RecipeForm = ({setDrawerVisible}) => {
 
   const onFinish = values => {
     console.log('Received values of form:', values);
-    console.log(values.recipeName)
     const space = " ";
     const rForRecipe = "R";
     const firstThreeLetter = values.recipeName ? values.recipeName.slice(0,3).toUpperCase(): null;
