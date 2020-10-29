@@ -54,7 +54,7 @@ const NoteForm = ({noteFormState, setNoteFormState}) => {
             name="note"
             size={size}
             value={noteFormState.note}
-            onChange={(e) => handleChange(e, "note")}/>
+            onChange={(e) => handleChange(e, "content")}/>
         </Form.Item>
         </Form>
         </div>

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import SelectOrder from "../../components/SelectOrder/SelectOrder"
-import { Button, Input } from 'antd';
+import { Button, Input, Typography } from 'antd';
 import db from "../../firebaseConfig";
 import { Alert } from 'antd';
+
+const {Title} = Typography;
 
 const Order = () => {
   const [orders, setOrders] = useState([])
@@ -13,7 +15,7 @@ const Order = () => {
     const res = await db.collection("recipe").get()
     const data = res.docs.map(doc => doc.data());
     const data2 = data.map(obj => {
-      return {label: obj.orderName, value:obj.orderCode};
+      return {label: obj.recipeName, value:obj.recipeCode};
     })
     // console.log("data",data.find((order) => order.orderCode === "OSAL").ingredients);
     setOrders(data)
@@ -27,14 +29,16 @@ const Order = () => {
   const addOrder = async() => {
     if (orders.length > 0){
       let isSufficient = true
-      const ingredientsArr = orders
-      .find((order) => order.orderCode === selectedOrder)
-      .ingredients;
       
+      const ingredientsArr = orders
+      .find((order) => order.recipeCode === selectedOrder)
+      .ingredients;
+      console.log("ingArr", ingredientsArr)
       ingredientsArr.forEach(async(orderItem) => {
       const res = await orderItem.itemDocRef.get()
+      console.log(res)
     const data = res.data()
-    console.log(data.stock);
+     console.log(data);
     if(data.stock - orderItem.requiredAmount * orderMultiplier < 0) {
       isSufficient = false
       console.log(isSufficient);
@@ -88,7 +92,7 @@ const Order = () => {
     },[]);
   return(
       <div >
-      <h1>Order page here!</h1>
+      <Title level={3}>Orders</Title>
       <div style={{display:"flex", justifyContent: "center"}}>
       <SelectOrder 
       onChange={onChange} 
@@ -103,22 +107,6 @@ const Order = () => {
 export default Order;
 
 
-/* const fetchData = async () => {
-        const res = await db.collection("recipe").doc("RSAL").get()
-        const data = res.data()
-        //const ref = await data.ingredients[0].SAL.get()
-        const ref = await db.collection("inventory").doc("SSAL").get()
-        const refData = ref.data()
-        console.log(refData)
-
-        db.collection("test").doc("KEY").set(({
-            ref: db.doc("/inventory/SSAL/")
-        }))
-    }
-    useEffect(() => {
-        fetchData();
-    },[])
- */
 
 
 

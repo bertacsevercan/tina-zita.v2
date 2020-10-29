@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Table, Button, Input, Space } from "antd";
+import { Table, Button, Input, Space, Popconfirm } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
+import db from "../../firebaseConfig";
 
 const RecipeTable = ({ recipe }) => {
   const [search, setSearch] = useState({
@@ -10,6 +11,13 @@ const RecipeTable = ({ recipe }) => {
   });
 
   let searchInput;
+
+  const deleteRecipe = (key) => {
+    console.log("record", key)
+    db.collection("recipe").doc(key)
+    .delete().then(()=> console.log("Document deleted succesfully!"))
+    .catch((err)=> console.log("Error occured" , err))
+  }
 
   const getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({
@@ -94,28 +102,29 @@ const RecipeTable = ({ recipe }) => {
   const columns = [
     {
       title: "Name",
-      dataIndex: "orderName",
-      key: "orderName",
-      ...getColumnSearchProps("orderName"),
+      dataIndex: "recipeName",
+      key: "recipeName",
+      ...getColumnSearchProps("recipeName"),
     },
     {
       title: "Code",
-      dataIndex: "orderCode",
-      key: "orderCode",
-      ...getColumnSearchProps("orderCode"),
+      dataIndex: "recipeCode",
+      key: "recipeCode",
+      ...getColumnSearchProps("recipeCode"),
     },
 
     {
       title: "Action",
       key: "action",
       responsive: ["md"],
-      render: () => (
+      render: (record) => (
         <Space>
-          <Button type="primary">Edit </Button>
+          <Popconfirm title="Sure to delete?" onConfirm={()=> deleteRecipe(record.recipeCode)}>
           <Button type="primary" danger>
             {" "}
             Delete
           </Button>
+          </Popconfirm>
         </Space>
       ),
     },

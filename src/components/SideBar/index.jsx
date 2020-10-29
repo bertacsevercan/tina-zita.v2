@@ -21,7 +21,7 @@ const SideBar = () => {
       >
          
         <div className="logo" >
-            Tina-Zita
+            M.Y-Inventory
         </div>
           
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>

@@ -6,10 +6,9 @@ import "../../containers/Inventory/style.css";
 import InventoryForm from "../../components/InventoryForm";
 import * as firebase from "firebase";
 
-
 const timestamp = firebase.firestore.FieldValue.serverTimestamp;
-
 const { Title } = Typography;
+
 const Inventory = () => {
     const [loading, setLoading] = useState(true);
     const [modalVisible, setModalVisible] = useState(false);
@@ -19,12 +18,10 @@ const Inventory = () => {
       itemCode: "",
       itemName: "",
       measurementUnit: "gr",
-      price: "",
-      stock: "",
+      price: 0,
+      stock: 0,
+      stockLimit: 0,
     });
-
-  
-
 
    const showModal = () => {
       setModalVisible(true);
@@ -48,6 +45,7 @@ const Inventory = () => {
         measurementUnit: inventoryFormState.measurementUnit,
         price: inventoryFormState.price,
         stock: inventoryFormState.stock,
+        stockLimit: inventoryFormState.stockLimit,
         createdAt: timestamp()
       }
     )
@@ -55,7 +53,6 @@ const Inventory = () => {
     handleOk();
   }
   
-
     useEffect(()=> {
         const unsubscribe =
         db
@@ -91,7 +88,7 @@ const Inventory = () => {
         </Modal>
         
         {loading ? <div className="spin"> <Spin size="large" tip="Loading..."/> </div> : 
-        <InventoryTable  item={item} />}
+        <InventoryTable inventoryFormState={inventoryFormState} setInventoryFormState={setInventoryFormState} item={item} />}
 
         </div>
     )

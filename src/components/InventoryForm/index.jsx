@@ -54,7 +54,6 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
     })
 }
 
-
     return(
         <Form
       layout="vertical"
@@ -112,7 +111,8 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
         
       >
         <Input
-         type="text"
+         min={0}
+         type="number"
          id="price"
          name="price"
          value={inventoryFormState.price}
@@ -130,12 +130,32 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
           },
         ]}
       >
-        <Input 
-         type="text"
+        <Input
+         min={0} 
+         type="number"
          id="stock"
          name="stock"
          value={inventoryFormState.stock}
          onChange={(e) => handleChange(e, "stock")}/>
+      </Form.Item>
+      <Form.Item
+        
+        label="Warn me when stock less than this amount"
+        name="stockLimit"
+        rules={[
+          {
+            required: true,
+            message: 'Please input the least stock limit to warn you!',
+          },
+        ]}
+      >
+        <Input
+         min={0} 
+         type="number"
+         id="stockLimit"
+         name="stockLimit"
+         value={inventoryFormState.stockLimit}
+         onChange={(e) => handleChange(e, "stockLimit")}/>
       </Form.Item>
 
       <Form.Item
