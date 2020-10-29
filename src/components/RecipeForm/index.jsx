@@ -11,7 +11,6 @@ const { Option } = Select;
 const RecipeForm = ({setDrawerVisible}) => {
   const [form] = Form.useForm();
   const [ingredientList, setIngredientList] = useState([]);
-  const [submitRecipe, setSubmitRecipe] = useState({});
   const [ingredientNames, setIngredientNames] = useState([])
 
   const fetchIngredients = async() => {
