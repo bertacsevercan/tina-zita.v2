@@ -22,6 +22,16 @@ export default function OutOfStockTable() {
           dataIndex: 'category',
           key: 'category',
         },
+        {
+          title: 'Unit',
+          dataIndex: 'stock',
+          key: 'stock',
+        },
+        {
+          title: 'Remaining stock',
+          dataIndex: 'stock',
+          key: 'stock',
+        },
       ];
       useEffect(()=> {
         const OoS =
@@ -30,7 +40,7 @@ export default function OutOfStockTable() {
         .onSnapshot((snapshot) => {
           const dataArr = [];
           snapshot.forEach((doc) => {
-            if(doc.data().stock <= 10) {
+            if(doc.data().stock <= doc.data().stockLimit) {
               dataArr.push(doc.data())
             }
           });

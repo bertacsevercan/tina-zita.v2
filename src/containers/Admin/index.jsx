@@ -59,8 +59,9 @@ const Admin = () => {
     return(
         <div>
         <Title level={3}>Dashboard</Title>
+        <h1>Out of Stock Table</h1>
         <OutOfStockTable />
-
+        <h1>My Notes</h1>
         <Button onClick={showModal} className="button" type="primary">Add new note</Button>
         <Modal
           title="Add new note"
