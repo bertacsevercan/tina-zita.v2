@@ -4,7 +4,7 @@ import Highlighter from 'react-highlight-words';
 import { SearchOutlined } from '@ant-design/icons';
 import db from "../../firebaseConfig";
 
-const RecipeTable = ({ order }) => {
+const OrderTable = ({ order }) => {
 
   const [search, setSearch] = useState({
     searchText: "",
@@ -149,4 +149,4 @@ const RecipeTable = ({ order }) => {
   );
 };
 
-export default RecipeTable;
+export default OrderTable;
