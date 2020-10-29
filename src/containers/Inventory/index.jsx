@@ -20,6 +20,7 @@ const Inventory = () => {
       measurementUnit: "gr",
       price: 0,
       stock: 0,
+      stockLimit: 0,
     });
 
    const showModal = () => {
@@ -44,6 +45,7 @@ const Inventory = () => {
         measurementUnit: inventoryFormState.measurementUnit,
         price: inventoryFormState.price,
         stock: inventoryFormState.stock,
+        stockLimit: inventoryFormState.stockLimit,
         createdAt: timestamp()
       }
     )

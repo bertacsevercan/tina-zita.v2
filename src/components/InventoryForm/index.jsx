@@ -53,13 +53,6 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
         [key]: (e.target ? e.target.value: e)
     })
 }
-const handleChangePriceStock = (e) => {
-  setInventoryFormState({
-    ...inventoryFormState,
-    [e.target.id] : e.target.value < 0 ? 0 : e.target.value,
-  })
-}
-
 
     return(
         <Form
@@ -144,6 +137,25 @@ const handleChangePriceStock = (e) => {
          name="stock"
          value={inventoryFormState.stock}
          onChange={(e) => handleChange(e, "stock")}/>
+      </Form.Item>
+      <Form.Item
+        
+        label="Warn me when stock less than this amount"
+        name="stockLimit"
+        rules={[
+          {
+            required: true,
+            message: 'Please input the least stock limit to warn you!',
+          },
+        ]}
+      >
+        <Input
+         min={0} 
+         type="number"
+         id="stockLimit"
+         name="stockLimit"
+         value={inventoryFormState.stockLimit}
+         onChange={(e) => handleChange(e, "stockLimit")}/>
       </Form.Item>
 
       <Form.Item
