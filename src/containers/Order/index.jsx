@@ -15,7 +15,7 @@ const Order = () => {
     const data2 = data.map(obj => {
       return {label: obj.orderName, value:obj.orderCode};
     })
-    console.log("data",data.find((order) => order.orderCode === "OSAL").ingredients);
+    // console.log("data",data.find((order) => order.orderCode === "OSAL").ingredients);
     setOrders(data)
 
   }
