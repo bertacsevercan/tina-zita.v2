@@ -3,6 +3,7 @@ import SelectOrder from "../../components/SelectOrder/SelectOrder"
 import { Button, Input, Typography } from 'antd';
 import db from "../../firebaseConfig";
 import { Alert } from 'antd';
+import OrderTable from "../../components/OrderTable";
 
 const {Title} = Typography;
 
@@ -40,7 +41,7 @@ const Order = () => {
       const res = await orderItem.itemDocRef.get()
       console.log("ingrArrRESdata",res)
       const data = await res.data()
-      console.log("ingredArrDAta",toString(data.stock))
+      console.log("ingredArrDAta",toString(data.stock))//this is undefined
     if(data.stock - orderItem.requiredAmount * orderMultiplier < 0) {
       isSufficient = false
       console.log(isSufficient);
