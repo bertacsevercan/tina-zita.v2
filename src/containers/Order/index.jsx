@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import SelectOrder from "../../components/SelectOrder/SelectOrder"
 import { Button, Input } from 'antd';
-import db from "../../firebaseConfig"
+import db from "../../firebaseConfig";
+import { Alert } from 'antd';
+
 const Order = () => {
   const [orders, setOrders] = useState([])
   const [orderMultiplier, setOrderMultiplier] = useState(1)
@@ -16,6 +18,10 @@ const Order = () => {
     setOrders(data)
 
   }
+
+  const onClose = (e) => {
+    console.log(e, 'I was closed.');
+  };
 
   const addOrder = async() => {
     if (orders.length > 0){
@@ -47,7 +53,14 @@ const Order = () => {
         });
         
       } else {
-        alert("insufficient ingredients")
+        return <Alert
+        message="Error Text"
+        description="Insufficient ingredients"
+        type="error"
+        closable
+        onClose={onClose}
+      />
+        // alert("insufficient ingredients")
       }
 
     },1000)
