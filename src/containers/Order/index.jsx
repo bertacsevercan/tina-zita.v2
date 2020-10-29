@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import SelectOrder from "../../components/SelectOrder/SelectOrder"
 import { Button, Input, Typography } from 'antd';
-import db from "../../firebaseConfig"
+import db from "../../firebaseConfig";
+import { Alert } from 'antd';
 
 const {Title} = Typography;
 
@@ -9,16 +10,21 @@ const Order = () => {
   const [orders, setOrders] = useState([])
   const [orderMultiplier, setOrderMultiplier] = useState(1)
   const [selectedOrder, setSelectedOrder] = useState("")
+  const [insufficientIngredients, setInsufficientIngredients]= useState([])
   const fetchOrders = async () => {
     const res = await db.collection("recipe").get()
     const data = res.docs.map(doc => doc.data());
     const data2 = data.map(obj => {
       return {label: obj.recipeName, value:obj.recipeCode};
     })
-    // console.log("data",data.find((order) => order.recipeCode === "OSAL").ingredients);
+    // console.log("data",data.find((order) => order.orderCode === "OSAL").ingredients);
     setOrders(data)
 
   }
+
+  const onClose = (e) => {
+    console.log(e, 'I was closed.');
+  };
 
   const addOrder = async() => {
     if (orders.length > 0){
@@ -36,6 +42,8 @@ const Order = () => {
     if(data.stock - orderItem.requiredAmount * orderMultiplier < 0) {
       isSufficient = false
       console.log(isSufficient);
+      //if the ingredient is insufficient, add it into insufficient ingredients state array
+      setInsufficientIngredients(prevState=>[...prevState, orderItem])
     }
     })
     setTimeout(()=> {
@@ -52,7 +60,14 @@ const Order = () => {
         });
         
       } else {
-        alert("insufficient ingredients")
+        return <Alert
+        message="Error Text"
+        description={`Insufficient ingredients: ${insufficientIngredients.join(", ")}`}
+        type="error"
+        closable
+        onClose={onClose}
+      />
+        // alert("insufficient ingredients")
       }
 
     },1000)
