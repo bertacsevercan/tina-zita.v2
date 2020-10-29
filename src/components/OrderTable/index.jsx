@@ -105,25 +105,24 @@ const OrderTable = ({ order }) => {
       title: "Name",
       dataIndex: "recipeInfo.recipeName",
       key: "recipeInfo.recipeName",
-      ...getColumnSearchProps("recipeName"),
+      ...getColumnSearchProps("recipe name"),
     },
     {
       title: "Code",
       dataIndex: "recipeInfo.recipeCode",
       key: "recipeInfo.recipeCode",
-      ...getColumnSearchProps("recipeCode"),
+      ...getColumnSearchProps("recipe code"),
     },
     {
       title: "Quantity",
       dataIndex: "quantity",
-      key: "quantity",
-      ...getColumnSearchProps("quantity"),
+      key: "quantity"
     },
     {
       title: "Order time",
       dataIndex: "createAt",
       key: "createAt",
-      ...getColumnSearchProps("createAt"),
+      ...getColumnSearchProps("Order date"),
     },
     {
       title: "Action",

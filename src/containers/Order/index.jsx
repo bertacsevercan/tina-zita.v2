@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SelectOrder from "../../components/SelectOrder/SelectOrder"
-import { Button, Input, Typography } from 'antd';
+import { Button, Input, Typography, Spin } from 'antd';
 import db from "../../firebaseConfig";
 import { Alert } from 'antd';
 import OrderTable from "../../components/OrderTable";
@@ -12,6 +12,7 @@ const Order = () => {
   const [orderMultiplier, setOrderMultiplier] = useState(1)
   const [selectedOrder, setSelectedOrder] = useState("")
   const [insufficientIngredients, setInsufficientIngredients]= useState([])
+  const [loading, setLoading] = useState(true);
 
   const fetchOrders = async () => {
     const res = await db.collection("recipe").get()
@@ -91,8 +92,21 @@ const Order = () => {
   
     useEffect(() => {
       fetchOrders();
-      
+      const unsubscribe =
+        db
+        .collection("order")
+        .orderBy("createdAt", "desc")
+        .onSnapshot((snapshot) => {
+          const dataArr = [];
+          snapshot.forEach((doc) => {
+            dataArr.push({ ...doc.data() });
+          });
+          setOrders(dataArr);
+          setLoading(false);
+        });
+      return unsubscribe;
     },[]);
+
   return(
       <div >
       <Title level={3}>Orders</Title>
@@ -103,6 +117,14 @@ const Order = () => {
       <Input style={{width: "200px"}} type="number" onChange={(e) => setOrderMultiplier(e.target.value)} value={orderMultiplier} placeholder="number of orders" min={1}/>
       <Button disabled={selectedOrder? false : true} onClick={addOrder} type="primary">Add Order</Button>
       </div>
+      {loading ? (
+        <div className="spin">
+          {" "}
+          <Spin size="large" tip="Loading..." />{" "}
+        </div>
+      ) : (
+        <OrderTable recipe={orders} />
+      )}
       </div>
   )
 }
