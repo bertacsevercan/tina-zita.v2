@@ -12,6 +12,7 @@ const Home = ({email,setEmail, password,isEmailSend, setIsEmailSend, setPassword
         <div className="home">
             <div className="hero-text">
             <Title>TINA ZITA'S INVENTORY</Title>
+            <Title level={4} type="secondary">powered by M.Y-Inventory</Title>
                 <p>Please insert Tina Zita's credentials</p>
                 <Login
                email={email}
