@@ -8,6 +8,7 @@ const Order = () => {
   const [orders, setOrders] = useState([])
   const [orderMultiplier, setOrderMultiplier] = useState(1)
   const [selectedOrder, setSelectedOrder] = useState("")
+  const [insufficientIngredients, setInsufficientIngredients]= useState([])
   const fetchOrders = async () => {
     const res = await db.collection("recipe").get()
     const data = res.docs.map(doc => doc.data());
@@ -37,6 +38,8 @@ const Order = () => {
     if(data.stock - orderItem.requiredAmount * orderMultiplier < 0) {
       isSufficient = false
       console.log(isSufficient);
+      //if the ingredient is insufficient, add it into insufficient ingredients state array
+      setInsufficientIngredients(prevState=>[...prevState, orderItem])
     }
     })
     setTimeout(()=> {
@@ -55,7 +58,7 @@ const Order = () => {
       } else {
         return <Alert
         message="Error Text"
-        description="Insufficient ingredients"
+        description={`Insufficient ingredients: ${insufficientIngredients.join(", ")}`}
         type="error"
         closable
         onClose={onClose}
