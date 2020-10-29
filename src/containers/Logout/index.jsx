@@ -46,7 +46,7 @@ const authListener = () => {
             Sign Out
         </span>
          <Modal
-         title="Basic Modal"
+         title="Log Out"
          visible={visible}
          onOk={handleOk}
          onCancel={handleCancel}
