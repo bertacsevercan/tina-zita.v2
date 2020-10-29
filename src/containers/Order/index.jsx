@@ -11,13 +11,15 @@ const Order = () => {
   const [orderMultiplier, setOrderMultiplier] = useState(1)
   const [selectedOrder, setSelectedOrder] = useState("")
   const [insufficientIngredients, setInsufficientIngredients]= useState([])
+  
   const fetchOrders = async () => {
     const res = await db.collection("recipe").get()
-    const data = res.docs.map(doc => doc.data());
+    const data = await res.docs.map(doc => doc.data());
     const data2 = data.map(obj => {
       return {label: obj.recipeName, value:obj.recipeCode};
     })
-    // console.log("data",data.find((order) => order.orderCode === "OSAL").ingredients);
+    // console.log("data",data.find((order) => order.orderCode === "OSAL"));
+    // console.log("data",res)
     setOrders(data)
 
   }
@@ -36,9 +38,9 @@ const Order = () => {
       console.log("ingArr", ingredientsArr)
       ingredientsArr.forEach(async(orderItem) => {
       const res = await orderItem.itemDocRef.get()
-      console.log(res)
+      // console.log(res)
     const data = res.data()
-     console.log(data);
+     console.log("ingredArrDAta",data);
     if(data.stock - orderItem.requiredAmount * orderMultiplier < 0) {
       isSufficient = false
       console.log(isSufficient);

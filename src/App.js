@@ -13,7 +13,6 @@ import Inventory from "./containers/Inventory";
 import Recipe from "./containers/Recipe";
 import Home from "./containers/Home";
 import Login from './containers/Login';
-import AppContext from './components/AppContext';
 import {Auth} from './firebaseConfig';
 
 const { Header, Footer,Content } = Layout;
