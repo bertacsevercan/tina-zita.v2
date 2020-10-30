@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Table, Button, Input, Space, Popconfirm } from "antd";
+import { Table, Button, Input, Space, Popconfirm, Modal, List } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import db from "../../firebaseConfig";
 
 const RecipeTable = ({ recipe }) => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [ingredientList, setIngredientList] = useState([]);
   const [search, setSearch] = useState({
     searchText: "",
     searchedColumn: "",
@@ -12,8 +14,21 @@ const RecipeTable = ({ recipe }) => {
 
   let searchInput;
 
+  const showModal = (record) => {
+    setModalVisible(true);
+    const ingredients = record.ingredients.map(ingredient => ingredient.itemName + ` (${ingredient.requiredAmount})`)
+    setIngredientList(ingredients);
+  };
+
+ const handleOk = e => {
+    setModalVisible(false);
+  };
+
+  const handleCancel = e => {
+    setModalVisible(false);
+   };
+ 
   const deleteRecipe = (key) => {
-    console.log("record", key)
     db.collection("recipe").doc(key)
     .delete().then(()=> console.log("Document deleted succesfully!"))
     .catch((err)=> console.log("Error occured" , err))
@@ -99,12 +114,16 @@ const RecipeTable = ({ recipe }) => {
     clearFilters();
     setSearch({ searchText: "" });
   };
+
   const columns = [
     {
       title: "Name",
       dataIndex: "recipeName",
       key: "recipeName",
       ...getColumnSearchProps("recipeName"),
+      render: (text, record) => (
+      <a onClick={() => showModal(record)}>{text}</a>
+      )
     },
     {
       title: "Code",
@@ -133,6 +152,24 @@ const RecipeTable = ({ recipe }) => {
   return (
     <>
       <Table columns={columns} dataSource={recipe} />
+      <Modal
+          title="Ingredient List"
+          visible={modalVisible}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          footer={[
+            <Button key="OK" type="primary" onClick={handleOk}>
+              OK
+            </Button>,
+          ]}
+        >
+           <List
+      size="small"
+      bordered
+      dataSource={ingredientList}
+      renderItem={item => <List.Item>{item}</List.Item>}
+    />
+        </Modal>
     </>
   );
 };
