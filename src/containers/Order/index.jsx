@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import SelectOrder from "../../components/SelectOrder/SelectOrder"
-import { Button, Input, Typography } from 'antd';
+import { Button, Input, Typography, message } from 'antd';
 import db from "../../firebaseConfig";
-import { Alert } from 'antd';
+import * as firebase from "firebase";
+
+const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
 const {Title} = Typography;
 
@@ -10,20 +12,24 @@ const Order = () => {
   const [orders, setOrders] = useState([])
   const [orderMultiplier, setOrderMultiplier] = useState(1)
   const [selectedOrder, setSelectedOrder] = useState("")
-  const [insufficientIngredients, setInsufficientIngredients]= useState([])
   const fetchOrders = async () => {
     const res = await db.collection("recipe").get()
     const data = res.docs.map(doc => doc.data());
-    const data2 = data.map(obj => {
+    console.log("str ", data)
+    /* const data2 = data.map(obj => {
       return {label: obj.recipeName, value:obj.recipeCode};
-    })
-    // console.log("data",data.find((order) => order.orderCode === "OSAL").ingredients);
+    }) */
+    // console.log("data",data.find((order) => order.recipeCode === "OSAL").ingredients);
     setOrders(data)
 
   }
 
-  const onClose = (e) => {
-    console.log(e, 'I was closed.');
+  const success = () => {
+    message.success('Order successful!');
+  };
+
+  const error = () => {
+    message.error('Insufficient ingredients!'); // add which ingredient is insufficient
   };
 
   const addOrder = async() => {
@@ -42,8 +48,6 @@ const Order = () => {
     if(data.stock - orderItem.requiredAmount * orderMultiplier < 0) {
       isSufficient = false
       console.log(isSufficient);
-      //if the ingredient is insufficient, add it into insufficient ingredients state array
-      setInsufficientIngredients(prevState=>[...prevState, orderItem])
     }
     })
     setTimeout(()=> {
@@ -58,23 +62,20 @@ const Order = () => {
             stock: data.stock - orderItem.requiredAmount * orderMultiplier
           })
         });
-        
+        for(let i = 0; i < orderMultiplier; i++){
+          db.collection("order").add({
+            createdAt: timestamp(),
+            orderName: orders.find(x => x.recipeCode === selectedOrder).recipeName,
+          });
+        }
+        success();
+       
       } else {
-        return <Alert
-        message="Error Text"
-        description={`Insufficient ingredients: ${insufficientIngredients.join(", ")}`}
-        type="error"
-        closable
-        onClose={onClose}
-      />
-        // alert("insufficient ingredients")
+        error();
       }
 
-    },1000)
+    },500)
     
-
-
-      
       
     } else {
       console.log("empty");
@@ -105,10 +106,5 @@ const Order = () => {
 }
 
 export default Order;
-
-
-
-
-
 
 
