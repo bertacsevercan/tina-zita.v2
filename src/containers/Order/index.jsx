@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from "react";
 import SelectOrder from "../../components/SelectOrder/SelectOrder";
-import { Button, Input, Typography, message } from "antd";
+import OrderTable from "../../components/OrderTable";
+import { Button, Input, Typography, message, Spin } from "antd";
+import "./style.css";
 import db from "../../firebaseConfig";
 import * as firebase from "firebase";
 
 const timestamp = firebase.firestore.FieldValue.serverTimestamp;
+const convert = firebase.firestore.Timestamp;
 
 const { Title } = Typography;
 
 const Order = () => {
+  const [orderedFood, setOrderedFood] = useState([]);
   const [orders, setOrders] = useState([]);
   const [orderMultiplier, setOrderMultiplier] = useState(1);
   const [selectedOrder, setSelectedOrder] = useState("");
+  const [loading, setLoading] = useState(true);
   const fetchOrders = async () => {
     const res = await db.collection("recipe").get();
     const data = res.docs.map((doc) => doc.data());
@@ -83,6 +88,22 @@ const Order = () => {
 
   useEffect(() => {
     fetchOrders();
+
+    const unsubscribe = db
+      .collection("order")
+      .orderBy("createdAt", "desc")
+      .onSnapshot((snapshot) => {
+        const dataArr = [];
+        snapshot.forEach((doc) => {
+          dataArr.push({ ...doc.data(), date : doc.data().createdAt.toDate() });
+        });
+        console.log("dataarr", (dataArr))
+        setOrderedFood(dataArr);
+        setLoading(false);
+      });
+
+    return unsubscribe;
+
   }, []);
   return (
     <div>
@@ -105,6 +126,13 @@ const Order = () => {
           Add Order
         </Button>
       </div>
+      {loading ? (
+        <div className="spin">
+          <Spin size="large" tip="Loading..." />
+        </div>
+      ) : (
+        <OrderTable orderedFood={orderedFood} />
+      )}
     </div>
   );
 };
