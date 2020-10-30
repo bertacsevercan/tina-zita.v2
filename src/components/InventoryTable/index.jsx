@@ -19,34 +19,35 @@ const InventoryTable = ({ item }) => {
   });
 
   const [keyCode, setKeyCode] = useState("");
-  
+
   let searchInput;
 
   const deleteItem = (key) => {
-    db.collection("inventory").doc(key)
-    .delete().then(()=> console.log("Document deleted succesfully!"))
-    .catch((err)=> console.log("Error occured" , err))
-  }
+    db.collection("inventory")
+      .doc(key)
+      .delete()
+      .then(() => console.log("Document deleted succesfully!"))
+      .catch((err) => console.log("Error occured", err));
+  };
   const editItem = () => {
     db.collection("inventory").doc(keyCode).update({
       measurementUnit: editInventoryFormState.measurementUnit,
       price: editInventoryFormState.price,
       stock: editInventoryFormState.stock,
-    })
+    });
     handleOk();
-  }
+  };
   const showModal = (key) => {
     setModalVisible(true);
-    setKeyCode(key)
+    setKeyCode(key);
   };
 
- const handleOk = e => {
+  const handleOk = (e) => {
     setModalVisible(false);
-    
   };
 
- const handleCancel = e => {
-   setModalVisible(false);
+  const handleCancel = (e) => {
+    setModalVisible(false);
   };
 
   const getColumnSearchProps = (dataIndex) => ({
@@ -190,35 +191,39 @@ const InventoryTable = ({ item }) => {
       responsive: ["md"],
       render: (record) => (
         <Space>
-          <Button onClick={() => showModal(record.itemCode)} type="primary">Edit </Button>
-          <Popconfirm title="Sure to delete?" onConfirm={()=> deleteItem(record.itemCode)}>
-          <Button  type="primary" danger>
-            {" "}
-            Delete
+          <Button onClick={() => showModal(record.itemCode)} type="primary">
+            Edit{" "}
           </Button>
+          <Popconfirm
+            title="Sure to delete?"
+            onConfirm={() => deleteItem(record.itemCode)}
+          >
+            <Button type="primary" danger>
+              {" "}
+              Delete
+            </Button>
           </Popconfirm>
         </Space>
       ),
     },
   ];
 
-
   return (
     <>
       <Table columns={columns} dataSource={item} />
       <Modal
-          title="Edit item info"
-          visible={modalVisible}
-          onOk={editItem}
-          onCancel={handleCancel}
-        >
-          <EditInventoryForm editInventoryFormState={editInventoryFormState} 
-          setEditInventoryFormState={setEditInventoryFormState} />
-        </Modal>
+        title="Edit item info"
+        visible={modalVisible}
+        onOk={editItem}
+        onCancel={handleCancel}
+      >
+        <EditInventoryForm
+          editInventoryFormState={editInventoryFormState}
+          setEditInventoryFormState={setEditInventoryFormState}
+        />
+      </Modal>
     </>
   );
-
-  
 };
 
 export default InventoryTable;

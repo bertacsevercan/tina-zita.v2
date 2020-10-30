@@ -10,36 +10,30 @@ const Recipe = () => {
   const [loading, setLoading] = useState(true);
   const [recipe, setRecipe] = useState([]);
   const [drawerVisible, setDrawerVisible] = useState(false);
- 
 
   const showDrawer = () => {
     setDrawerVisible(true);
-  }
-
+  };
 
   const onClose = () => {
     setDrawerVisible(false);
-  }
+  };
 
-
-   useEffect(()=> {
-        const unsubscribe =
-        db
-        .collection("recipe")
-        .orderBy("createdAt", "desc")
-        .onSnapshot((snapshot) => {
-          const dataArr = [];
-          snapshot.forEach((doc) => {
-            dataArr.push({ ...doc.data() });
-          });
-          setRecipe(dataArr);
-          setLoading(false);
+  useEffect(() => {
+    const unsubscribe = db
+      .collection("recipe")
+      .orderBy("createdAt", "desc")
+      .onSnapshot((snapshot) => {
+        const dataArr = [];
+        snapshot.forEach((doc) => {
+          dataArr.push({ ...doc.data() });
         });
-        
-      return unsubscribe;
-      
-    }, []);
-    
+        setRecipe(dataArr);
+        setLoading(false);
+      });
+
+    return unsubscribe;
+  }, []);
 
   return (
     <div>
@@ -50,14 +44,15 @@ const Recipe = () => {
       </Button>
 
       <Drawer
-          title="Create a new recipe"
-          width={720}
-          onClose={onClose}
-          visible={drawerVisible}
-          bodyStyle={{ paddingBottom: 80 }}
-        >
-          <RecipeForm setDrawerVisible={setDrawerVisible}/>
-          </Drawer>
+        title="Create a new recipe"
+        width={720}
+        onClose={onClose}
+        visible={drawerVisible}
+        bodyStyle={{ paddingBottom: 80 }}
+        destroyOnClose={true}
+      >
+        <RecipeForm setDrawerVisible={setDrawerVisible} />
+      </Drawer>
 
       {loading ? (
         <div className="spin">
@@ -67,7 +62,6 @@ const Recipe = () => {
       ) : (
         <RecipeTable recipe={recipe} />
       )}
-      
     </div>
   );
 };
