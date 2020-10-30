@@ -16,23 +16,27 @@ const RecipeTable = ({ recipe }) => {
 
   const showModal = (record) => {
     setModalVisible(true);
-    const ingredients = record.ingredients.map(ingredient => ingredient.itemName + ` (${ingredient.requiredAmount})`)
+    const ingredients = record.ingredients.map(
+      (ingredient) => ingredient.itemName + ` (${ingredient.requiredAmount})`
+    );
     setIngredientList(ingredients);
   };
 
- const handleOk = e => {
+  const handleOk = (e) => {
     setModalVisible(false);
   };
 
-  const handleCancel = e => {
+  const handleCancel = (e) => {
     setModalVisible(false);
-   };
- 
+  };
+
   const deleteRecipe = (key) => {
-    db.collection("recipe").doc(key)
-    .delete().then(()=> console.log("Document deleted succesfully!"))
-    .catch((err)=> console.log("Error occured" , err))
-  }
+    db.collection("recipe")
+      .doc(key)
+      .delete()
+      .then(() => console.log("Document deleted succesfully!"))
+      .catch((err) => console.log("Error occured", err));
+  };
 
   const getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({
@@ -121,9 +125,7 @@ const RecipeTable = ({ recipe }) => {
       dataIndex: "recipeName",
       key: "recipeName",
       ...getColumnSearchProps("recipeName"),
-      render: (text, record) => (
-      <a onClick={() => showModal(record)}>{text}</a>
-      )
+      render: (text, record) => <a onClick={() => showModal(record)}>{text}</a>,
     },
     {
       title: "Code",
@@ -138,11 +140,14 @@ const RecipeTable = ({ recipe }) => {
       responsive: ["md"],
       render: (record) => (
         <Space>
-          <Popconfirm title="Sure to delete?" onConfirm={()=> deleteRecipe(record.recipeCode)}>
-          <Button type="primary" danger>
-            {" "}
-            Delete
-          </Button>
+          <Popconfirm
+            title="Sure to delete?"
+            onConfirm={() => deleteRecipe(record.recipeCode)}
+          >
+            <Button type="primary" danger>
+              {" "}
+              Delete
+            </Button>
           </Popconfirm>
         </Space>
       ),
@@ -153,23 +158,25 @@ const RecipeTable = ({ recipe }) => {
     <>
       <Table columns={columns} dataSource={recipe} />
       <Modal
-          title="Ingredient List"
-          visible={modalVisible}
-          onOk={handleOk}
-          onCancel={handleCancel}
-          footer={[
-            <Button key="OK" type="primary" onClick={handleOk}>
-              OK
-            </Button>,
-          ]}
-        >
-           <List
-      size="small"
-      bordered
-      dataSource={ingredientList}
-      renderItem={item => <List.Item>{item}</List.Item>}
-    />
-        </Modal>
+        destroyOnClose={true}
+        title="Ingredient List"
+        destroyOnClose={true}
+        visible={modalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        footer={[
+          <Button key="OK" type="primary" onClick={handleOk}>
+            OK
+          </Button>,
+        ]}
+      >
+        <List
+          size="small"
+          bordered
+          dataSource={ingredientList}
+          renderItem={(item) => <List.Item>{item}</List.Item>}
+        />
+      </Modal>
     </>
   );
 };
