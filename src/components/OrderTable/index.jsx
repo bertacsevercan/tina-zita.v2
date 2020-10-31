@@ -105,7 +105,7 @@ const OrderTable = ({ orderedFood }) => {
     {
       title: "Date",
       key: "date",
-      dataIndex: "date",
+      dataIndex: "date" ,
       responsive: ["md"],
       editable: true,
       sorter: (a, b) => a.date - b.date,
@@ -118,7 +118,7 @@ const OrderTable = ({ orderedFood }) => {
         <Space>
           <Popconfirm
             title="Sure to delete?"
-            onConfirm={()=> console.log("date", orderedFood[0].date.getDate())}
+            onConfirm={()=> console.log("date", orderedFood[0].date.getFullYear())}
           >
             <Button type="primary" danger>
               {" "}

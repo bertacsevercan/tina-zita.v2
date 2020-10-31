@@ -95,7 +95,7 @@ const Order = () => {
       .onSnapshot((snapshot) => {
         const dataArr = [];
         snapshot.forEach((doc) => {
-          dataArr.push({ ...doc.data(), date : doc.data().createdAt.toDate() });
+          dataArr.push({ ...doc.data(), date : `${doc.data().createdAt.toDate().getDate()}/${doc.data().createdAt.toDate().getMonth()}/${doc.data().createdAt.toDate().getFullYear()}` });
         });
         console.log("dataarr", (dataArr))
         setOrderedFood(dataArr);
@@ -131,7 +131,9 @@ const Order = () => {
           <Spin size="large" tip="Loading..." />
         </div>
       ) : (
+        <div style={{marginTop: "1em"}}>
         <OrderTable orderedFood={orderedFood} />
+        </div>
       )}
     </div>
   );
