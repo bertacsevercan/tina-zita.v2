@@ -44,39 +44,39 @@ const Order = () => {
         (order) => order.recipeCode === selectedOrder
       ).ingredients;
       console.log("ingArr", ingredientsArr);
-      ingredientsArr.forEach(async (orderItem) => {
+      for (let i = 0; i < ingredientsArr.length; i++) {
+        const orderItem = ingredientsArr[i];
         const res = await orderItem.itemDocRef.get();
         console.log(res);
         const data = res.data();
-        console.log(data);
+        console.log("data", data);
         if (data.stock - orderItem.requiredAmount * orderMultiplier < 0) {
           isSufficient = false;
           console.log(isSufficient);
         }
-      });
-      setTimeout(() => {
-        if (isSufficient) {
-          console.log("i'm sufficient");
-          ingredientsArr.forEach(async (orderItem) => {
-            const res = await orderItem.itemDocRef.get();
-            const data = res.data();
-            console.log(data.stock);
-            orderItem.itemDocRef.update({
-              stock: data.stock - orderItem.requiredAmount * orderMultiplier,
-            });
+      }
+
+      if (isSufficient) {
+        console.log("i'm sufficient");
+        ingredientsArr.forEach(async (orderItem) => {
+          const res = await orderItem.itemDocRef.get();
+          const data = res.data();
+          console.log(data.stock);
+          orderItem.itemDocRef.update({
+            stock: data.stock - orderItem.requiredAmount * orderMultiplier,
           });
-          for (let i = 0; i < orderMultiplier; i++) {
-            db.collection("order").add({
-              createdAt: timestamp(),
-              orderName: orders.find((x) => x.recipeCode === selectedOrder)
-                .recipeName,
-            });
-          }
-          success();
-        } else {
-          error();
+        });
+        for (let i = 0; i < orderMultiplier; i++) {
+          db.collection("order").add({
+            createdAt: timestamp(),
+            orderName: orders.find((x) => x.recipeCode === selectedOrder)
+              .recipeName,
+          });
         }
-      }, 1000);
+        success();
+      } else {
+        error();
+      }
     } else {
       console.log("empty");
     }
@@ -103,7 +103,6 @@ const Order = () => {
       });
 
     return unsubscribe;
-
   }, []);
   return (
     <div>
@@ -131,8 +130,8 @@ const Order = () => {
           <Spin size="large" tip="Loading..." />
         </div>
       ) : (
-        <div style={{marginTop: "1em"}}>
-        <OrderTable orderedFood={orderedFood} />
+        <div style={{ marginTop: "1em" }}>
+          <OrderTable orderedFood={orderedFood} />
         </div>
       )}
     </div>
