@@ -4,7 +4,6 @@ import OrderTable from "../../components/OrderTable";
 import { Button, Input, Typography, message, Spin } from "antd";
 import "./style.css";
 import db from "../../firebaseConfig";
-import { Alert } from 'antd';
 import { useTranslation } from 'react-i18next';
 import * as firebase from "firebase";
 

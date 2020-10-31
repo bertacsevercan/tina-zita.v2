@@ -74,7 +74,10 @@
         "selectAnOrder": "Select an order",
         "errorText": "Error Text",
         "insufText": "Insufficient ingredients:",
-        "cancelBtn": "Cancel"
+        "cancelBtn": "Cancel",
+        "tableHeader0": "Order",
+        "tableHeader1": "Date",
+        "tableHeader2": "Action"
     },
     "recipe": {
         "recipe": "Recipe",

@@ -117,7 +117,7 @@ function handleResetPassword() {
           <Route exact path="/login" component={Login}/>
           </div>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>KardeşlerCoding Design ©2020 Created by KardeşlerCoding</Footer>
+        <Footer style={{ textAlign: 'center' }}>M.Y-Inventory ©2020 Created by KardeşlerCoding</Footer>
       </Layout>
       </Layout>
          ) : (

@@ -75,7 +75,10 @@
         "selectAnOrder": "Sipariş Seç",
         "errorText": "Hata Metni",
         "insufText": "Yetersiz ürünler:",
-        "cancelBtn": "İptal"
+        "cancelBtn": "İptal",
+        "tableHeader0": "Sipariş",
+        "tableHeader1": "Tarih",
+        "tableHeader2": "Aksiyon"
     },
     "recipe": {
         "recipe": "Tarif",

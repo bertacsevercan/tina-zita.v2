@@ -98,14 +98,14 @@ const OrderTable = ({ orderedFood }) => {
   };
   const columns = [
     {
-      title: "Order",
+      title: t("order.tableHeader0"),
       dataIndex: "orderName",
       key: "orderName",
       editable: true,
       ...getColumnSearchProps("orderName"),
     },
     {
-      title: "Date",
+      title: t("order.tableHeader1"),
       key: "date",
       dataIndex: "date" ,
       responsive: ["md"],
@@ -113,7 +113,7 @@ const OrderTable = ({ orderedFood }) => {
       ...getColumnSearchProps("date"),
     },
     {
-      title: "Action",
+      title: t("order.tableHeader2"),
       key: "action",
       responsive: ["md"],
       render: (record) => (
