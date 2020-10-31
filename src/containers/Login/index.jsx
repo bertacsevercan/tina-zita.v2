@@ -1,7 +1,10 @@
 import React from "react";
 import { Button, Input, Typography } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
+import {useTranslation} from "react-i18next";
 import "./index.css";
+
+const {Text} = Typography;
 
 const Login = ({
   email,
@@ -16,10 +19,12 @@ const Login = ({
   emailError,
   passwordError,
 }) => {
+  const {t} = useTranslation();
+
   return (
     <section className="login">
       <div className="loginContainer">
-        <label>E-mail</label>
+        <label>{t("login.label0")}</label>
         <Input
           placeholder="e-mail"
           className="input"
@@ -33,7 +38,7 @@ const Login = ({
 
         {hasPassword ? (
           <>
-            <label>Password</label>
+            <label>{t("login.label1")}</label>
             <Input.Password
               placeholder="input password"
               maxLength="15"
@@ -54,35 +59,37 @@ const Login = ({
           {hasPassword ? (
             <>
               <Button type="primary" onClick={handleLogin}>
-                Sign In
+                {t("login.text0")}
               </Button>
               <p>
-                Forgot the password ?
+                {t("login.text1")}
                 <Button
                   type="link"
                   onClick={() => setHasPassword(!hasPassword)}
                 >
                   {" "}
-                  Reset Password
+                  {t("login.text2")}
                 </Button>
               </p>
             </>
           ) : (
             <>
               <Button type="primary" onClick={handleResetPassword}>
-                Reset
+                {t("login.text3")}
               </Button>
-              {isEmailSend ? <p>An Email has been sent!</p> : null}
-              <p>
-                Log in with Tina Zita's password and e-mail
+              <div>
+              {isEmailSend ? <Text>{t("login.text4")}</Text> : null}
+              <Text>
+                {t("login.text5")}
                 <Button
                   type="link"
                   onClick={() => setHasPassword(!hasPassword)}
                 >
                   {" "}
-                  Sign In
+                  {t("login.text0")}
                 </Button>
-              </p>
+              </Text>
+              </div>
             </>
           )}
         </div>

@@ -112,6 +112,21 @@
         "modalMessage": "Are you sure you want to log out?",
         "ok": "OK",
         "cancel": "Cancel"
-
+    },
+    "home" : {
+        "title0": "TINA ZITA'S INVENTORY",
+        "title1": "powered by M.Y-Inventory.",
+        "text0": "Please enter your organization's credentials.",
+        "text1": "Only authorized accounts can access the system."
+    },
+    "login": {
+        "label0": "E-Mail",
+        "label1": "Password",
+        "text0": "Sign In",
+        "text1": "Forgot your password?",
+        "text2": "Reset Password",
+        "text3": "Reset",
+        "text4": "An e-mail has been sent to your password.",
+        "text5": "Sign in here:"
     }
 }

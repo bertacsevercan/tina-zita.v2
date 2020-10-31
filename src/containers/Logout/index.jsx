@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 
 const Logout = () => {
 
-  const [t,i18n] = useTranslation();
+  const {t} = useTranslation();
   const [visible, setVisibility] = useState(false);
 
   const showModal = () => {

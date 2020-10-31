@@ -2,6 +2,7 @@ import React from "react";
 import "./index.css";
 import Login from "../Login";
 import { Image } from "antd";
+import { useTranslation } from 'react-i18next';
 
 import { Typography } from "antd";
 
@@ -21,14 +22,16 @@ const Home = ({
   emailError,
   passwordError,
 }) => {
+  const {t} = useTranslation();
+
   return (
     <div className="home">
       <div className="hero-text">
-        <Title>TINA ZITA'S INVENTORY</Title>
+        <Title>{t("home.title0")}</Title>
         <Title level={4} type="secondary">
-          powered by M.Y-Inventory
+          {t("home.title1")}
         </Title>
-        <p>Please insert Tina Zita's credentials</p>
+          <Text> {t("home.text0")}</Text>
         <Login
           email={email}
           setEmail={setEmail}
@@ -43,7 +46,7 @@ const Home = ({
           isEmailSend={isEmailSend}
         />
         <Text type="secondary">
-          Don't you have credentials? Ask <Text type="danger">Rawan</Text>
+         {t("home.text1")}
         </Text>
       </div>
 

@@ -113,5 +113,22 @@
         "modalMessage": "Çıkmak istediğinize emin misiniz?",
         "ok": "Tamam",
         "cancel": "Vazgeç"
+    },
+    "home": {
+        "title0": "TINA ZITA ENVANTERİ",
+        "title1":  "M.Y-Inventory ile yapılmıştır.",
+        "text0": "Lütfen organizasyonunuzun bilgilerini girin.",
+        "text1": "Bu sisteme sadece yetkisi olan hesaplar girebilir."
+    },
+    "login": {
+        "label0": "E-Posta",
+        "label1": "Şifre",
+        "text0": "Giriş Yap",
+        "text1": "Şifreni mi unuttun?",
+        "text2": "Şifreyi Sıfırla",
+        "text3": "Sıfırla",
+        "text4": "Hesabınıza bir e-posta gönderildi.",
+        "text5": "Buradan giriş yapın:"
     }
+
 }
