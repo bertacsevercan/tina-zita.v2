@@ -109,7 +109,9 @@
     },
     "signOut": {
         "title": "Signing out...",
-        "modalMessage": "Are you sure you want to log out?"
+        "modalMessage": "Are you sure you want to log out?",
+        "ok": "OK",
+        "cancel": "Cancel"
 
     }
 }

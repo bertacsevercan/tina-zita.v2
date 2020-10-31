@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Auth } from "../../firebaseConfig";
 import { useHistory } from "react-router-dom";
-import { Modal } from 'antd';
+import { Button, Modal } from 'antd';
 import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
@@ -56,6 +56,10 @@ export default function Logout() {
          visible={visible}
          onOk={handleOk}
          onCancel={handleCancel}
+         footer={[
+          <Button key="Cancel" onClick={handleCancel}>{t("signOut.cancel")}</Button>,
+           <Button key="Ok" onClick={handleOk}>{t("signOut.ok")}</Button>,
+         ]}
        >
          <p>{t('signOut.modalMessage')}</p>
        </Modal>

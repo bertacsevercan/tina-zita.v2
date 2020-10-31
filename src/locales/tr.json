@@ -110,6 +110,8 @@
     },
     "signOut": {
         "title": "Çıkış yapılyor...",
-        "modalMessage": "Çıkmak istediğinize emin misiniz?"
+        "modalMessage": "Çıkmak istediğinize emin misiniz?",
+        "ok": "Tamam",
+        "cancel": "Vazgeç"
     }
 }
