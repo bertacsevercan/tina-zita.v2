@@ -5,11 +5,14 @@ import { Typography, Button, Spin, Modal } from 'antd';
 import "../../containers/Inventory/style.css";
 import InventoryForm from "../../components/InventoryForm";
 import * as firebase from "firebase";
+import { useTranslation } from 'react-i18next';
 
 const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 const { Title } = Typography;
 
 const Inventory = () => {
+    const [t,i18n] = useTranslation();
+
     const [loading, setLoading] = useState(true);
     const [modalVisible, setModalVisible] = useState(false);
     const [item, setItem] = useState([]);
@@ -74,12 +77,12 @@ const Inventory = () => {
     return(
         <div>
 
-        <Title level={3}>Inventory</Title>
+        <Title level={3}>{t('inventory.inventory')}</Title>
        
-        <Button onClick={showModal} className="button" type="primary">Add new item</Button>
+        <Button onClick={showModal} className="button" type="primary">{t('inventory.addBtn')}</Button>
 
         <Modal
-          title="Add new item to inventory"
+          title={t('inventory.addBtnModal.modalTitle')}
           visible={modalVisible}
           onOk={addItem}
           onCancel={handleCancel}
@@ -87,7 +90,7 @@ const Inventory = () => {
           <InventoryForm inventoryFormState={inventoryFormState} setInventoryFormState={setInventoryFormState} />
         </Modal>
         
-        {loading ? <div className="spin"> <Spin size="large" tip="Loading..."/> </div> : 
+        {loading ? <div className="spin"> <Spin size="large" tip={t('inventory.loading')}/> </div> : 
         <InventoryTable inventoryFormState={inventoryFormState} setInventoryFormState={setInventoryFormState} item={item} />}
 
         </div>

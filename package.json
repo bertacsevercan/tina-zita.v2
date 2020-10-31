@@ -8,9 +8,12 @@
     "@testing-library/user-event": "^7.2.1",
     "antd": "^4.7.0",
     "firebase": "^7.24.0",
+    "i18next": "^19.8.3",
+    "i18next-browser-languagedetector": "^6.0.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-highlight-words": "^0.16.0",
+    "react-i18next": "^11.7.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3"
   },

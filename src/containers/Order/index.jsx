@@ -3,10 +3,14 @@ import SelectOrder from "../../components/SelectOrder/SelectOrder"
 import { Button, Input, Typography } from 'antd';
 import db from "../../firebaseConfig";
 import { Alert } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 const {Title} = Typography;
 
 const Order = () => {
+
+  const [t,i18n] = useTranslation();
+
   const [orders, setOrders] = useState([])
   const [orderMultiplier, setOrderMultiplier] = useState(1)
   const [selectedOrder, setSelectedOrder] = useState("")
@@ -61,8 +65,8 @@ const Order = () => {
         
       } else {
         return <Alert
-        message="Error Text"
-        description={`Insufficient ingredients: ${insufficientIngredients.join(", ")}`}
+        message={t('order.errorText')}
+        description={`${t('order.insufText')} ${insufficientIngredients.join(", ")}`}
         type="error"
         closable
         onClose={onClose}
@@ -92,13 +96,13 @@ const Order = () => {
     },[]);
   return(
       <div >
-      <Title level={3}>Orders</Title>
+      <Title level={3}>{t('order.orders')}</Title>
       <div style={{display:"flex", justifyContent: "center"}}>
       <SelectOrder 
       onChange={onChange} 
       orders={orders}/>
       <Input style={{width: "200px"}} type="number" onChange={(e) => setOrderMultiplier(e.target.value)} value={orderMultiplier} placeholder="number of orders" min={1}/>
-      <Button disabled={selectedOrder? false : true} onClick={addOrder} type="primary">Add Order</Button>
+      <Button disabled={selectedOrder? false : true} onClick={addOrder} type="primary">{t('order.addOrder')}</Button>
       </div>
       </div>
   )

@@ -3,12 +3,16 @@ import { Form, Input, Button, Space, Select } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import db from "../../firebaseConfig"
 import * as firebase from "firebase";
+import { useTranslation } from 'react-i18next';
 
 const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
 const { Option } = Select;
 
 const RecipeForm = ({setDrawerVisible}) => {
+
+  const [t,i18n] = useTranslation();
+
   const [form] = Form.useForm();
   const [ingredientList, setIngredientList] = useState([]);
   const [ingredientNames, setIngredientNames] = useState([])
@@ -61,7 +65,7 @@ const RecipeForm = ({setDrawerVisible}) => {
 
   return (
     <Form form={form} name="dynamic_form_nest_item" onFinish={onFinish} autoComplete="off">
-      <Form.Item name="recipeName" label="Recipe Name" rules={[{ required: true, message: 'Missing recipe name' }]}>
+      <Form.Item name="recipeName" label={t('recipe.addDrawer.nameInput')} rules={[{ required: true, message: t('recipe.addDrawer.missingRecMessage') }]}>
         <Input />
       </Form.Item>
       <Form.List name="ingredients">
@@ -78,15 +82,15 @@ const RecipeForm = ({setDrawerVisible}) => {
                   {() => (
                     <Form.Item
                       {...field}
-                      label="Ingredient"
+                      label={t('recipe.addDrawer.ingredient')}
                       name={[field.name, 'itemName']}
                       fieldKey={[field.fieldKey, 'itemName']}
-                      rules={[{ required: true, message: 'Missing ingredient' }]}
+                      rules={[{ required: true, message: t('recipe.addDrawer.missingIngMessage') }]}
                     >
                       <Select     
                       optionFilterProp="children"
                         showSearch
-                        placeholder="Select an ingredient" 
+                        placeholder={t('recipe.addDrawer.selectIngMenu')}
                         disabled={!form.getFieldValue('recipeName')} 
                         style={{ width: 200 }}
                         filterOption={(input, option) =>
@@ -103,7 +107,7 @@ const RecipeForm = ({setDrawerVisible}) => {
                 </Form.Item>
                 <Form.Item
                   {...field}
-                  label="Amount"
+                  label={t('recipe.addDrawer.amount')}
                   name={[field.name, 'requiredAmount']}
                   fieldKey={[field.fieldKey, 'requiredAmount']}
                   rules={[{ required: true, message: 'Missing amount' }]}
@@ -117,7 +121,7 @@ const RecipeForm = ({setDrawerVisible}) => {
 
             <Form.Item>
               <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
-                Add ingredients
+              {t('recipe.addDrawer.addIngInp')}
               </Button>
             </Form.Item>
           </>
@@ -126,12 +130,12 @@ const RecipeForm = ({setDrawerVisible}) => {
       <div style={{display: "flex" }}>
       <Form.Item>
         <Button type="primary" htmlType="submit">
-          Submit
+        {t('recipe.addDrawer.submitBtn')}
         </Button>
       </Form.Item>
       <Form.Item >
       <Button onClick={onClose} style={{marginLeft: "1em"}}>
-               Cancel 
+      {t('recipe.addDrawer.cancelBtn')}
         </Button>
       </Form.Item>
       </div>

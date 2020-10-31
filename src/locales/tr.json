@@ -1,0 +1,99 @@
+{
+    "links": {
+        "adminDashboard": "Yönetici Paneli",
+        "inventory": "Envanter",
+        "order": "Sipariş",
+        "recipe": "Tarif",
+        "signout": "Çıkış yap"
+    },
+    "adminDashboard": {
+        "dashboard": "Panel",
+        "outOfStockTable": "Stok Dışı Tablosu",
+        "myNotes": "Notlarım",
+        "addBtn": "Yeni Not Ekle",
+        "name": "İsim",
+        "code": "Kod",
+        "category": "Kategori",
+        "unit": "Birim",
+        "remainingStock": "Kalan Miktar",
+        "dltBttn": "Sil",
+        "dltBttnWarning": "Silmek istediğinize emin misiniz?"
+    },
+    "inventory": {
+        "inventory": "Envanter",
+        "addBtn": "Yeni Ürün Ekle",
+        "loading": "Yükleniyor...",
+        "editModal": {
+            "price": "Fiyat",
+            "pricePlc": "Fiyat...",
+            "Stock": "Stok",
+            "StockPlc": "Stok...",
+            "unit": "Birim"
+        },
+        "addBtnModal": {
+            "modalTitle": "Envantere yeni ürün ekle",
+            "itemName": "Ürün adı",
+            "category": "Kategori",
+            "price": "Fiyat",
+            "stock": "Stok",
+            "stockWarning": "Stokta bu miktardan az kaldığında beni uyar",
+            "unit": "Birim",
+            "categoryMenu": {
+                "vegetables": "Sebze",
+                "green": "Yeşillik",
+                "animal": "Hayvansal",
+                "oilSauce": "Yağ/Sos",
+                "spice": "Baharat",
+                "canned": "Konserve",
+                "dryFood": "Kuru Gıda",
+                "fruit": "Meyve"
+            }
+        },
+        "inventoryTable": {
+            "name": "İsim",
+            "code": "Kod",
+            "category": "Kategori",
+            "unit": "Birim",
+            "price": "Fiyat",
+            "stock": "Stok",
+            "action": "Aksiyon",
+            "actionBtns": {
+                "edit": "Düzenle",
+                "delete": "Sil"
+            }
+        }
+
+    },
+    "order": {
+        "orders": "Siparişler",
+        "addOrder": "Sipariş Ekle",
+        "selectAnOrder": "Sipariş Seç",
+        "errorText": "Hata Metni",
+        "insufText": "Yetersiz ürünler:"
+    },
+    "recipe": {
+        "recipe": "Tarif",
+        "addBtn": "Yeni Tarif Ekle",
+        "name": "İsim",
+        "code": "Kod",
+        "action": "Aksiyon",
+        "deleteBtn": "Sil",
+        "addDrawer": {
+            "title": "Yeni bir tarif oluştur",
+            "nameInput": "Tarif adı:",
+            "missingRecMessage": "Tarif bulunamadı",
+            "addIngInp": "Malzeme Ekle",
+            "ingredient": "Malzeme:",
+            "amount": "Miktar",
+            "missingIngMessage": "Malzeme bulunamadı",
+            "selectIngMenu": "Malzeme seçiniz",
+            "missingAmountMessage": "Yetersiz miktar",
+            "submitBtn": "Gönder",
+            "cancelBtn": "İptal"
+        },
+        "loading": "Yükleniyor..."
+    },
+    "signOut": {
+        "modalMessage": "Çıkmak istediğinize emin misiniz?"
+    }
+}

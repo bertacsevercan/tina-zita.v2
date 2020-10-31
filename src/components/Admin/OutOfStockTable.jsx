@@ -1,34 +1,39 @@
 import React, { useEffect, useState } from "react";
 import { Table, Tag, Space } from 'antd';
 import db from "../../firebaseConfig"
+import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
 
 export default function OutOfStockTable() {
+
+    const [t,i18n] = useTranslation();
 
     const [outOfStock, setOutOfStock] = useState();
    
       const columns = [
         {
-          title: 'Name',
+          title: t('adminDashboard.name'),
           dataIndex: 'itemName',
           key: 'itemName',
         },
         {
-          title: 'Code',
+          title: t('adminDashboard.code'),
           dataIndex: 'itemCode',
           key: 'itemCode',
         },
         {
-          title: 'Category',
+          title: t('adminDashboard.category'),
           dataIndex: 'category',
           key: 'category',
         },
         {
-          title: 'Unit',
-          dataIndex: 'stock',
-          key: 'stock',
+          title: t('adminDashboard.unit'),
+          dataIndex: 'measurementUnit',
+          key: 'measurementUnit',
         },
         {
-          title: 'Remaining stock',
+          title: t('adminDashboard.remainingStock'),
           dataIndex: 'stock',
           key: 'stock',
         },
@@ -40,9 +45,9 @@ export default function OutOfStockTable() {
         .onSnapshot((snapshot) => {
           const dataArr = [];
           snapshot.forEach((doc) => {
-            if(doc.data().stock <= doc.data().stockLimit) {
-              dataArr.push(doc.data())
-            }
+            if((doc.data().stock <= doc.data().stockLimit)) {
+                dataArr.push(doc.data())
+              }
           });
           setOutOfStock(dataArr);
         });

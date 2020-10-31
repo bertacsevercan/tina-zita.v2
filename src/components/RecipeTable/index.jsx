@@ -3,8 +3,12 @@ import { Table, Button, Input, Space, Popconfirm } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import db from "../../firebaseConfig";
+import { useTranslation } from 'react-i18next';
 
 const RecipeTable = ({ recipe }) => {
+
+  const [t,i18n] = useTranslation();
+
   const [search, setSearch] = useState({
     searchText: "",
     searchedColumn: "",
@@ -101,20 +105,19 @@ const RecipeTable = ({ recipe }) => {
   };
   const columns = [
     {
-      title: "Name",
+      title: t('recipe.name'),
       dataIndex: "recipeName",
       key: "recipeName",
       ...getColumnSearchProps("recipeName"),
     },
     {
-      title: "Code",
+      title: t('recipe.code'),
       dataIndex: "recipeCode",
       key: "recipeCode",
       ...getColumnSearchProps("recipeCode"),
     },
-
     {
-      title: "Action",
+      title: t('recipe.action'),
       key: "action",
       responsive: ["md"],
       render: (record) => (
@@ -122,7 +125,7 @@ const RecipeTable = ({ recipe }) => {
           <Popconfirm title="Sure to delete?" onConfirm={()=> deleteRecipe(record.recipeCode)}>
           <Button type="primary" danger>
             {" "}
-            Delete
+           {t('recipe.deleteBtn')}
           </Button>
           </Popconfirm>
         </Space>

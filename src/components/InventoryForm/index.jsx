@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Form, Input, Select } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 const { Option } = Select;
 
 const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
+
+    const [t,i18n] = useTranslation();
 
     const [code, setCode] = useState({
       category: "SEB",
@@ -65,7 +68,7 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
     >
       <Form.Item
         
-        label="Item name"
+        label={t('inventory.addBtnModal.itemName')}
         name="itemName"
         rules={[
           {
@@ -85,7 +88,7 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
      
 
       <Form.Item
-        label="Category"
+        label={t('inventory.addBtnModal.category')}
         name="category"
         
       >
@@ -94,19 +97,19 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
 
 <Select defaultValue="sebze" value={inventoryFormState.category} 
  style={{ width: 120 }} onChange={(e) => handleChangeCategory(e, "category")}>
-      <Option  value="sebze">Sebze</Option>
-      <Option value="yeşillik">Yeşillik</Option>
-      <Option  value="hayvansal">Hayvansal</Option>
-      <Option value="yağ/sos">Yağ/Sos</Option>
-      <Option  value="baharat">Baharat</Option>
-      <Option value="konserve">Konserve</Option>
-      <Option  value="kuru gıda">Kuru Gıda</Option>
-      <Option  value="meyve">Meyve</Option>
+      <Option  value="sebze">{t('inventory.addBtnModal.categoryMenu.vegetables')}</Option>
+      <Option value="yeşillik">{t('inventory.addBtnModal.categoryMenu.green')}</Option>
+      <Option  value="hayvansal">{t('inventory.addBtnModal.categoryMenu.animal')}</Option>
+      <Option value="yağ/sos">{t('inventory.addBtnModal.categoryMenu.oilSauce')}</Option>
+      <Option  value="baharat">{t('inventory.addBtnModal.categoryMenu.spice')}</Option>
+      <Option value="konserve">{t('inventory.addBtnModal.categoryMenu.canned')}</Option>
+      <Option  value="kuru gıda">{t('inventory.addBtnModal.categoryMenu.dryFood')}</Option>
+      <Option  value="meyve">{t('inventory.addBtnModal.categoryMenu.fruit')}</Option>
     </Select>
       </Form.Item>
 
       <Form.Item
-        label="Price"
+        label={t('inventory.addBtnModal.price')}
         name="price"
         
       >
@@ -121,7 +124,7 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
 
       <Form.Item
         
-        label="Stock"
+        label={t('inventory.addBtnModal.stock')}
         name="stock"
         rules={[
           {
@@ -140,7 +143,7 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
       </Form.Item>
       <Form.Item
         
-        label="Warn me when stock less than this amount"
+        label={t('inventory.addBtnModal.stockWarning')}
         name="stockLimit"
         rules={[
           {
@@ -160,7 +163,7 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
 
       <Form.Item
         
-        label="Unit"
+        label={t('inventory.addBtnModal.unit')}
         name="measurementUnit"
         rules={[
           {
@@ -177,11 +180,8 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
       <Option value="lt">Lt</Option>
     </Select>
       </Form.Item>
-      
     </Form>
-
     )
-    
 }
 
 export default InventoryForm;

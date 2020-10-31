@@ -4,11 +4,17 @@ import { Table, Tag, Space } from 'antd';
 import { Typography, Button, Spin, Modal } from 'antd';
 import db from "../../firebaseConfig"
 import NoteForm from "../../components/Admin/NoteForm"
-import Notes from "./Notes"
+import Notes from "./Notes";
+import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
 
 const { Title } = Typography;
 
 const Admin = () => {
+
+    const [t,i18n] = useTranslation();
+
     const [loading, setLoading] = useState(true);
     const [modalVisible, setModalVisible] = useState(false);
     const [note, setNote] = useState([]);
@@ -55,14 +61,15 @@ const Admin = () => {
         });
       return note;
     }, []);
-    console.log(note)
+    //console.log(note)
+    //console.log(t('adminDashboard.dashboard'));
     return(
         <div>
-        <Title level={3}>Dashboard</Title>
-        <h1>Out of Stock Table</h1>
+        <Title level={3}>{t('adminDashboard.dashboard')}</Title>
+        <h1>{t('adminDashboard.outOfStockTable')}</h1>
         <OutOfStockTable />
-        <h1>My Notes</h1>
-        <Button onClick={showModal} className="button" type="primary">Add new note</Button>
+        <h1>{t('adminDashboard.myNotes')}</h1>
+        <Button onClick={showModal} className="button" type="primary">{t('adminDashboard.addBtn')}</Button>
         <Modal
           title="Add new note"
           visible={modalVisible}
