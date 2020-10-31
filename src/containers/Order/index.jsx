@@ -4,6 +4,8 @@ import OrderTable from "../../components/OrderTable";
 import { Button, Input, Typography, message, Spin } from "antd";
 import "./style.css";
 import db from "../../firebaseConfig";
+import { Alert } from 'antd';
+import { useTranslation } from 'react-i18next';
 import * as firebase from "firebase";
 
 const timestamp = firebase.firestore.FieldValue.serverTimestamp;
@@ -12,10 +14,15 @@ const date = new Date();
 const { Title } = Typography;
 
 const Order = () => {
+
+  const [t,i18n] = useTranslation();
+
+  const [orders, setOrders] = useState([])
+  const [orderMultiplier, setOrderMultiplier] = useState(1)
+  const [selectedOrder, setSelectedOrder] = useState("")
+  const [insufficientIngredients, setInsufficientIngredients]= useState([])
   const [orderedFood, setOrderedFood] = useState([]);
-  const [orders, setOrders] = useState([]);
-  const [orderMultiplier, setOrderMultiplier] = useState(1);
-  const [selectedOrder, setSelectedOrder] = useState("");
+
   const [loading, setLoading] = useState(true);
   const fetchOrders = async () => {
     const res = await db.collection("recipe").get();
@@ -106,7 +113,7 @@ const Order = () => {
   }, []);
   return (
     <div>
-      <Title level={3}>Orders</Title>
+      <Title level={3}>{t('order.orders')}</Title>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <SelectOrder onChange={onChange} orders={orders} />
         <Input
@@ -122,7 +129,7 @@ const Order = () => {
           onClick={addOrder}
           type="primary"
         >
-          Add Order
+          {t('order.addOrder')}
         </Button>
       </div>
       {loading ? (

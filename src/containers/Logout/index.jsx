@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Auth } from "../../firebaseConfig";
 import { useHistory } from "react-router-dom";
-import { Modal } from "antd";
+import { Modal } from 'antd';
+import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
 
 export default function Logout() {
+
+  const [t,i18n] = useTranslation();
   const [visible, setVisibility] = useState(false);
 
   const showModal = () => {
@@ -43,15 +48,17 @@ export default function Logout() {
 
   return (
     <>
-      <span onClick={showModal}>Sign Out</span>
-      <Modal
-        title="Basic Modal"
-        visible={visible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <p>Are you sure you want to log out?</p>
-      </Modal>
+        <span onClick={showModal} >
+          {t('links.signout')}
+        </span>
+         <Modal
+         title={t('signOut.title')}
+         visible={visible}
+         onOk={handleOk}
+         onCancel={handleCancel}
+       >
+         <p>{t('signOut.modalMessage')}</p>
+       </Modal>
     </>
   );
 }

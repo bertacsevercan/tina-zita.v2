@@ -3,8 +3,12 @@ import { Table, Button, Input, Space, Popconfirm, Modal, List } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import db from "../../firebaseConfig";
+import { useTranslation } from 'react-i18next';
 
 const RecipeTable = ({ recipe }) => {
+
+  const [t,i18n] = useTranslation();
+
   const [modalVisible, setModalVisible] = useState(false);
   const [ingredientList, setIngredientList] = useState([]);
   const [search, setSearch] = useState({
@@ -121,33 +125,29 @@ const RecipeTable = ({ recipe }) => {
 
   const columns = [
     {
-      title: "Name",
+      title: t('recipe.name'),
       dataIndex: "recipeName",
       key: "recipeName",
       ...getColumnSearchProps("recipeName"),
       render: (text, record) => <a onClick={() => showModal(record)}>{text}</a>,
     },
     {
-      title: "Code",
+      title: t('recipe.code'),
       dataIndex: "recipeCode",
       key: "recipeCode",
       ...getColumnSearchProps("recipeCode"),
     },
-
     {
-      title: "Action",
+      title: t('recipe.action'),
       key: "action",
       responsive: ["md"],
       render: (record) => (
         <Space>
-          <Popconfirm
-            title="Sure to delete?"
-            onConfirm={() => deleteRecipe(record.recipeCode)}
-          >
-            <Button type="primary" danger>
-              {" "}
-              Delete
-            </Button>
+          <Popconfirm title="Sure to delete?" onConfirm={()=> deleteRecipe(record.recipeCode)}>
+          <Button type="primary" danger>
+            {" "}
+           {t('recipe.deleteBtn')}
+          </Button>
           </Popconfirm>
         </Space>
       ),

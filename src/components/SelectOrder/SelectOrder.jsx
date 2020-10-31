@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
-import { Select } from "antd";
+import { Select } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 const { Option } = Select;
 
 const SelectOrder = (props) => {
-  const { onChange, onFocus, onBlur, onSearch, orders } = props;
+  const { onChange, onFocus, onBlur, onSearch, orders } = props
+  const [t,i18n] = useTranslation();
 
   useEffect(() => {
     console.log("i was rendered", orders);
@@ -14,7 +16,7 @@ const SelectOrder = (props) => {
       <Select
         showSearch
         style={{ width: 200 }}
-        placeholder="Select an order"
+        placeholder={t('order.selectAnOrder')}
         optionFilterProp="children"
         onChange={onChange}
         onFocus={onFocus}

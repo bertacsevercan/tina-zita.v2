@@ -4,10 +4,14 @@ import InventoryTable from "../../components/InventoryTable";
 import { Typography, Button, Spin, Modal } from "antd";
 import "../../containers/Inventory/style.css";
 import InventoryForm from "../../components/InventoryForm";
+import * as firebase from "firebase";
+import { useTranslation } from 'react-i18next';
 
 const { Title } = Typography;
 
 const Inventory = () => {
+
+  const [t,i18n] = useTranslation();
   const [loading, setLoading] = useState(true);
   const [item, setItem] = useState([]);
 
@@ -29,11 +33,11 @@ const Inventory = () => {
 
   return (
     <div>
-      <Title level={3}>Inventory</Title>
+      <Title level={3}>{t('inventory.inventory')}</Title>
       <InventoryForm />
       {loading ? (
         <div className="spin">
-          <Spin size="large" tip="Loading..." />
+          <Spin size="large" tip={t('inventory.loading')} />
         </div>
       ) : (
         <InventoryTable item={item} />

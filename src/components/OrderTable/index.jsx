@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { Table, Button, Input, Space, Popconfirm } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
+import { useTranslation } from 'react-i18next'
 
 const OrderTable = ({ orderedFood }) => {
+
+  const [t,i18n] = useTranslation();
   const [search, setSearch] = useState({
     searchText: "",
     searchedColumn: "",
@@ -121,7 +124,7 @@ const OrderTable = ({ orderedFood }) => {
           >
             <Button type="primary" danger>
               {" "}
-              Cancel
+              {t('order.cancelBtn')}
             </Button>
           </Popconfirm>
         </Space>
