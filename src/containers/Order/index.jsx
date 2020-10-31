@@ -14,7 +14,7 @@ const { Title } = Typography;
 
 const Order = () => {
 
-  const [t,i18n] = useTranslation();
+  const {t} = useTranslation();
 
   const [orders, setOrders] = useState([])
   const [orderMultiplier, setOrderMultiplier] = useState(1)

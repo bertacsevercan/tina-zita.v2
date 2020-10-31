@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 const { Title } = Typography;
 const Recipe = () => {
 
-  const [t,i18n] = useTranslation();
+  const {t} = useTranslation();
 
   const [loading, setLoading] = useState(true);
   const [recipe, setRecipe] = useState([]);
