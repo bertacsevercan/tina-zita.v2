@@ -9,6 +9,10 @@
     "adminDashboard": {
         "dashboard": "Panel",
         "outOfStockTable": "Stok Dışı Tablosu",
+        "noteTitle": "Not başlığı",
+        "pleaseEnterTitle": "Lütfen başlık giriniz!",
+        "pleaseEnterNote": "Lütfen bir not giriniz!",
+        "note": "Not",
         "myNotes": "Notlarım",
         "addBtn": "Yeni Not Ekle",
         "name": "İsim",
@@ -28,7 +32,8 @@
             "pricePlc": "Fiyat...",
             "Stock": "Stok",
             "StockPlc": "Stok...",
-            "unit": "Birim"
+            "unit": "Birim",
+            "editItemInfo": "Ürün bilgisini güncelle"
         },
         "addBtnModal": {
             "modalTitle": "Envantere yeni ürün ekle",
@@ -69,7 +74,8 @@
         "addOrder": "Sipariş Ekle",
         "selectAnOrder": "Sipariş Seç",
         "errorText": "Hata Metni",
-        "insufText": "Yetersiz ürünler:"
+        "insufText": "Yetersiz ürünler:",
+        "cancelBtn": "İptal"
     },
     "recipe": {
         "recipe": "Tarif",
@@ -94,6 +100,7 @@
         "loading": "Yükleniyor..."
     },
     "signOut": {
+        "title": "Çıkış yapılyor...",
         "modalMessage": "Çıkmak istediğinize emin misiniz?"
     }
 }

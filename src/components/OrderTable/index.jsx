@@ -1,47 +1,21 @@
 import React, { useState } from "react";
-import { Table, Button, Input, Space, Popconfirm, Modal, List } from "antd";
+import { Table, Button, Input, Space, Popconfirm } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
-import db from "../../firebaseConfig";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next'
 
-const RecipeTable = ({ recipe }) => {
+const OrderTable = ({ orderedFood }) => {
 
   const [t,i18n] = useTranslation();
-
-  const [modalVisible, setModalVisible] = useState(false);
-  const [ingredientList, setIngredientList] = useState([]);
   const [search, setSearch] = useState({
     searchText: "",
     searchedColumn: "",
   });
 
+  
   let searchInput;
 
-  const showModal = (record) => {
-    setModalVisible(true);
-    const ingredients = record.ingredients.map(
-      (ingredient) => ingredient.itemName + ` (${ingredient.requiredAmount})`
-    );
-    setIngredientList(ingredients);
-  };
-
-  const handleOk = (e) => {
-    setModalVisible(false);
-  };
-
-  const handleCancel = (e) => {
-    setModalVisible(false);
-  };
-
-  const deleteRecipe = (key) => {
-    db.collection("recipe")
-      .doc(key)
-      .delete()
-      .then(() => console.log("Document deleted succesfully!"))
-      .catch((err) => console.log("Error occured", err));
-  };
-
+ 
   const getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({
       setSelectedKeys,
@@ -122,32 +96,36 @@ const RecipeTable = ({ recipe }) => {
     clearFilters();
     setSearch({ searchText: "" });
   };
-
   const columns = [
     {
-      title: t('recipe.name'),
-      dataIndex: "recipeName",
-      key: "recipeName",
-      ...getColumnSearchProps("recipeName"),
-      render: (text, record) => <a onClick={() => showModal(record)}>{text}</a>,
+      title: "Order",
+      dataIndex: "orderName",
+      key: "orderName",
+      editable: true,
+      ...getColumnSearchProps("orderName"),
     },
     {
-      title: t('recipe.code'),
-      dataIndex: "recipeCode",
-      key: "recipeCode",
-      ...getColumnSearchProps("recipeCode"),
+      title: "Date",
+      key: "date",
+      dataIndex: "date" ,
+      responsive: ["md"],
+      editable: true,
+      ...getColumnSearchProps("date"),
     },
     {
-      title: t('recipe.action'),
+      title: "Action",
       key: "action",
       responsive: ["md"],
       render: (record) => (
         <Space>
-          <Popconfirm title="Sure to delete?" onConfirm={()=> deleteRecipe(record.recipeCode)}>
-          <Button type="primary" danger>
-            {" "}
-           {t('recipe.deleteBtn')}
-          </Button>
+          <Popconfirm
+            title="Sure to delete?"
+            onConfirm={() => console.log(record.date)}
+          >
+            <Button type="primary" danger>
+              {" "}
+              {t('order.cancelBtn')}
+            </Button>
           </Popconfirm>
         </Space>
       ),
@@ -156,29 +134,9 @@ const RecipeTable = ({ recipe }) => {
 
   return (
     <>
-      <Table columns={columns} dataSource={recipe} />
-      <Modal
-        destroyOnClose={true}
-        title="Ingredient List"
-        destroyOnClose={true}
-        visible={modalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        footer={[
-          <Button key="OK" type="primary" onClick={handleOk}>
-            OK
-          </Button>,
-        ]}
-      >
-        <List
-          size="small"
-          bordered
-          dataSource={ingredientList}
-          renderItem={(item) => <List.Item>{item}</List.Item>}
-        />
-      </Modal>
+      <Table columns={columns} dataSource={orderedFood} />
     </>
   );
 };
 
-export default RecipeTable;
+export default OrderTable;

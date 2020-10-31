@@ -22,29 +22,26 @@ const Admin = () => {
       title: "",
       content: "",
     });
+  const showModal = () => {
+    setModalVisible(true);
+  };
 
-    const showModal = () => {
-        setModalVisible(true);
-      };
-    
-     const handleOk = e => {
-        setModalVisible(false);
-      };
-    
-     const handleCancel = e => {
-       setModalVisible(false);
-      };
-  
-    const addItem = () => {
-      db.collection("notes").doc().set(
-        {
-          title: noteFormState.title,
-          content: noteFormState.content,
-        }
-      )
-      handleOk();
-        //When I click add new item second time, last value remains there, it should be empty
-    }
+  const handleOk = (e) => {
+    setModalVisible(false);
+  };
+
+  const handleCancel = (e) => {
+    setModalVisible(false);
+  };
+
+  const addItem = () => {
+    db.collection("notes").doc().set({
+      title: noteFormState.title,
+      content: noteFormState.content,
+    });
+    handleOk();
+    //When I click add new item second time, last value remains there, it should be empty
+  };
 
     useEffect(()=> {
         const note =
@@ -71,17 +68,57 @@ const Admin = () => {
         <h1>{t('adminDashboard.myNotes')}</h1>
         <Button onClick={showModal} className="button" type="primary">{t('adminDashboard.addBtn')}</Button>
         <Modal
-          title="Add new note"
+          title={t('adminDashboard.addBtn')}
           visible={modalVisible}
           onOk={addItem}
           onCancel={handleCancel}
         >
           <NoteForm noteFormState={noteFormState} setNoteFormState={setNoteFormState} />
+          
         </Modal>
-        {/* {loading ? <div className="spin"> <Spin size="large" tip="Loading..."/> </div> :
-        <NoteCard /> } */}
-        <Notes notesData={note}/>
-        </div>
+        <Notes notesData={note} />
+       </div> 
     )
-}
-export default Admin;
+  }
+  export default Admin;
+
+  
+
+  /* useEffect(() => {
+    const note = db.collection("notes").onSnapshot((snapshot) => {
+      const dataArr = [];
+      snapshot.forEach((doc) => {
+        dataArr.push({ ...doc.data(), id: doc.id });
+      });
+      console.log(dataArr);
+      setNote(dataArr);
+      setLoading(false);
+    });
+    return note;
+  }, []);
+  console.log(note);
+  return (
+    <div>
+      <Title level={3}>Dashboard</Title>
+      <OutOfStockTable />
+      <Button onClick={showModal} className="button" type="primary">
+        Add new note
+      </Button>
+      <Modal
+        destroyOnClose={true}
+        title="Add new note"
+        visible={modalVisible}
+        onOk={addItem}
+        onCancel={handleCancel}
+      >
+        <NoteForm
+          noteFormState={noteFormState}
+          setNoteFormState={setNoteFormState}
+        />
+      </Modal>
+      {/* {loading ? <div className="spin"> <Spin size="large" tip="Loading..."/> </div> :
+        <NoteCard /> } */
+      /* <Notes notesData={note} />
+    </div>
+  );
+}; */

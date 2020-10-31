@@ -7,10 +7,9 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 export default function OutOfStockTable() {
 
+    const [outOfStock, setOutOfStock] = useState();
     const [t,i18n] = useTranslation();
 
-    const [outOfStock, setOutOfStock] = useState();
-   
       const columns = [
         {
           title: t('adminDashboard.name'),
@@ -55,10 +54,10 @@ export default function OutOfStockTable() {
       return OoS;
     }, []);
     console.log(outOfStock)
-
-    return (
-        <div>
-            <Table dataSource={outOfStock} columns={columns}/>
-        </div>
-    )
+    
+  return (
+    <div>
+      <Table dataSource={outOfStock} columns={columns} />
+    </div>
+  );
 }

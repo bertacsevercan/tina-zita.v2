@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Form, Input, Button, Space, Select } from 'antd';
-import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import db from "../../firebaseConfig"
+import { Form, Input, Button, Space, Select } from "antd";
+import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
+import db from "../../firebaseConfig";
 import * as firebase from "firebase";
 import { useTranslation } from 'react-i18next';
 
@@ -15,52 +15,66 @@ const RecipeForm = ({setDrawerVisible}) => {
 
   const [form] = Form.useForm();
   const [ingredientList, setIngredientList] = useState([]);
-  const [ingredientNames, setIngredientNames] = useState([])
+  const [ingredientNames, setIngredientNames] = useState([]);
 
-  const fetchIngredients = async() => {
-    const res = await db.collection("inventory").get()
-    const onlyNames = await res.docs.map(name => name.data().itemName)
-    const datas = res.docs.map(data => {
-      return {itemName: data.data().itemName, itemCode: data.data().itemCode}
-    })
-    console.log("datas",datas);
-    setIngredientList(datas)
+  const fetchIngredients = async () => {
+    const res = await db.collection("inventory").get();
+    const onlyNames = await res.docs.map((name) => name.data().itemName);
+    const datas = res.docs.map((data) => {
+      return { itemName: data.data().itemName, itemCode: data.data().itemCode };
+    });
+    console.log("datas", datas);
+    setIngredientList(datas);
     setIngredientNames(onlyNames);
-  }
+  };
 
-  useEffect(()=> {
+  useEffect(() => {
     fetchIngredients();
-}, []);
+  }, []);
 
   const onClose = () => {
     setDrawerVisible(false);
-  }
+  };
 
-  const onFinish = values => {
-    console.log('Received values of form:', values);
+  const onFinish = (values) => {
+    console.log("Received values of form:", values);
     const space = " ";
     const rForRecipe = "R";
-    const firstThreeLetter = values.recipeName ? values.recipeName.slice(0,3).toUpperCase(): null;
-    const indexSpace = values.recipeName ? values.recipeName.indexOf(space) : null
-    const lettersAfterSpace = values.recipeName ?  values.recipeName.slice(indexSpace + 1, indexSpace + 4).toUpperCase() : null
-    const generatedCode = values.recipeName && values.recipeName.includes(space) ? rForRecipe + firstThreeLetter + 
-    lettersAfterSpace : rForRecipe + firstThreeLetter;
-    console.log(generatedCode)
+    const firstThreeLetter = values.recipeName
+      ? values.recipeName.slice(0, 3).toUpperCase()
+      : null;
+    const indexSpace = values.recipeName
+      ? values.recipeName.indexOf(space)
+      : null;
+    const lettersAfterSpace = values.recipeName
+      ? values.recipeName.slice(indexSpace + 1, indexSpace + 4).toUpperCase()
+      : null;
+    const generatedCode =
+      values.recipeName && values.recipeName.includes(space)
+        ? rForRecipe + firstThreeLetter + lettersAfterSpace
+        : rForRecipe + firstThreeLetter;
+    console.log(generatedCode);
     // const ingredientsArr = [...values.ingredients]
-    const modifiedIngredients = values.ingredients.map(item => {
-      const code = ingredientList.find((x) => x.itemName === item.itemName).itemCode
+    const modifiedIngredients = values.ingredients.map((item) => {
+      const code = ingredientList.find((x) => x.itemName === item.itemName)
+        .itemCode;
       return {
-        itemName: item.itemName, 
+        itemName: item.itemName,
         requiredAmount: item.requiredAmount,
         itemCode: code,
-        itemDocRef: db.doc(`/inventory/${code}/`)
-      }
-    })
-    console.log("marr",modifiedIngredients);
-    db.collection("recipe").doc(generatedCode).set({
-      ...values,recipeCode: generatedCode , createdAt: timestamp(), ingredients: modifiedIngredients
-    })
-    onClose()
+        itemDocRef: db.doc(`/inventory/${code}/`),
+      };
+    });
+    console.log("marr", modifiedIngredients);
+    db.collection("recipe")
+      .doc(generatedCode)
+      .set({
+        ...values,
+        recipeCode: generatedCode,
+        createdAt: timestamp(),
+        ingredients: modifiedIngredients,
+      });
+    onClose();
   };
 
   return (
@@ -71,12 +85,13 @@ const RecipeForm = ({setDrawerVisible}) => {
       <Form.List name="ingredients">
         {(fields, { add, remove }) => (
           <>
-            {fields.map(field => (
+            {fields.map((field) => (
               <Space key={field.key} align="baseline">
                 <Form.Item
                   noStyle
                   shouldUpdate={(prevValues, curValues) =>
-                    prevValues.recipeName !== curValues.recipeName || prevValues.ingredients !== curValues.ingredients
+                    prevValues.recipeName !== curValues.recipeName ||
+                    prevValues.ingredients !== curValues.ingredients
                   }
                 >
                   {() => (
@@ -87,16 +102,19 @@ const RecipeForm = ({setDrawerVisible}) => {
                       fieldKey={[field.fieldKey, 'itemName']}
                       rules={[{ required: true, message: t('recipe.addDrawer.missingIngMessage') }]}
                     >
-                      <Select     
-                      optionFilterProp="children"
+                      <Select
+                        optionFilterProp="children"
                         showSearch
                         placeholder={t('recipe.addDrawer.selectIngMenu')}
                         disabled={!form.getFieldValue('recipeName')} 
                         style={{ width: 200 }}
                         filterOption={(input, option) =>
-                          option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                        }>
-                        {ingredientNames.map(item => (
+                          option.children
+                            .toLowerCase()
+                            .indexOf(input.toLowerCase()) >= 0
+                        }
+                      >
+                        {ingredientNames.map((item) => (
                           <Option key={item} value={item}>
                             {item}
                           </Option>
@@ -112,7 +130,7 @@ const RecipeForm = ({setDrawerVisible}) => {
                   fieldKey={[field.fieldKey, 'requiredAmount']}
                   rules={[{ required: true, message: 'Missing amount' }]}
                 >
-                  <Input  />
+                  <Input />
                 </Form.Item>
 
                 <MinusCircleOutlined onClick={() => remove(field.name)} />
@@ -143,4 +161,4 @@ const RecipeForm = ({setDrawerVisible}) => {
   );
 };
 
-export default RecipeForm
+export default RecipeForm;

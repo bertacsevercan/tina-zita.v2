@@ -1,54 +1,90 @@
 import React, { useState } from "react";
-import { Form, Input, Select } from 'antd';
-import { useTranslation } from 'react-i18next';
+import { Form, Input, Select, Button, Modal } from "antd";
+import db from "../../firebaseConfig";
+import * as firebase from "firebase";
+import { useTranslation } from 'react-i18next'
 
 const { Option } = Select;
+const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
-const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
+const InventoryForm = () => {
 
-    const [t,i18n] = useTranslation();
+  const [t,i18n] = useTranslation();
 
-    const [code, setCode] = useState({
-      category: "SEB",
-      name: "",
-      generatedCode: ""
-    })
-  
-   
-  const handleChangeName = (e,key) => {
-    const threeLetterName = e.target.value.slice(0,3).toUpperCase();
+  const [code, setCode] = useState({
+    category: "SEB",
+    name: "",
+    generatedCode: "",
+  });
+  const [inventoryFormState, setInventoryFormState] = useState({
+    category: "sebze",
+    itemCode: "",
+    itemName: "",
+    measurementUnit: "gr",
+    price: 0,
+    stock: 0,
+    stockLimit: 0,
+  });
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const showModal = () => {
+    setModalVisible(true);
+  };
+  const handleOk = (e) => {
+    setModalVisible(false);
+  };
+
+  const handleCancel = (e) => {
+    setModalVisible(false);
+  };
+
+  const addItem = () => {
+    db.collection("inventory").doc(inventoryFormState.itemCode).set({
+      category: inventoryFormState.category,
+      itemCode: inventoryFormState.itemCode,
+      itemName: inventoryFormState.itemName,
+      measurementUnit: inventoryFormState.measurementUnit,
+      price: inventoryFormState.price,
+      stock: inventoryFormState.stock,
+      stockLimit: inventoryFormState.stockLimit,
+      createdAt: timestamp(),
+    });
+
+    handleOk();
+  };
+
+  const handleChangeName = (e, key) => {
+    const threeLetterName = e.target.value.slice(0, 3).toUpperCase();
     setCode({
       ...code,
-      name : threeLetterName
-    })
+      name: threeLetterName,
+    });
     setInventoryFormState({
       ...inventoryFormState,
-      [key] : e.target.value
-    })
-  }
-  
+      [key]: e.target.value,
+    });
+  };
 
-  const handleChangeCategory = (e,key) => {
-    const firstLetterCategory =  e.slice(0,3).toUpperCase();
+  const handleChangeCategory = (e, key) => {
+    const firstLetterCategory = e.slice(0, 3).toUpperCase();
     setCode({
       ...code,
-      category: firstLetterCategory
-      
-    })
+      category: firstLetterCategory,
+    });
 
     setInventoryFormState({
       ...inventoryFormState,
-      [key] : e
-    })
-  }
+      [key]: e,
+    });
+  };
 
   const handleChange = (e, key) => {
     const iForInventory = "I";
 
     setCode({
       ...code,
-      generatedCode: iForInventory + code.category + code.name
-    })
+      generatedCode: iForInventory + code.category + code.name,
+    });
 
     setInventoryFormState({
         ...inventoryFormState,
@@ -58,6 +94,17 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
 }
 
     return(
+      <div>
+      <Button onClick={showModal} className="button" type="primary">
+        {t('inventory.addBtn')}
+      </Button>
+      <Modal
+      destroyOnClose={true}
+      title={t('inventory.addBtnModal.modalTitle')}
+      visible={modalVisible}
+      onOk={addItem}
+      onCancel={handleCancel}
+    >
         <Form
       layout="vertical"
       name="inventoryForm"
@@ -93,8 +140,6 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
         
       >
         
-
-
 <Select defaultValue="sebze" value={inventoryFormState.category} 
  style={{ width: 120 }} onChange={(e) => handleChangeCategory(e, "category")}>
       <Option  value="sebze">{t('inventory.addBtnModal.categoryMenu.vegetables')}</Option>
@@ -181,6 +226,8 @@ const InventoryForm = ({inventoryFormState ,setInventoryFormState}) => {
     </Select>
       </Form.Item>
     </Form>
+    </Modal>
+    </div>
     )
 }
 

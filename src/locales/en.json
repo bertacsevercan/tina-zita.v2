@@ -4,11 +4,15 @@
         "inventory": "Inventory",
         "order": "Order",
         "recipe": "Recipe",
-        "signout": "sign Out"
+        "signout": "Sign Out"
     },
     "adminDashboard": {
         "dashboard": "Dashboard",
         "outOfStockTable": "Out of Stock Table",
+        "noteTitle": "Note Title",
+        "pleaseEnterTitle": "Please enter note title!",
+        "pleaseEnterNote": "Please enter your note!",
+        "note": "Note",
         "myNotes": "My Notes",
         "addBtn": "Add New Note",
         "name": "Name",
@@ -28,7 +32,8 @@
             "pricePlc": "Price...",
             "Stock": "Stock",
             "StockPlc": "Stock...",
-            "unit": "Unit"
+            "unit": "Unit",
+            "editItemInfo": "Edit item info"
         },
         "addBtnModal": {
             "modalTitle": "Add new item to inventory",
@@ -68,7 +73,8 @@
         "addOrder": "Add Order",
         "selectAnOrder": "Select an order",
         "errorText": "Error Text",
-        "insufText": "Insufficient ingredients:"
+        "insufText": "Insufficient ingredients:",
+        "cancelBtn": "Cancel"
     },
     "recipe": {
         "recipe": "Recipe",
@@ -93,6 +99,8 @@
         "loading": "Loading..."
     },
     "signOut": {
+        "title": "Signing out...",
         "modalMessage": "Are you sure you want to log out?"
+
     }
 }
