@@ -108,7 +108,7 @@ const OrderTable = ({ orderedFood }) => {
       dataIndex: "date" ,
       responsive: ["md"],
       editable: true,
-      sorter: (a, b) => a.date - b.date,
+      ...getColumnSearchProps("date"),
     },
     {
       title: "Action",

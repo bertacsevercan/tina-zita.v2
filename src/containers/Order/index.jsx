@@ -7,7 +7,7 @@ import db from "../../firebaseConfig";
 import * as firebase from "firebase";
 
 const timestamp = firebase.firestore.FieldValue.serverTimestamp;
-const convert = firebase.firestore.Timestamp;
+const date = new Date();
 
 const { Title } = Typography;
 
@@ -95,7 +95,7 @@ const Order = () => {
       .onSnapshot((snapshot) => {
         const dataArr = [];
         snapshot.forEach((doc) => {
-          dataArr.push({ ...doc.data(), date : `${doc.data().createdAt.toDate().getDate()}/${doc.data().createdAt.toDate().getMonth()}/${doc.data().createdAt.toDate().getFullYear()}` });
+          dataArr.push({ ...doc.data(), date : date.getMonth() === doc.data().createdAt.toDate().getMonth() ? `${doc.data().createdAt.toDate().getDate()}/${doc.data().createdAt.toDate().getMonth()}/${doc.data().createdAt.toDate().getFullYear()}` : null});
         });
         console.log("dataarr", (dataArr))
         setOrderedFood(dataArr);
