@@ -85,7 +85,7 @@ const Order = () => {
   function onChange(value) {
     setSelectedOrder(value);
   }
-
+  // date : date.getMonth() === doc.data().createdAt.toDate().getMonth() ? `${doc.data().createdAt.toDate().getDate()}/${doc.data().createdAt.toDate().getMonth() + 1}/${doc.data().createdAt.toDate().getFullYear()}` : null});
   useEffect(() => {
     fetchOrders();
 
@@ -95,9 +95,10 @@ const Order = () => {
       .onSnapshot((snapshot) => {
         const dataArr = [];
         snapshot.forEach((doc) => {
-          dataArr.push({ ...doc.data(), date : date.getMonth() === doc.data().createdAt.toDate().getMonth() ? `${doc.data().createdAt.toDate().getDate()}/${doc.data().createdAt.toDate().getMonth() + 1}/${doc.data().createdAt.toDate().getFullYear()}` : null});
+          dataArr.push({ ...doc.data(), date : doc.data().createdAt.toDate()});
         });
         console.log("dataarr", (dataArr))
+        console.log("date", date.getMonth())
         setOrderedFood(dataArr);
         setLoading(false);
       });

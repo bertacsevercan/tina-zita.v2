@@ -212,6 +212,7 @@ const InventoryTable = ({ item }) => {
     <>
       <Table columns={columns} dataSource={item} />
       <Modal
+        destroyOnClose
         title="Edit item info"
         visible={modalVisible}
         onOk={editItem}
