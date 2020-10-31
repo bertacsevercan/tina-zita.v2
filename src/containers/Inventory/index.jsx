@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import db from "../../firebaseConfig";
 import InventoryTable from "../../components/InventoryTable";
-import { Typography, Button, Spin, Modal } from "antd";
+import { Typography, Spin } from "antd";
 import "../../containers/Inventory/style.css";
 import InventoryForm from "../../components/InventoryForm";
-import * as firebase from "firebase";
 import { useTranslation } from 'react-i18next';
 
 const { Title } = Typography;
 
 const Inventory = () => {
 
-  const [t,i18n] = useTranslation();
+  const {t}  = useTranslation();
   const [loading, setLoading] = useState(true);
   const [item, setItem] = useState([]);
 

@@ -3,7 +3,6 @@ import { Button, Input, Typography } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import "./index.css";
 
-
 const Login = ({
   email,
   setEmail,
