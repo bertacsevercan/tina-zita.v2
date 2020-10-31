@@ -4,7 +4,13 @@
         "inventory": "Envanter",
         "order": "Sipariş",
         "recipe": "Tarif",
-        "signout": "Çıkış yap"
+        "signout": "Çıkış yap",
+        "language": {
+            "header0": "Dil",
+            "header1": "Türkçe",
+            "header2": "İngilizce",
+            "header3": "Arapça"
+        }
     },
     "adminDashboard": {
         "dashboard": "Panel",

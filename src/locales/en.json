@@ -4,7 +4,13 @@
         "inventory": "Inventory",
         "order": "Order",
         "recipe": "Recipe",
-        "signout": "Sign Out"
+        "signout": "Sign Out",
+        "language": {
+            "header0": "Language",
+            "header1": "Turkish",
+            "header2": "English",
+            "header3": "Arabic"
+        }
     },
     "adminDashboard": {
         "dashboard": "Dashboard",

@@ -1,20 +1,17 @@
 import React from "react";
 import "../SideBar/index.css";
-import { Layout, Menu } from 'antd';
-import { DropboxOutlined, UserOutlined, ShopOutlined, BookOutlined,LoginOutlined, LogoutOutlined, DownOutlined, UpOutlined } from '@ant-design/icons';
+import { Layout, Menu, Dropdown, Button } from 'antd';
+import { DropboxOutlined, UserOutlined, ShopOutlined, BookOutlined, LogoutOutlined, DownOutlined, GlobalOutlined } from '@ant-design/icons';
 import {Link}  from "react-router-dom";
 import Logout from "../../containers/Logout"
-import Login from "../../containers/Login";
-import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
 import ar from '../../assests/flags/arabic.png';
 import en from '../../assests/flags/english.png';
 import tr from '../../assests/flags/turkish.png';
 
-import { Dropdown, Button, message, Tooltip } from 'antd';
 
 const { Sider } = Layout;
+const { SubMenu } = Menu;
 
 const SideBar = () => {
 
@@ -46,6 +43,10 @@ const SideBar = () => {
         </Menu.Item>
       </Menu>
     );
+    const TrIcon = () => <img  style={{width:'1.5rem', height:'1rem', marginRight:"0.5em" }} src={tr} />
+    const EnIcon = () => <img  style={{width:'1.5rem', height:'1rem', marginRight:"0.5em" }}  src={en} />
+    const ArIcon = () => <img  style={{width:'1.5rem', height:'1rem', marginRight:"0.5em" }}  src={ar} />
+
     
     return(
          <Sider
@@ -76,15 +77,20 @@ const SideBar = () => {
           <Menu.Item key="4" icon={<BookOutlined />}>
             <Link to="/recipe" >{t('links.recipe')}</Link>
           </Menu.Item>
-          <Menu.Item key="6" icon={<LogoutOutlined />}>
+          <SubMenu key="sub1" icon={<GlobalOutlined />} title={t("links.language.header0")}>
+              <Menu.Item icon={<TrIcon />} onClick={() => {selectLanguage('tr');}} key="5">{t("links.language.header1")}</Menu.Item>
+              <Menu.Item icon={<EnIcon />} onClick={() => {selectLanguage('en');}} key="6">{t("links.language.header2")}</Menu.Item>
+              <Menu.Item icon={<ArIcon />} onClick={() => {selectLanguage('ar');}} key="7">{t("links.language.header3")}</Menu.Item>
+            </SubMenu>
+          <Menu.Item key="8" icon={<LogoutOutlined />}>
             <Logout />
           </Menu.Item>
         </Menu>
-        <Dropdown overlay={menu}>
+       {/*  <Dropdown overlay={menu}>
           <Button className="langDropdown">
             Language <DownOutlined />
           </Button>
-        </Dropdown>
+        </Dropdown> */}
           </Sider>
     )
 }
