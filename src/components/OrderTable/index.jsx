@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Table, Button, Input, Space, Popconfirm } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
-import db from "../../firebaseConfig";
 
 const OrderTable = ({ orderedFood }) => {
   const [search, setSearch] = useState({
