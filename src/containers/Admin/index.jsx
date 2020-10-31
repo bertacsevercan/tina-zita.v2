@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
 import OutOfStockTable from "../../components/Admin/OutOfStockTable"
-import { Table, Tag, Space } from 'antd';
 import { Typography, Button, Spin, Modal } from 'antd';
 import db from "../../firebaseConfig"
 import NoteForm from "../../components/Admin/NoteForm"
 import Notes from "./Notes";
-import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
+import "./style.css";
 
 const { Title } = Typography;
 
 const Admin = () => {
 
-    const [t,i18n] = useTranslation();
+    const {t} = useTranslation();
 
     const [loading, setLoading] = useState(true);
     const [modalVisible, setModalVisible] = useState(false);
@@ -74,9 +72,9 @@ const Admin = () => {
           onCancel={handleCancel}
         >
           <NoteForm noteFormState={noteFormState} setNoteFormState={setNoteFormState} />
-          
         </Modal>
-        <Notes notesData={note} />
+        {loading ? <div className="spin"> <Spin size="large" tip="Loading..."/> </div> :
+         <Notes notesData={note} />}
        </div> 
     )
   }
