@@ -85,7 +85,6 @@ const Order = () => {
   function onChange(value) {
     setSelectedOrder(value);
   }
-  // date : date.getMonth() === doc.data().createdAt.toDate().getMonth() ? `${doc.data().createdAt.toDate().getDate()}/${doc.data().createdAt.toDate().getMonth() + 1}/${doc.data().createdAt.toDate().getFullYear()}` : null});
   useEffect(() => {
     fetchOrders();
 
@@ -95,7 +94,7 @@ const Order = () => {
       .onSnapshot((snapshot) => {
         const dataArr = [];
         snapshot.forEach((doc) => {
-          dataArr.push({ ...doc.data(), date : doc.data().createdAt.toDate()});
+          dataArr.push({ ...doc.data(), date : doc.data().createdAt && date.getMonth() === doc.data().createdAt.toDate().getMonth() ? `${doc.data().createdAt.toDate().getDate()}/${doc.data().createdAt.toDate().getMonth() + 1}/${doc.data().createdAt.toDate().getFullYear()}` : null});
         });
         console.log("dataarr", (dataArr))
         console.log("date", date.getMonth())
