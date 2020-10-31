@@ -2,11 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Auth } from "../../firebaseConfig";
 import { useHistory } from "react-router-dom";
 import { Button, Modal } from 'antd';
-import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
 
-export default function Logout() {
+const Logout = () => {
 
   const [t,i18n] = useTranslation();
   const [visible, setVisibility] = useState(false);
@@ -66,3 +64,4 @@ export default function Logout() {
     </>
   );
 }
+export default Logout;

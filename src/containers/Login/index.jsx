@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Auth } from "../../firebaseConfig";
-import { Button, Space, Input, Typography } from "antd";
+import React from "react";
+import { Button, Input, Typography } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
-import AppContext from "../../components/AppContext";
-import { useHistory } from "react-router-dom";
 import "./index.css";
-const { Text } = Typography;
+
+
 const Login = ({
   email,
   setEmail,
