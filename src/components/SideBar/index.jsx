@@ -1,7 +1,7 @@
 import React from "react";
 import "../SideBar/index.css";
-import { Layout, Menu, Dropdown, Button } from 'antd';
-import { DropboxOutlined, UserOutlined, ShopOutlined, BookOutlined, LogoutOutlined, DownOutlined, GlobalOutlined } from '@ant-design/icons';
+import { Layout, Menu} from 'antd';
+import { DropboxOutlined, UserOutlined, ShopOutlined, BookOutlined, LogoutOutlined, GlobalOutlined } from '@ant-design/icons';
 import {Link}  from "react-router-dom";
 import Logout from "../../containers/Logout"
 import { useTranslation } from 'react-i18next';
@@ -26,23 +26,6 @@ const SideBar = () => {
       }
     };
     
-
-    const menu = (
-      <Menu>
-        <Menu.Item onClick={() => {selectLanguage('tr');}} key="1">
-          Turkish
-          <img style={{width:'24px', height:'16px', marginLeft:'15px', marginBottom:'5px'}} src={tr} />
-        </Menu.Item>
-        <Menu.Item onClick={() => {selectLanguage('en');}} key="2">
-          English
-          <img style={{width:'24px', height:'16px', marginLeft:'15px', marginBottom:'5px'}} src={en} />
-        </Menu.Item>
-        <Menu.Item onClick={() => {selectLanguage('ar');}} key="3">
-          Arabic
-          <img style={{width:'24px', height:'16px', marginLeft:'20px', marginBottom:'5px'}} src={ar} />
-        </Menu.Item>
-      </Menu>
-    );
     const TrIcon = () => <img  style={{width:'1.5rem', height:'1rem', marginRight:"0.5em" }} src={tr} />
     const EnIcon = () => <img  style={{width:'1.5rem', height:'1rem', marginRight:"0.5em" }}  src={en} />
     const ArIcon = () => <img  style={{width:'1.5rem', height:'1rem', marginRight:"0.5em" }}  src={ar} />
@@ -86,25 +69,7 @@ const SideBar = () => {
             <Logout />
           </Menu.Item>
         </Menu>
-       {/*  <Dropdown overlay={menu}>
-          <Button className="langDropdown">
-            Language <DownOutlined />
-          </Button>
-        </Dropdown> */}
           </Sider>
     )
 }
 export default  SideBar;
-
-
-{/* <div className="languageButtons">
-        <div className="trBtn">
-          <img onClick={() => {selectLanguage('tr');}} style={{width:'48px', height:'25px', cursor:'pointer'}} src={tr} alt="Turkish language" />
-        </div>
-        <div className="enBtn">
-          <img onClick={() => {selectLanguage('en');}} style={{width:'35px', height:'19px'}} src={en} alt="English language" />
-        </div>
-        <div className="arBtn"> 
-          <img onClick={() => {selectLanguage('ar');}} style={{width:'35px', height:'19px'}} src={ar} alt="Arabic language" />
-        </div>
-        </div> */}
