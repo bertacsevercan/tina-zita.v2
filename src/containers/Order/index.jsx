@@ -76,7 +76,7 @@ const Order = () => {
         } else {
           error();
         }
-      }, 500);
+      }, 1000);
     } else {
       console.log("empty");
     }
@@ -95,7 +95,7 @@ const Order = () => {
       .onSnapshot((snapshot) => {
         const dataArr = [];
         snapshot.forEach((doc) => {
-          dataArr.push({ ...doc.data(), date : date.getMonth() === doc.data().createdAt.toDate().getMonth() ? `${doc.data().createdAt.toDate().getDate()}/${doc.data().createdAt.toDate().getMonth()}/${doc.data().createdAt.toDate().getFullYear()}` : null});
+          dataArr.push({ ...doc.data(), date : date.getMonth() === doc.data().createdAt.toDate().getMonth() ? `${doc.data().createdAt.toDate().getDate()}/${doc.data().createdAt.toDate().getMonth() + 1}/${doc.data().createdAt.toDate().getFullYear()}` : null});
         });
         console.log("dataarr", (dataArr))
         setOrderedFood(dataArr);

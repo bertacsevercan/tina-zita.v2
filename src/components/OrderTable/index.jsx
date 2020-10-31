@@ -117,7 +117,7 @@ const OrderTable = ({ orderedFood }) => {
         <Space>
           <Popconfirm
             title="Sure to delete?"
-            onConfirm={()=> console.log("date", orderedFood[0].date.getFullYear())}
+            
           >
             <Button type="primary" danger>
               {" "}
