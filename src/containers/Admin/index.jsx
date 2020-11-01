@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import OutOfStockTable from "../../components/Admin/OutOfStockTable";
-import { Typography, Button, Spin, Modal } from "antd";
+import { Typography, Button, Spin, Modal, Space } from "antd";
 import db from "../../firebaseConfig";
 import NoteForm from "../../components/Admin/NoteForm";
 import Notes from "./Notes";
@@ -12,6 +12,8 @@ const { Title } = Typography;
 const Admin = () => {
   const { t } = useTranslation();
 
+  const { t } = useTranslation();
+
   const [loading, setLoading] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
   const [note, setNote] = useState([]);
@@ -19,12 +21,21 @@ const Admin = () => {
     title: "",
     content: "",
   });
+  const clearInputs = () => {
+    setNoteFormState({
+      title: "",
+      content: "",
+    });
+  };
+
   const showModal = () => {
+    clearInputs();
     setModalVisible(true);
   };
 
   const handleOk = (e) => {
     setModalVisible(false);
+    clearInputs();
   };
 
   const handleCancel = (e) => {
@@ -54,35 +65,38 @@ const Admin = () => {
   }, []);
   //console.log(note)
   //console.log(t('adminDashboard.dashboard'));
+
   return (
     <div>
-      <Title level={3}>{t("adminDashboard.dashboard")}</Title>
-      <h1>{t("adminDashboard.outOfStockTable")}</h1>
-      <OutOfStockTable />
-      <h1>{t("adminDashboard.myNotes")}</h1>
-      <Button onClick={showModal} className="button" type="primary">
-        {t("adminDashboard.addBtn")}
-      </Button>
-      <Modal
-        destroyOnClose={true}
-        title={t("adminDashboard.addBtn")}
-        visible={modalVisible}
-        onOk={addItem}
-        onCancel={handleCancel}
-      >
-        <NoteForm
-          noteFormState={noteFormState}
-          setNoteFormState={setNoteFormState}
-        />
-      </Modal>
-      {loading ? (
-        <div className="spin">
-          {" "}
-          <Spin size="large" tip="Loading..." />{" "}
-        </div>
-      ) : (
-        <Notes notesData={note} />
-      )}
+      <Space direction="vertical">
+        <Title level={3}>{t("adminDashboard.dashboard")}</Title>
+        <h1 className="outOfStock">{t("adminDashboard.outOfStockTable")}</h1>
+        <OutOfStockTable />
+        <h1 className="notes">{t("adminDashboard.myNotes")}</h1>
+        <Button onClick={showModal} className="button" type="primary">
+          {t("adminDashboard.addBtn")}
+        </Button>
+        <Modal
+          title={t("adminDashboard.addBtn")}
+          destroyOnClose={true}
+          visible={modalVisible}
+          onOk={addItem}
+          onCancel={handleCancel}
+        >
+          <NoteForm
+            noteFormState={noteFormState}
+            setNoteFormState={setNoteFormState}
+          />
+        </Modal>
+        {loading ? (
+          <div className="spin">
+            {" "}
+            <Spin size="large" tip="Loading..." />{" "}
+          </div>
+        ) : (
+          <Notes notesData={note} />
+        )}
+      </Space>
     </div>
   );
 };

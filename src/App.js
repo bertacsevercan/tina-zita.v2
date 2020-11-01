@@ -13,7 +13,6 @@ import Inventory from "./containers/Inventory";
 import Recipe from "./containers/Recipe";
 import Home from "./containers/Home";
 import Login from './containers/Login';
-import AppContext from './components/AppContext';
 import {Auth} from './firebaseConfig';
 import i18n from "./i18n";
 import {I18nextProvider} from "react-i18next";
@@ -42,7 +41,6 @@ const clearErrors = () => {
 };
 
 const handleLogin = () => {
-  
   clearErrors();
   Auth()
     .signInWithEmailAndPassword(email, password)
