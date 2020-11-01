@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SelectOrder from "../../components/SelectOrder/SelectOrder";
 import OrderTable from "../../components/OrderTable";
-import { Button, Input, Typography, message, Spin } from "antd";
+import { Button, Input, Typography, message, Spin, notification } from "antd";
 import "./style.css";
 import db from "../../firebaseConfig";
 import { useTranslation } from 'react-i18next';
@@ -19,8 +19,8 @@ const Order = () => {
   const [orders, setOrders] = useState([])
   const [orderMultiplier, setOrderMultiplier] = useState(1)
   const [selectedOrder, setSelectedOrder] = useState("")
-  const [insufficientIngredients, setInsufficientIngredients]= useState([])
   const [orderedFood, setOrderedFood] = useState([]);
+  const insufficientIngredients = []; // instead of using a state, I use regular arr to contain the values.
 
   const [loading, setLoading] = useState(true);
   const fetchOrders = async () => {
@@ -34,18 +34,24 @@ const Order = () => {
     setOrders(data);
   };
 
+ 
   const success = () => {
     message.success("Order successful!");
   };
 
-  const error = () => {
-    message.error("Insufficient ingredients!"); // add which ingredient is insufficient
+  const error = type => {
+    //message.error("Insufficient ingredients!");
+    notification[type]({
+      message: 'Insufficient ingredients:',
+      description:
+        insufficientIngredients
+    });
   };
 
   const addOrder = async () => {
     if (orders.length > 0) {
       let isSufficient = true;
-
+      
       const ingredientsArr = orders.find(
         (order) => order.recipeCode === selectedOrder
       ).ingredients;
@@ -56,8 +62,10 @@ const Order = () => {
         console.log(res);
         const data = res.data();
         console.log("data", data);
+       
         if (data.stock - orderItem.requiredAmount * orderMultiplier < 0) {
           isSufficient = false;
+          insufficientIngredients.push(data.itemName)
           console.log(isSufficient);
         }
       }
@@ -81,7 +89,7 @@ const Order = () => {
         }
         success();
       } else {
-        error();
+        error("error");
       }
     } else {
       console.log("empty");
@@ -102,8 +110,6 @@ const Order = () => {
         snapshot.forEach((doc) => {
           dataArr.push({ ...doc.data(), date : doc.data().createdAt && `${doc.data().createdAt.toDate().getDate()}/${doc.data().createdAt.toDate().getMonth() + 1}/${doc.data().createdAt.toDate().getFullYear()}`});
         });
-        console.log("dataarr", (dataArr))
-        console.log("date", date.getMonth())
         const filteredArr = dataArr.filter(x => x.createdAt && x.createdAt.toDate().getMonth() === date.getMonth())
         setOrderedFood(filteredArr);
         setLoading(false);
