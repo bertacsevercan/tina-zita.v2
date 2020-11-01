@@ -1,9 +1,22 @@
 import React, { useState } from "react";
 import { Form, Input, Select } from 'antd';
+import { useTranslation } from 'react-i18next';
+
 
 const { Option } = Select;
 
-const EditInventoryForm = ({ editInventoryFormState, setEditInventoryFormState}) => {
+const EditInventoryForm = ({
+  editInventoryFormState,
+  setEditInventoryFormState,
+}) => {
+  const handleChangeInput = (e) => {
+    setEditInventoryFormState({
+      ...editInventoryFormState,
+      [e.target.id]: e.target.value < 0 ? 0 : e.target.value,
+    });
+  };
+
+    const [t,i18n] = useTranslation();
 
     const handleChange = (e, key) => {
         setEditInventoryFormState({
@@ -11,12 +24,6 @@ const EditInventoryForm = ({ editInventoryFormState, setEditInventoryFormState})
             [key]: (e.target ? e.target.value: e)
         })
     };
-    const handleChangeInput = (e) => {
-        setEditInventoryFormState({
-            ...editInventoryFormState,
-            [e.target.id] : e.target.value < 0 ? 0 : e.target.value
-        })
-    }
 
     return(
     <div>
@@ -29,12 +36,12 @@ const EditInventoryForm = ({ editInventoryFormState, setEditInventoryFormState})
       
     >
          <Form.Item
-        label="Price"
+        label={t('inventory.editModal.price')}
         name="price"
         
       >
            <Input
-        placeholder="Price..."
+        placeholder={t('inventory.editModal.pricePlc')}
         min={0}
         type="number"
         id="price"
@@ -46,11 +53,11 @@ const EditInventoryForm = ({ editInventoryFormState, setEditInventoryFormState})
        
       <Form.Item
         
-        label="Stock"
+        label={t('inventory.editModal.Stock')}
         name="stock" > 
 
          <Input
-        placeholder="Stock..."
+        placeholder={t('inventory.editModal.StockPlc')}
          min={0} 
          type="number"
          id="stock"
@@ -63,23 +70,17 @@ const EditInventoryForm = ({ editInventoryFormState, setEditInventoryFormState})
 
         <Form.Item
         
-        label="Unit"
+        label={t('inventory.editModal.unit')}
         name="measurementUnit">
             <Select defaultValue="gr" value={editInventoryFormState.measurementUnit} 
  style={{ width: 120 }} onChange={(e) => handleChange(e, "measurementUnit")}>
       <Option  value="gr">Gr</Option>
       <Option value="lt">Lt</Option>
     </Select>
-
-            
         </Form.Item>
-
-    </Form>
-
-
+      </Form>
     </div>
-    )
-
-}
+  );
+};
 
 export default EditInventoryForm;

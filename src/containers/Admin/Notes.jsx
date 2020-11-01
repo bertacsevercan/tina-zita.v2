@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import NoteCard from "../../components/Admin/NoteCard";
 import { Card, Col, Row, Space } from 'antd';
 

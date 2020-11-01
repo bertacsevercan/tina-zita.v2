@@ -1,0 +1,132 @@
+{
+    "links": {
+        "adminDashboard": "Admin Dashboard",
+        "inventory": "Inventory",
+        "order": "Order",
+        "recipe": "Recipe",
+        "signout": "Sign Out",
+        "language": {
+            "header0": "Language",
+            "header1": "Turkish",
+            "header2": "English",
+            "header3": "Arabic"
+        }
+    },
+    "adminDashboard": {
+        "dashboard": "Dashboard",
+        "outOfStockTable": "Out of Stock Table",
+        "noteTitle": "Note Title",
+        "pleaseEnterTitle": "Please enter note title!",
+        "pleaseEnterNote": "Please enter your note!",
+        "note": "Note",
+        "myNotes": "My Notes",
+        "addBtn": "Add New Note",
+        "name": "Name",
+        "code": "Code",
+        "category": "Category",
+        "unit": "Unit",
+        "remainingStock": "Remaining Stock",
+        "dltBttn": "Delete",
+        "dltBttnWarning": "Are you sure to delete?"
+    },
+    "inventory": {
+        "inventory": "Inventory",
+        "addBtn": "Add new item",
+        "loading": "Loading...",
+        "editModal": {
+            "price": "Price",
+            "pricePlc": "Price...",
+            "Stock": "Stock",
+            "StockPlc": "Stock...",
+            "unit": "Unit",
+            "editItemInfo": "Edit item info"
+        },
+        "addBtnModal": {
+            "modalTitle": "Add new item to inventory",
+            "itemName": "Item name",
+            "category": "Category",
+            "price": "Price",
+            "stock": "Stock",
+            "stockWarning": "Warn me when stock less than this amount",
+            "unit": "Unit",
+            "categoryMenu": {
+                "vegetables": "Vegetables",
+                "green": "Greens",
+                "animal": "Animal",
+                "oilSauce": "Oil/Sauce",
+                "spice": "Spice",
+                "canned": "Canned Food",
+                "dryFood": "Dry Food",
+                "fruit": "Fruit"
+            }
+        },
+        "inventoryTable": {
+            "name": "Name",
+            "code": "Code",
+            "category": "Category",
+            "unit": "Unit",
+            "price": "Price",
+            "stock": "Stock",
+            "action": "Action",
+            "actionBtns": {
+                "edit": "Edit",
+                "delete": "Delete"
+            }
+        }
+    },
+    "order": {
+        "orders": "Orders",
+        "addOrder": "Add Order",
+        "selectAnOrder": "Select an order",
+        "errorText": "Error Text",
+        "insufText": "Insufficient ingredients:",
+        "cancelBtn": "Cancel",
+        "tableHeader0": "Order",
+        "tableHeader1": "Date",
+        "tableHeader2": "Action"
+    },
+    "recipe": {
+        "recipe": "Recipe",
+        "addBtn": "Add new recipe",
+        "name": "Name",
+        "code": "Code",
+        "action": "Action",
+        "deleteBtn": "Delete",
+        "addDrawer": {
+            "title": "Create a new recipe",
+            "nameInput": "Recipe Name:",
+            "missingRecMessage": "Missing recipe name",
+            "addIngInp": "Add ingredients",
+            "ingredient": "Ingredient:",
+            "amount": "Amount",
+            "missingIngMessage": "Missing ingredient",
+            "selectIngMenu": "Select an ingredient",
+            "missingAmountMessage": "Missing amount",
+            "submitBtn": "Submit",
+            "cancelBtn": "Cancel"
+        },
+        "loading": "Loading..."
+    },
+    "signOut": {
+        "title": "Signing out...",
+        "modalMessage": "Are you sure you want to log out?",
+        "ok": "OK",
+        "cancel": "Cancel"
+    },
+    "home" : {
+        "title0": "TINA ZITA'S INVENTORY",
+        "title1": "powered by M.Y-Inventory.",
+        "text0": "Please enter your organization's credentials.",
+        "text1": "Only authorized accounts can access the system."
+    },
+    "login": {
+        "label0": "E-Mail",
+        "label1": "Password",
+        "text0": "Sign In",
+        "text1": "Forgot your password?",
+        "text2": "Reset Password",
+        "text3": "Reset",
+        "text4": "An e-mail has been sent to your password.",
+        "text5": "Sign in here:"
+    }
+}

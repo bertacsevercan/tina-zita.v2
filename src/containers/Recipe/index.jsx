@@ -4,53 +4,51 @@ import RecipeTable from "../../components/RecipeTable";
 import { Typography, Button, Spin, Drawer } from "antd";
 import RecipeForm from "../../components/RecipeForm";
 import "../../containers/Inventory/style.css";
+import { useTranslation } from 'react-i18next';
 
 const { Title } = Typography;
 const Recipe = () => {
+
+  const {t} = useTranslation();
+
   const [loading, setLoading] = useState(true);
   const [recipe, setRecipe] = useState([]);
   const [drawerVisible, setDrawerVisible] = useState(false);
- 
 
   const showDrawer = () => {
     setDrawerVisible(true);
-  }
-
+  };
 
   const onClose = () => {
     setDrawerVisible(false);
-  }
+  };
 
-
-   useEffect(()=> {
-        const unsubscribe =
-        db
-        .collection("recipe")
-        .orderBy("createdAt", "desc")
-        .onSnapshot((snapshot) => {
-          const dataArr = [];
-          snapshot.forEach((doc) => {
-            dataArr.push({ ...doc.data() });
-          });
-          setRecipe(dataArr);
-          setLoading(false);
+  useEffect(() => {
+    const unsubscribe = db
+      .collection("recipe")
+      .orderBy("createdAt", "desc")
+      .onSnapshot((snapshot) => {
+        const dataArr = [];
+        snapshot.forEach((doc) => {
+          dataArr.push({ ...doc.data() });
         });
-        
-      return unsubscribe;
-      
-    }, []);
-    
+        setRecipe(dataArr);
+        setLoading(false);
+      });
+
+    return unsubscribe;
+  }, []);
 
   return (
     <div>
-      <Title level={3}>Recipe</Title>
+      <Title level={3}>{t('recipe.recipe')}</Title>
 
       <Button className="button" type="primary" onClick={showDrawer}>
-        Add new recipe
+        {t('recipe.addBtn')}
       </Button>
 
       <Drawer
-          title="Create a new recipe"
+          title={t('recipe.addDrawer.title')}
           width={720}
           onClose={onClose}
           visible={drawerVisible}
@@ -62,12 +60,11 @@ const Recipe = () => {
       {loading ? (
         <div className="spin">
           {" "}
-          <Spin size="large" tip="Loading..." />{" "}
+          <Spin size="large" tip={t('recipe.loading')} />{" "}
         </div>
       ) : (
         <RecipeTable recipe={recipe} />
       )}
-      
     </div>
   );
 };

@@ -1,25 +1,21 @@
-import React, {useState, useEffect} from "react";
-import { Table, Input, Button, Space, Popconfirm } from 'antd';
-import Highlighter from 'react-highlight-words';
-import { SearchOutlined } from '@ant-design/icons';
-import db from "../../firebaseConfig";
+import React, { useState } from "react";
+import { Table, Button, Input, Space, Popconfirm } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
+import Highlighter from "react-highlight-words";
+import { useTranslation } from 'react-i18next'
 
-const OrderTable = ({ order }) => {
+const OrderTable = ({ orderedFood }) => {
 
+  const [t,i18n] = useTranslation();
   const [search, setSearch] = useState({
     searchText: "",
     searchedColumn: "",
   });
 
+  
   let searchInput;
 
-  const deleteOrder = (key) => {
-    console.log("record", key)
-    db.collection("order").doc(key)
-    .delete().then(()=> console.log("Document deleted succesfully!"))
-    .catch((err)=> console.log("Error occured" , err))
-  }
-
+ 
   const getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({
       setSelectedKeys,
@@ -100,41 +96,36 @@ const OrderTable = ({ order }) => {
     clearFilters();
     setSearch({ searchText: "" });
   };
-  const columns = [//changed here
+  const columns = [
     {
-      title: "Name",
-      dataIndex: "recipeInfo.recipeName",
-      key: "recipeInfo.recipeName",
-      ...getColumnSearchProps("recipe name"),
+      title: t("order.tableHeader0"),
+      dataIndex: "orderName",
+      key: "orderName",
+      editable: true,
+      ...getColumnSearchProps("orderName"),
     },
     {
-      title: "Code",
-      dataIndex: "recipeInfo.recipeCode",
-      key: "recipeInfo.recipeCode",
-      ...getColumnSearchProps("recipe code"),
+      title: t("order.tableHeader1"),
+      key: "date",
+      dataIndex: "date" ,
+      responsive: ["md"],
+      editable: true,
+      ...getColumnSearchProps("date"),
     },
     {
-      title: "Quantity",
-      dataIndex: "quantity",
-      key: "quantity"
-    },
-    {
-      title: "Order time",
-      dataIndex: "createAt",
-      key: "createAt",
-      ...getColumnSearchProps("Order date"),
-    },
-    {
-      title: "Action",
+      title: t("order.tableHeader2"),
       key: "action",
       responsive: ["md"],
       render: (record) => (
         <Space>
-          <Popconfirm title="Sure to delete?" onConfirm={()=> deleteOrder(record.recipeCode)}>
-          <Button type="primary" danger>
-            {" "}
-            Delete
-          </Button>
+          <Popconfirm
+            title="Sure to delete?"
+            onConfirm={() => console.log(record.date)}
+          >
+            <Button type="primary" danger>
+              {" "}
+              {t('order.cancelBtn')}
+            </Button>
           </Popconfirm>
         </Space>
       ),
@@ -143,7 +134,7 @@ const OrderTable = ({ order }) => {
 
   return (
     <>
-      <Table columns={columns} dataSource={order} />
+      <Table columns={columns} dataSource={orderedFood} />
     </>
   );
 };

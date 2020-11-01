@@ -1,58 +1,67 @@
-import React, {useState, useEffect} from 'react'
-import {Auth} from "../../firebaseConfig";
+import React, { useState, useEffect } from "react";
+import { Auth } from "../../firebaseConfig";
 import { useHistory } from "react-router-dom";
-import { Modal } from 'antd';
+import { Button, Modal } from 'antd';
+import { useTranslation } from 'react-i18next';
 
-export default function Logout() {
+const Logout = () => {
 
-const [visible, setVisibility] = useState(false)
+  const {t} = useTranslation();
+  const [visible, setVisibility] = useState(false);
 
-const showModal= ()=>{
-  setVisibility(true)
-}
+  const showModal = () => {
+    setVisibility(true);
+  };
 
-const handleCancel = () => {
-  setVisibility(false)
-};
+  const handleCancel = () => {
+    setVisibility(false);
+  };
 
-const handleOk = () => {
-  Auth().signOut().then(function() {
-    console.log("Sign-out successful.")
-  }).catch(function(error) {
-    // An error happened.
-    alert(error.message)
-  });
-  history.push("/");
-};
+  const handleOk = () => {
+    Auth()
+      .signOut()
+      .then(function () {
+        console.log("Sign-out successful.");
+      })
+      .catch(function (error) {
+        // An error happened.
+        alert(error.message);
+      });
+    history.push("/");
+  };
 
-//we need the user state in other components too   
-const [user, setUser] = useState("");
-const authListener = () => {
+  //we need the user state in other components too
+  const [user, setUser] = useState("");
+  const authListener = () => {
     Auth().onAuthStateChanged((user) => {
-
-        setUser("");
+      setUser("");
     });
   };
-  
+
   useEffect(() => {
     authListener();
   }, []);
 
-   let history = useHistory();
+  let history = useHistory();
 
-    return (
+  return (
     <>
         <span onClick={showModal} >
-            Sign Out
+          {t('links.signout')}
         </span>
          <Modal
-         title="Log Out"
+         title={t('signOut.title')}
          visible={visible}
          onOk={handleOk}
          onCancel={handleCancel}
+         footer={[
+          <Button key="Cancel" onClick={handleCancel}>{t("signOut.cancel")}</Button>,
+           <Button key="Ok" onClick={handleOk}>{t("signOut.ok")}</Button>,
+         ]}
        >
-         <p>Are you sure you want to log out?</p>
+         <p>{t('signOut.modalMessage')}</p>
        </Modal>
     </>
-    )
+  );
 }
+export default Logout;

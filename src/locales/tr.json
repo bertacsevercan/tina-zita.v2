@@ -1,0 +1,134 @@
+{
+    "links": {
+        "adminDashboard": "Yönetici Paneli",
+        "inventory": "Envanter",
+        "order": "Sipariş",
+        "recipe": "Tarif",
+        "signout": "Çıkış yap",
+        "language": {
+            "header0": "Dil",
+            "header1": "Türkçe",
+            "header2": "İngilizce",
+            "header3": "Arapça"
+        }
+    },
+    "adminDashboard": {
+        "dashboard": "Panel",
+        "outOfStockTable": "Stok Dışı Tablosu",
+        "noteTitle": "Not başlığı",
+        "pleaseEnterTitle": "Lütfen başlık giriniz!",
+        "pleaseEnterNote": "Lütfen bir not giriniz!",
+        "note": "Not",
+        "myNotes": "Notlarım",
+        "addBtn": "Yeni Not Ekle",
+        "name": "İsim",
+        "code": "Kod",
+        "category": "Kategori",
+        "unit": "Birim",
+        "remainingStock": "Kalan Miktar",
+        "dltBttn": "Sil",
+        "dltBttnWarning": "Silmek istediğinize emin misiniz?"
+    },
+    "inventory": {
+        "inventory": "Envanter",
+        "addBtn": "Yeni Ürün Ekle",
+        "loading": "Yükleniyor...",
+        "editModal": {
+            "price": "Fiyat",
+            "pricePlc": "Fiyat...",
+            "Stock": "Stok",
+            "StockPlc": "Stok...",
+            "unit": "Birim",
+            "editItemInfo": "Ürün bilgisini güncelle"
+        },
+        "addBtnModal": {
+            "modalTitle": "Envantere yeni ürün ekle",
+            "itemName": "Ürün adı",
+            "category": "Kategori",
+            "price": "Fiyat",
+            "stock": "Stok",
+            "stockWarning": "Stokta bu miktardan az kaldığında beni uyar",
+            "unit": "Birim",
+            "categoryMenu": {
+                "vegetables": "Sebze",
+                "green": "Yeşillik",
+                "animal": "Hayvansal",
+                "oilSauce": "Yağ/Sos",
+                "spice": "Baharat",
+                "canned": "Konserve",
+                "dryFood": "Kuru Gıda",
+                "fruit": "Meyve"
+            }
+        },
+        "inventoryTable": {
+            "name": "İsim",
+            "code": "Kod",
+            "category": "Kategori",
+            "unit": "Birim",
+            "price": "Fiyat",
+            "stock": "Stok",
+            "action": "Aksiyon",
+            "actionBtns": {
+                "edit": "Düzenle",
+                "delete": "Sil"
+            }
+        }
+
+    },
+    "order": {
+        "orders": "Siparişler",
+        "addOrder": "Sipariş Ekle",
+        "selectAnOrder": "Sipariş Seç",
+        "errorText": "Hata Metni",
+        "insufText": "Yetersiz ürünler:",
+        "cancelBtn": "İptal",
+        "tableHeader0": "Sipariş",
+        "tableHeader1": "Tarih",
+        "tableHeader2": "Aksiyon"
+    },
+    "recipe": {
+        "recipe": "Tarif",
+        "addBtn": "Yeni Tarif Ekle",
+        "name": "İsim",
+        "code": "Kod",
+        "action": "Aksiyon",
+        "deleteBtn": "Sil",
+        "addDrawer": {
+            "title": "Yeni bir tarif oluştur",
+            "nameInput": "Tarif adı:",
+            "missingRecMessage": "Tarif bulunamadı",
+            "addIngInp": "Malzeme Ekle",
+            "ingredient": "Malzeme:",
+            "amount": "Miktar",
+            "missingIngMessage": "Malzeme bulunamadı",
+            "selectIngMenu": "Malzeme seçiniz",
+            "missingAmountMessage": "Yetersiz miktar",
+            "submitBtn": "Gönder",
+            "cancelBtn": "İptal"
+        },
+        "loading": "Yükleniyor..."
+    },
+    "signOut": {
+        "title": "Çıkış yapılyor...",
+        "modalMessage": "Çıkmak istediğinize emin misiniz?",
+        "ok": "Tamam",
+        "cancel": "Vazgeç"
+    },
+    "home": {
+        "title0": "TINA ZITA ENVANTERİ",
+        "title1":  "M.Y-Inventory ile yapılmıştır.",
+        "text0": "Lütfen organizasyonunuzun bilgilerini girin.",
+        "text1": "Bu sisteme sadece yetkisi olan hesaplar girebilir."
+    },
+    "login": {
+        "label0": "E-Posta",
+        "label1": "Şifre",
+        "text0": "Giriş Yap",
+        "text1": "Şifreni mi unuttun?",
+        "text2": "Şifreyi Sıfırla",
+        "text3": "Sıfırla",
+        "text4": "Hesabınıza bir e-posta gönderildi.",
+        "text5": "Buradan giriş yapın:"
+    }
+
+}

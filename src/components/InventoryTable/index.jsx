@@ -4,8 +4,11 @@ import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import db from "../../firebaseConfig";
 import EditInventoryForm from "../EditInventoryForm";
+import { useTranslation } from 'react-i18next';
 
 const InventoryTable = ({ item }) => {
+  const [t,i18n] = useTranslation();
+  
   const [search, setSearch] = useState({
     searchText: "",
     searchedColumn: "",
@@ -19,34 +22,35 @@ const InventoryTable = ({ item }) => {
   });
 
   const [keyCode, setKeyCode] = useState("");
-  
+
   let searchInput;
 
   const deleteItem = (key) => {
-    db.collection("inventory").doc(key)
-    .delete().then(()=> console.log("Document deleted succesfully!"))
-    .catch((err)=> console.log("Error occured" , err))
-  }
+    db.collection("inventory")
+      .doc(key)
+      .delete()
+      .then(() => console.log("Document deleted succesfully!"))
+      .catch((err) => console.log("Error occured", err));
+  };
   const editItem = () => {
     db.collection("inventory").doc(keyCode).update({
       measurementUnit: editInventoryFormState.measurementUnit,
       price: editInventoryFormState.price,
       stock: editInventoryFormState.stock,
-    })
+    });
     handleOk();
-  }
+  };
   const showModal = (key) => {
     setModalVisible(true);
-    setKeyCode(key)
+    setKeyCode(key);
   };
 
- const handleOk = e => {
+  const handleOk = (e) => {
     setModalVisible(false);
-    
   };
 
- const handleCancel = e => {
-   setModalVisible(false);
+  const handleCancel = (e) => {
+    setModalVisible(false);
   };
 
   const getColumnSearchProps = (dataIndex) => ({
@@ -131,20 +135,20 @@ const InventoryTable = ({ item }) => {
   };
   const columns = [
     {
-      title: "Name",
+      title: t('inventory.inventoryTable.name'),
       dataIndex: "itemName",
       key: "itemName",
       editable: true,
       ...getColumnSearchProps("itemName"),
     },
     {
-      title: "Code",
+      title: t('inventory.inventoryTable.code'),
       dataIndex: "itemCode",
       key: "itemCode",
       ...getColumnSearchProps("itemCode"),
     },
     {
-      title: "Category",
+      title: t('inventory.inventoryTable.category'),
       dataIndex: "category",
       key: "category",
       responsive: ["md"],
@@ -152,7 +156,7 @@ const InventoryTable = ({ item }) => {
       ...getColumnSearchProps("category"),
     },
     {
-      title: "Unit",
+      title: t('inventory.inventoryTable.unit'),
       key: "measurementUnit",
       dataIndex: "measurementUnit",
       responsive: ["md"],
@@ -170,7 +174,7 @@ const InventoryTable = ({ item }) => {
       onFilter: (value, record) => record.measurementUnit.indexOf(value) === 0,
     },
     {
-      title: "Price",
+      title: t('inventory.inventoryTable.price'),
       key: "price",
       dataIndex: "price",
       responsive: ["md"],
@@ -178,47 +182,46 @@ const InventoryTable = ({ item }) => {
       sorter: (a, b) => a.price - b.price,
     },
     {
-      title: "Stock",
+      title: t('inventory.inventoryTable.stock'),
       key: "stock",
       dataIndex: "stock",
       editable: true,
       sorter: (a, b) => a.stock - b.stock,
     },
     {
-      title: "Action",
+      title: t('inventory.inventoryTable.action'),
       key: "action",
       responsive: ["md"],
       render: (record) => (
         <Space>
-          <Button onClick={() => showModal(record.itemCode)} type="primary">Edit </Button>
-          <Popconfirm title="Sure to delete?" onConfirm={()=> deleteItem(record.itemCode)}>
+          <Button onClick={() => showModal(record.itemCode)} type="primary">{t('inventory.inventoryTable.actionBtns.edit')}</Button>
+          <Popconfirm title="Sure to delete?" onConfirm={()=> deleteItem(record.itemCode)}></Popconfirm>
           <Button  type="primary" danger>
             {" "}
-            Delete
+            {t('inventory.inventoryTable.actionBtns.delete')}
           </Button>
-          </Popconfirm>
         </Space>
       ),
     },
   ];
 
-
   return (
     <>
       <Table columns={columns} dataSource={item} />
       <Modal
-          title="Edit item info"
-          visible={modalVisible}
-          onOk={editItem}
-          onCancel={handleCancel}
-        >
-          <EditInventoryForm editInventoryFormState={editInventoryFormState} 
-          setEditInventoryFormState={setEditInventoryFormState} />
-        </Modal>
+        destroyOnClose
+        title={t('inventory.editModal.editItemInfo')}
+        visible={modalVisible}
+        onOk={editItem}
+        onCancel={handleCancel}
+      >
+        <EditInventoryForm
+          editInventoryFormState={editInventoryFormState}
+          setEditInventoryFormState={setEditInventoryFormState}
+        />
+      </Modal>
     </>
   );
-
-  
 };
 
 export default InventoryTable;

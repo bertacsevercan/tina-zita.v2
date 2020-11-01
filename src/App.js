@@ -14,6 +14,8 @@ import Recipe from "./containers/Recipe";
 import Home from "./containers/Home";
 import Login from './containers/Login';
 import {Auth} from './firebaseConfig';
+import i18n from "./i18n";
+import {I18nextProvider} from "react-i18next";
 
 const { Header, Footer,Content } = Layout;
 
@@ -93,7 +95,7 @@ function handleResetPassword() {
 
 
   return (
-    
+    <I18nextProvider i18n={i18n}>
     <div className="App">
       <Router>
        {
@@ -113,7 +115,7 @@ function handleResetPassword() {
           <Route exact path="/login" component={Login}/>
           </div>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>KardeşlerCoding Design ©2020 Created by KardeşlerCoding</Footer>
+        <Footer style={{ textAlign: 'center' }}>M.Y-Inventory ©2020 Created by KardeşlerCoding</Footer>
       </Layout>
       </Layout>
          ) : (
@@ -136,10 +138,9 @@ function handleResetPassword() {
           </Layout>
         ) 
        }
-     
     </Router>
-     
     </div>
+    </I18nextProvider>
   );
 }
 

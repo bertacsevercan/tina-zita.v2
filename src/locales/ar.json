@@ -1,0 +1,38 @@
+{
+    "links": {
+        "adminDashboard": "Admin Dashboard",
+        "inventory": "Inventory",
+        "order": "Order",
+        "recipe": "Recipe",
+        "signout": "sign Out"
+    },
+    "adminDashboard": {
+        "dashboard": "Dashboard",
+        "outOfStockTable": "Out of Stock Table",
+        "myNotes": "My Notes",
+        "addBtn": "Add New Note"
+    },
+    "inventory": {
+        "inventory": "Inventory",
+        "addBtn": "Add new item",
+        "name": "Name",
+        "code": "Code",
+        "category": "Category",
+        "unit": "Unit",
+        "price": "Price",
+        "stock": "Stock",
+        "action": "Action"
+    },
+    "order": {
+        "orders": "Orders",
+        "addOrder": "Add Order",
+        "selectAnOrder": "Select an order"
+    },
+    "recipe": {
+        "recipe": "Recipe",
+        "addBtn": "Add new recipe",
+        "name": "Name",
+        "code": "Code",
+        "action": "Action"
+    }
+}

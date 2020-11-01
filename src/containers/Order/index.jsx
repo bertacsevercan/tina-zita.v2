@@ -1,139 +1,154 @@
 import React, { useEffect, useState } from "react";
-import SelectOrder from "../../components/SelectOrder/SelectOrder"
-import { Button, Input, Typography, Spin } from 'antd';
-import db from "../../firebaseConfig";
-import { Alert } from 'antd';
+import SelectOrder from "../../components/SelectOrder/SelectOrder";
 import OrderTable from "../../components/OrderTable";
+import { Button, Input, Typography, message, Spin, notification } from "antd";
+import "./style.css";
+import db from "../../firebaseConfig";
+import { useTranslation } from 'react-i18next';
+import * as firebase from "firebase";
 
-const {Title} = Typography;
+const timestamp = firebase.firestore.FieldValue.serverTimestamp;
+const date = new Date();
+
+const { Title } = Typography;
 
 const Order = () => {
+
+  const {t} = useTranslation();
+
   const [orders, setOrders] = useState([])
   const [orderMultiplier, setOrderMultiplier] = useState(1)
   const [selectedOrder, setSelectedOrder] = useState("")
-  const [insufficientIngredients, setInsufficientIngredients]= useState([])
+  const [orderedFood, setOrderedFood] = useState([]);
+  const insufficientIngredients = []; // instead of using a state, I use regular arr to contain the values.
+
   const [loading, setLoading] = useState(true);
-
   const fetchOrders = async () => {
-    const res = await db.collection("recipe").get()
-    const data = await res.docs.map(doc => doc.data());
-    const data2 = data.map(obj => {
+    const res = await db.collection("recipe").get();
+    const data = res.docs.map((doc) => doc.data());
+    console.log("str ", data);
+    /* const data2 = data.map(obj => {
       return {label: obj.recipeName, value:obj.recipeCode};
-    })
-    // console.log("data",data.find((order) => order.orderCode === "OSAL"));
-    // console.log("data",res)
-    setOrders(data)
-
-  }
-
-  const onClose = (e) => {
-    console.log(e, 'I was closed.');
+    }) */
+    // console.log("data",data.find((order) => order.recipeCode === "OSAL").ingredients);
+    setOrders(data);
   };
 
-  const addOrder = async() => {
-    if (orders.length > 0){
-      let isSufficient = true
+ 
+  const success = () => {
+    message.success("Order successful!");
+  };
+
+  const error = type => {
+    //message.error("Insufficient ingredients!");
+    notification[type]({
+      message: 'Insufficient ingredients:',
+      description:
+        insufficientIngredients
+    });
+  };
+
+  const addOrder = async () => {
+    if (orders.length > 0) {
+      let isSufficient = true;
       
-      const ingredientsArr = orders
-      .find((order) => order.recipeCode === selectedOrder)
-      .ingredients;
-      console.log("ingArr", ingredientsArr)
-      ingredientsArr.forEach(async(orderItem) => {
-      const res = await orderItem.itemDocRef.get()
-      console.log("ingrArrRESdata",res)
-      const data = await res.data()
-      console.log("ingredArrDAta",toString(data.stock))//this is undefined
-    if(data.stock - orderItem.requiredAmount * orderMultiplier < 0) {
-      isSufficient = false
-      console.log(isSufficient);
-      //if the ingredient is insufficient, add it into insufficient ingredients state array
-      setInsufficientIngredients(prevState=>[...prevState, orderItem])
-    }
-    })
-    setTimeout(()=> {
+      const ingredientsArr = orders.find(
+        (order) => order.recipeCode === selectedOrder
+      ).ingredients;
+      console.log("ingArr", ingredientsArr);
+      for (let i = 0; i < ingredientsArr.length; i++) {
+        const orderItem = ingredientsArr[i];
+        const res = await orderItem.itemDocRef.get();
+        console.log(res);
+        const data = res.data();
+        console.log("data", data);
+       
+        if (data.stock - orderItem.requiredAmount * orderMultiplier < 0) {
+          isSufficient = false;
+          insufficientIngredients.push(data.itemName)
+          console.log(isSufficient);
+        }
+      }
 
       if (isSufficient) {
         console.log("i'm sufficient");
-        ingredientsArr.forEach(async(orderItem) => {
-          const res = await orderItem.itemDocRef.get()
-          const data = res.data()
+        ingredientsArr.forEach(async (orderItem) => {
+          const res = await orderItem.itemDocRef.get();
+          const data = res.data();
           console.log(data.stock);
           orderItem.itemDocRef.update({
-            stock: data.stock - orderItem.requiredAmount * orderMultiplier
-          })
+            stock: data.stock - orderItem.requiredAmount * orderMultiplier,
+          });
         });
-        
+        for (let i = 0; i < orderMultiplier; i++) {
+          db.collection("order").add({
+            createdAt: timestamp(),
+            orderName: orders.find((x) => x.recipeCode === selectedOrder)
+              .recipeName,
+          });
+        }
+        success();
       } else {
-        return <Alert
-        message="Error Text"
-        description={`Insufficient ingredients: ${insufficientIngredients.join(", ")}`}
-        type="error"
-        closable
-        onClose={onClose}
-      />
-        // alert("insufficient ingredients")
+        error("error");
       }
-
-    },1000)
-    
-
-
-      
-      
     } else {
       console.log("empty");
     }
-  }
+  };
 
   function onChange(value) {
-      setSelectedOrder(value);
-    }
-    
-  
-    useEffect(() => {
-      fetchOrders();
-      const unsubscribe =
-        db
-        .collection("order")
-        .orderBy("createdAt", "desc")
-        .onSnapshot((snapshot) => {
-          const dataArr = [];
-          snapshot.forEach((doc) => {
-            dataArr.push({ ...doc.data() });
-          });
-          setOrders(dataArr);
-          setLoading(false);
-        });
-      return unsubscribe;
-    },[]);
+    setSelectedOrder(value);
+  }
+  useEffect(() => {
+    fetchOrders();
 
-  return(
-      <div >
-      <Title level={3}>Orders</Title>
-      <div style={{display:"flex", justifyContent: "center"}}>
-      <SelectOrder 
-      onChange={onChange} 
-      orders={orders}/>
-      <Input style={{width: "200px"}} type="number" onChange={(e) => setOrderMultiplier(e.target.value)} value={orderMultiplier} placeholder="number of orders" min={1}/>
-      <Button disabled={selectedOrder? false : true} onClick={addOrder} type="primary">Add Order</Button>
+    const unsubscribe = db
+      .collection("order")
+      .orderBy("createdAt", "desc")
+      .onSnapshot((snapshot) => {
+        const dataArr = [];
+        snapshot.forEach((doc) => {
+          dataArr.push({ ...doc.data(), date : doc.data().createdAt && `${doc.data().createdAt.toDate().getDate()}/${doc.data().createdAt.toDate().getMonth() + 1}/${doc.data().createdAt.toDate().getFullYear()}`});
+        });
+        const filteredArr = dataArr.filter(x => x.createdAt && x.createdAt.toDate().getMonth() === date.getMonth())
+        setOrderedFood(filteredArr);
+        setLoading(false);
+      });
+
+    return unsubscribe;
+  }, []);
+  return (
+    <div>
+      <Title level={3}>{t('order.orders')}</Title>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <SelectOrder onChange={onChange} orders={orders} />
+        <Input
+          style={{ width: "200px" }}
+          type="number"
+          onChange={(e) => setOrderMultiplier(e.target.value)}
+          value={orderMultiplier}
+          placeholder="number of orders"
+          min={1}
+        />
+        <Button
+          disabled={selectedOrder ? false : true}
+          onClick={addOrder}
+          type="primary"
+        >
+          {t('order.addOrder')}
+        </Button>
       </div>
       {loading ? (
         <div className="spin">
-          {" "}
-          <Spin size="large" tip="Loading..." />{" "}
+          <Spin size="large" tip="Loading..." />
         </div>
       ) : (
-        <OrderTable recipe={orders} />
+        <div style={{ marginTop: "1em" }}>
+          <OrderTable orderedFood={orderedFood} />
+        </div>
       )}
-      </div>
-  )
-}
+    </div>
+  );
+};
 
 export default Order;
-
-
-
-
-
-
-

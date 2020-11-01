@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
-import OutOfStockTable from "../../components/Admin/OutOfStockTable";
-import { Table, Tag, Space } from 'antd';
+import OutOfStockTable from "../../components/Admin/OutOfStockTable"
 import { Typography, Button, Spin, Modal } from 'antd';
-import db from "../../firebaseConfig";
-import NoteForm from "../../components/Admin/NoteForm";
+import db from "../../firebaseConfig"
+import NoteForm from "../../components/Admin/NoteForm"
 import Notes from "./Notes";
-import "./index.css";
+import { useTranslation } from 'react-i18next';
+import "./style.css";
 
 const { Title } = Typography;
 
 const Admin = () => {
+
+    const {t} = useTranslation();
+
     const [loading, setLoading] = useState(true);
     const [modalVisible, setModalVisible] = useState(false);
     const [note, setNote] = useState([]);
@@ -67,26 +70,67 @@ const Admin = () => {
         });
       return note;
     }, []);
-    console.log(note)
+    //console.log(note)
+    //console.log(t('adminDashboard.dashboard'));
     return(
-        <Space direction="vertical">
-        <Title level={2}>Dashboard</Title>
-        <h2 className="outOfStock">Out of stock</h2>
+        <div>
+        <Title level={3}>{t('adminDashboard.dashboard')}</Title>
+        <h1>{t('adminDashboard.outOfStockTable')}</h1>
         <OutOfStockTable />
-        <h2 className="notes">Notes</h2>
-        <Button onClick={showModal} className="button" type="primary">Add new note</Button>
+        <h1  className="notes">{t('adminDashboard.myNotes')}</h1>
+        <Button onClick={showModal} className="button" type="primary">{t('adminDashboard.addBtn')}</Button>
         <Modal
-          title="Add new note"
+          title={t('adminDashboard.addBtn')}
           visible={modalVisible}
           onOk={addItem}
           onCancel={handleCancel}
         >
           <NoteForm noteFormState={noteFormState} setNoteFormState={setNoteFormState} />
         </Modal>
-        {/* {loading ? <div className="spin"> <Spin size="large" tip="Loading..."/> </div> :
-        <NoteCard /> } */}
-        <Notes notesData={note}/>
-        </Space>
+        {loading ? <div className="spin"> <Spin size="large" tip="Loading..."/> </div> :
+         <Notes notesData={note} />}
+       </div> 
     )
-}
-export default Admin;
+  }
+  export default Admin;
+
+  
+
+  /* useEffect(() => {
+    const note = db.collection("notes").onSnapshot((snapshot) => {
+      const dataArr = [];
+      snapshot.forEach((doc) => {
+        dataArr.push({ ...doc.data(), id: doc.id });
+      });
+      console.log(dataArr);
+      setNote(dataArr);
+      setLoading(false);
+    });
+    return note;
+  }, []);
+  console.log(note);
+  return (
+    <div>
+      <Title level={3}>Dashboard</Title>
+      <OutOfStockTable />
+      <Button onClick={showModal} className="button" type="primary">
+        Add new note
+      </Button>
+      <Modal
+        destroyOnClose={true}
+        title="Add new note"
+        visible={modalVisible}
+        onOk={addItem}
+        onCancel={handleCancel}
+      >
+        <NoteForm
+          noteFormState={noteFormState}
+          setNoteFormState={setNoteFormState}
+        />
+      </Modal>
+      {/* {loading ? <div className="spin"> <Spin size="large" tip="Loading..."/> </div> :
+        <NoteCard /> } */
+      /* <Notes notesData={note} />
+    </div>
+  );
+}; */
