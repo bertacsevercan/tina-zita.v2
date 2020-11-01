@@ -19,16 +19,18 @@ export default function NoteCard({ noteData }) {
         .delete().then(()=> console.log("Document deleted succesfully!"))
         .catch((err)=> console.log("Error occured" , err))
       }
+
     return (
         <div >
             <Card title={noteData.title} bordered={true} style={{ width: 300 }}>
             <p>{noteData.content}</p>
+            <Space>
             <Popconfirm title={t('adminDashboard.dltBttnWarning')} onConfirm={()=> deleteNote(noteData.id)}>
-            <Button  type="primary" danger>
-                {" "}
-                {t('adminDashboard.dltBttn')}
+            <Button   danger>
+            {t('adminDashboard.dltBttn')}
             </Button>
             </Popconfirm>
+            </Space>
             </Card>
         </div>
     )
