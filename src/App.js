@@ -39,7 +39,6 @@ const clearErrors = () => {
 };
 
 const handleLogin = () => {
-  
   clearErrors();
   Auth()
     .signInWithEmailAndPassword(email, password)

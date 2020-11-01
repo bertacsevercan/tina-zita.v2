@@ -17,13 +17,23 @@ const Admin = () => {
       title: "",
       content: "",
     });
+    const clearInputs = ()=>{
+      setNoteFormState(
+        {
+          title: "",
+          content: ""
+        }
+      )
+    }
 
     const showModal = () => {
+      clearInputs();
         setModalVisible(true);
       };
     
      const handleOk = e => {
         setModalVisible(false);
+        clearInputs();
       };
     
      const handleCancel = e => {
@@ -39,6 +49,7 @@ const Admin = () => {
       )
       handleOk();
         //When I click add new item second time, last value remains there, it should be empty
+        
     }
 
     useEffect(()=> {

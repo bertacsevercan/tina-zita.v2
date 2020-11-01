@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import "./index.css";
 const { Text} = Typography;
 const Login = ({email,setEmail, isEmailSend, password, setPassword, handleLogin, handleResetPassword,hasPassword,setHasPassword,emailError, passwordError }) => {
-
+  
     return(
         <section className="login">
           <div className="loginContainer">
