@@ -52,7 +52,6 @@ export default function NoteCard( {noteData} ) {
             </Modal>
             <Popconfirm title="Sure to delete?" onConfirm={()=> deleteNote(noteData.id)}>
             <Button  type="primary" danger>
-                {" "}
                 Delete
             </Button>
             </Popconfirm>

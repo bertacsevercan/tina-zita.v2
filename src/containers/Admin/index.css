@@ -1,0 +1,12 @@
+
+.ant-table table {
+    margin-bottom: 3rem;
+}
+
+.outOfStock, 
+.notes {
+    text-align: left;
+    margin: -.2rem;
+    padding: 0 .3rem;
+}
+
