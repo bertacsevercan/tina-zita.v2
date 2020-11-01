@@ -25,11 +25,6 @@ const Order = () => {
   const fetchOrders = async () => {
     const res = await db.collection("recipe").get();
     const data = res.docs.map((doc) => doc.data());
-    console.log("str ", data);
-    /* const data2 = data.map(obj => {
-      return {label: obj.recipeName, value:obj.recipeCode};
-    }) */
-    // console.log("data",data.find((order) => order.recipeCode === "OSAL").ingredients);
     setOrders(data);
   };
 
@@ -50,27 +45,21 @@ const Order = () => {
       const ingredientsArr = orders.find(
         (order) => order.recipeCode === selectedOrder
       ).ingredients;
-      console.log("ingArr", ingredientsArr);
       for (let i = 0; i < ingredientsArr.length; i++) {
         const orderItem = ingredientsArr[i];
         const res = await orderItem.itemDocRef.get();
-        console.log(res);
         const data = res.data();
-        console.log("data", data);
        
         if (data.stock - orderItem.requiredAmount * orderMultiplier < 0) {
           isSufficient = false;
           insufficientIngredients.push(data.itemName)
-          console.log(isSufficient);
         }
       }
 
       if (isSufficient) {
-        console.log("i'm sufficient");
         ingredientsArr.forEach(async (orderItem) => {
           const res = await orderItem.itemDocRef.get();
           const data = res.data();
-          console.log(data.stock);
           orderItem.itemDocRef.update({
             stock: data.stock - orderItem.requiredAmount * orderMultiplier,
           });
@@ -87,8 +76,6 @@ const Order = () => {
       } else {
         showNotification("error", insufficientIngredients, "Missing ingredients:");
       }
-    } else {
-      console.log("empty");
     }
   };
 
