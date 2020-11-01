@@ -11,5 +11,11 @@
 }
 
 .ant-card.ant-card-bordered{
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.ant-row{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
