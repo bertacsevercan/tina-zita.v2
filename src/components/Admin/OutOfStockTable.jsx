@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Table, Tag, Space } from 'antd';
+import { Table} from 'antd';
 import db from "../../firebaseConfig"
-import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
 
 export default function OutOfStockTable() {
 
     const [outOfStock, setOutOfStock] = useState();
-    const [t,i18n] = useTranslation();
+    const {t} = useTranslation();
 
       const columns = [
         {
