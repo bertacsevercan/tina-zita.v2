@@ -100,11 +100,12 @@ const Order = () => {
       .onSnapshot((snapshot) => {
         const dataArr = [];
         snapshot.forEach((doc) => {
-          dataArr.push({ ...doc.data(), date : doc.data().createdAt && date.getMonth() === doc.data().createdAt.toDate().getMonth() ? `${doc.data().createdAt.toDate().getDate()}/${doc.data().createdAt.toDate().getMonth() + 1}/${doc.data().createdAt.toDate().getFullYear()}` : null});
+          dataArr.push({ ...doc.data(), date : doc.data().createdAt && `${doc.data().createdAt.toDate().getDate()}/${doc.data().createdAt.toDate().getMonth() + 1}/${doc.data().createdAt.toDate().getFullYear()}`});
         });
         console.log("dataarr", (dataArr))
         console.log("date", date.getMonth())
-        setOrderedFood(dataArr);
+        const filteredArr = dataArr.filter(x => x.createdAt && x.createdAt.toDate().getMonth() === date.getMonth())
+        setOrderedFood(filteredArr);
         setLoading(false);
       });
 
