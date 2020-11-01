@@ -21,7 +21,7 @@ const Order = () => {
   const [selectedOrder, setSelectedOrder] = useState("")
   const [orderedFood, setOrderedFood] = useState([]);
   const [loading, setLoading] = useState(true);
-  
+
   const fetchOrders = async () => {
     const res = await db.collection("recipe").get();
     const data = res.docs.map((doc) => doc.data());
@@ -42,6 +42,7 @@ const Order = () => {
     });
   };
 
+  
   const addOrder = async () => {
     if (orders.length > 0) {
       let isSufficient = true;
@@ -77,6 +78,7 @@ const Order = () => {
         for (let i = 0; i < orderMultiplier; i++) {
           db.collection("order").add({
             createdAt: timestamp(),
+            recipeCode: selectedOrder,
             orderName: orders.find((x) => x.recipeCode === selectedOrder)
               .recipeName,
           });
@@ -102,7 +104,7 @@ const Order = () => {
       .onSnapshot((snapshot) => {
         const dataArr = [];
         snapshot.forEach((doc) => {
-          dataArr.push({ ...doc.data(), date : doc.data().createdAt && `${doc.data().createdAt.toDate().getDate()}/${doc.data().createdAt.toDate().getMonth() + 1}/${doc.data().createdAt.toDate().getFullYear()}`});
+          dataArr.push({ ...doc.data(), docId : doc.id , date : doc.data().createdAt && `${doc.data().createdAt.toDate().getDate()}/${doc.data().createdAt.toDate().getMonth() + 1}/${doc.data().createdAt.toDate().getFullYear()}`});
         });
         const filteredArr = dataArr.filter(x => x.createdAt && x.createdAt.toDate().getMonth() === date.getMonth())
         setOrderedFood(filteredArr);

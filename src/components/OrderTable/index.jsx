@@ -3,10 +3,11 @@ import { Table, Button, Input, Space, Popconfirm } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import { useTranslation } from 'react-i18next'
+import db from "../../firebaseConfig";
 
 const OrderTable = ({ orderedFood }) => {
 
-  const [t,i18n] = useTranslation();
+  const {t} = useTranslation();
   const [search, setSearch] = useState({
     searchText: "",
     searchedColumn: "",
@@ -14,6 +15,28 @@ const OrderTable = ({ orderedFood }) => {
 
   
   let searchInput;
+
+  const cancelOrder = async (id) => {
+    const res = await db.collection("recipe").doc(id).get()
+    const datas = res.data()
+    console.log("d", datas)
+    datas.ingredients.forEach(async (orderItem) => {
+      const res = await orderItem.itemDocRef.get();
+      const data = res.data();
+      console.log(data.stock);
+      orderItem.itemDocRef.update({
+        stock: data.stock - orderItem.requiredAmount * -1,
+      });
+    });
+  }
+
+
+  const deleteOrder = (record) => {
+    cancelOrder(record.recipeCode);
+    db.collection("order").doc(record.docId).delete()
+    .then(x => console.log("Deleted successfully!"))
+    .catch(err => console.log("Error: ", err))
+  }
 
  
   const getColumnSearchProps = (dataIndex) => ({
@@ -119,8 +142,8 @@ const OrderTable = ({ orderedFood }) => {
       render: (record) => (
         <Space>
           <Popconfirm
-            title="Sure to delete?"
-            onConfirm={() => console.log(record.date)}
+            title="Sure to cancel?"
+            onConfirm={() => deleteOrder(record)}
           >
             <Button type="primary" danger>
               {" "}

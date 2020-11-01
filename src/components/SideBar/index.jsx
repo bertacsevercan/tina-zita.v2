@@ -66,7 +66,7 @@ const SideBar = () => {
               <Menu.Item icon={<ArIcon />} onClick={() => {selectLanguage('ar');}} key="7">{t("links.language.header3")}</Menu.Item>
             </SubMenu>
           <Menu.Item key="8" icon={<LogoutOutlined />}>
-            <Logout />
+            <Logout style={{paddingRight: "12px"}}/>
           </Menu.Item>
         </Menu>
           </Sider>
