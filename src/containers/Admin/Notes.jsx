@@ -1,6 +1,6 @@
 import React from "react";
 import NoteCard from "../../components/Admin/NoteCard";
-import { Card, Col, Row, Space } from 'antd';
+import { Col, Row } from 'antd';
 
 export default function Notes( {notesData} ) {
     return (

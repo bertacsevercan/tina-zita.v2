@@ -59,7 +59,6 @@ const Recipe = () => {
 
       {loading ? (
         <div className="spin">
-          {" "}
           <Spin size="large" tip={t('recipe.loading')} />{" "}
         </div>
       ) : (
