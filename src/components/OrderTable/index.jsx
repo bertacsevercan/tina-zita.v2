@@ -19,11 +19,9 @@ const OrderTable = ({ orderedFood }) => {
   const cancelOrder = async (id) => {
     const res = await db.collection("recipe").doc(id).get()
     const datas = res.data()
-    console.log("d", datas)
     datas.ingredients.forEach(async (orderItem) => {
       const res = await orderItem.itemDocRef.get();
       const data = res.data();
-      console.log(data.stock);
       orderItem.itemDocRef.update({
         stock: data.stock - orderItem.requiredAmount * -1,
       });
@@ -33,9 +31,7 @@ const OrderTable = ({ orderedFood }) => {
 
   const deleteOrder = (record) => {
     cancelOrder(record.recipeCode);
-    db.collection("order").doc(record.docId).delete()
-    .then(x => console.log("Deleted successfully!"))
-    .catch(err => console.log("Error: ", err))
+    db.collection("order").doc(record.docId).delete();
   }
 
  
@@ -146,7 +142,6 @@ const OrderTable = ({ orderedFood }) => {
             onConfirm={() => deleteOrder(record)}
           >
             <Button type="primary" danger>
-              {" "}
               {t('order.cancelBtn')}
             </Button>
           </Popconfirm>
