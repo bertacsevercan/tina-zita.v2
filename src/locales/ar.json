@@ -1,38 +1,132 @@
 {
     "links": {
-        "adminDashboard": "Admin Dashboard",
-        "inventory": "Inventory",
-        "order": "Order",
-        "recipe": "Recipe",
-        "signout": "sign Out"
+        "adminDashboard": "لوحة المشرف",
+        "inventory": "المخزون",
+        "order": "الطلب",
+        "recipe": "الوصفات",
+        "signout": "تسجيل الخروج",
+        "language": {
+            "header0": "اللغة",
+            "header1": "التركية",
+            "header2": "الإنجليزية",
+            "header3": "العربية"
+        }
     },
     "adminDashboard": {
-        "dashboard": "Dashboard",
-        "outOfStockTable": "Out of Stock Table",
-        "myNotes": "My Notes",
-        "addBtn": "Add New Note"
+        "dashboard": "لوحة المشرف",
+        "outOfStockTable": "لائحة المواد التي على وشك النفاذ",
+        "noteTitle": "عنوان المذكرة",
+        "pleaseEnterTitle": "!الرجاء أدخِل عنوان المذكرة",
+        "pleaseEnterNote": "!الرجاء أدخِل مذكرتك",
+        "note": "مذكرة",
+        "myNotes": "مذكراتي",
+        "addBtn": "أضف مذكرة جديدة",
+        "name": "الاسم",
+        "code": "الرمز",
+        "category": "الفئة",
+        "unit": "الوحدة",
+        "remainingStock": "الكمية المتبقية",
+        "dltBttn": "حذف",
+        "dltBttnWarning": "هل انت متاكد؟"
     },
     "inventory": {
-        "inventory": "Inventory",
-        "addBtn": "Add new item",
-        "name": "Name",
-        "code": "Code",
-        "category": "Category",
-        "unit": "Unit",
-        "price": "Price",
-        "stock": "Stock",
-        "action": "Action"
+        "inventory": "المخزون",
+        "addBtn": "اضف عنصر جديد",
+        "loading": "...جار التحميل",
+        "editModal": {
+            "price": "السعر",
+            "pricePlc": "...السعر",
+            "Stock": "المخزون",
+            "StockPlc": "...المخزون",
+            "unit": "الوحدة",
+            "editItemInfo": "تعديل معلومات العنصر"
+        },
+        "addBtnModal": {
+            "modalTitle": "اضافه عنصر جديد الى المخزون",
+            "itemName": "اسم العنصر",
+            "category": "الفئة",
+            "price": "السعر",
+            "stock": "المخزون",
+            "stockWarning": "حذِّرني عندما يكون المخزون اقل من هذه الكميه",
+            "unit": "الوحدة",
+            "categoryMenu": {
+                "vegetables": "خضروات",
+                "green": "أعشاب",
+                "animal": "منتجات حيوانيه",
+                "oilSauce": "زيوت/صلصات",
+                "spice": "توابل",
+                "canned": "معلبات",
+                "dryFood": "اطعمه جافه",
+                "fruit": "فواكه"
+            }
+        },
+        "inventoryTable": {
+            "name": "الاسم",
+            "code": "الرمز",
+            "category": "الفئة",
+            "unit": "الوحدة",
+            "price": "السعر",
+            "stock": "المخزون",
+            "action": "تعديل",
+            "actionBtns": {
+                "edit": "تعديل",
+                "delete": "حذف"
+            }
+        }
     },
     "order": {
-        "orders": "Orders",
-        "addOrder": "Add Order",
-        "selectAnOrder": "Select an order"
+        "orders": "الطلبات",
+        "addOrder": "اضافه طلب",
+        "selectAnOrder": "اختر طلباً        ",
+        "errorText": "Error Text",
+        "insufText": ":المكونات غير كافية",
+        "cancelBtn": "إلغاء",
+        "tableHeader0": "الطلب",
+        "tableHeader1": "التاريخ",
+        "tableHeader2": "تعديل"
     },
     "recipe": {
-        "recipe": "Recipe",
-        "addBtn": "Add new recipe",
-        "name": "Name",
-        "code": "Code",
-        "action": "Action"
+        "recipe": "الوصفات",
+        "addBtn": "أضف وصفة جديدة",
+        "name": "الاسم",
+        "code": "الرمز",
+        "action": "تعديل",
+        "deleteBtn": "حذف",
+        "addDrawer": {
+            "title": "إنشاء وصفة جديدة",
+            "nameInput": "اسم الوصفة",
+            "missingRecMessage": "اسم الوصفة فارغ",
+            "addIngInp": "أضف المكونات",
+            "ingredient": "المكون",
+            "amount": "المقدار",
+            "missingIngMessage": "المكون فارغ",
+            "selectIngMenu": "اختر مكوناً",
+            "missingAmountMessage": "المقدار فارغ",
+            "submitBtn": "تأكيد",
+            "cancelBtn": "إلغاء"
+        },
+        "loading": "...جار التحميل"
+    },
+    "signOut": {
+        "title": "...جار تسجيل الخروج",
+        "modalMessage": "هل أنت متأكد من تسجيل الخروج؟",
+        "ok": "حسناً",
+        "cancel": "إلغاء"
+    },
+    "home" : {
+        "title0": "مستودع تينا زيتا",
+        "title1": "M.Y-Inventory مدعوم بواسطة",
+        "text0": "الرجاء إدخال بيانات مؤسستك",
+        "text1": "فقط الحسابات المصرح لها يمكنها الدخول."
+    },
+    "login": {
+        "label0": "البريد الإلكتروني",
+        "label1": "كلمة المرور",
+        "text0": "تسجيل الدخول",
+        "text1": "هل نسيت كلمة السر؟",
+        "text2": "إعادة تعيين كلمة المرور",
+        "text3": "إعادة تعيين",
+        "text4": "تم إرسال بريد إلكتروني إليك لإعادة تعيين كلمة المرور",
+        "text5": "سجل الدخول من هنا"
     }
 }
