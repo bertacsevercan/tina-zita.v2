@@ -26,9 +26,9 @@ const SideBar = () => {
       }
     };
     
-    const TrIcon = () => <img  style={{width:'1.5rem', height:'1rem', marginRight:"0.5em" }} src={tr} />
-    const EnIcon = () => <img  style={{width:'1.5rem', height:'1rem', marginRight:"0.5em" }}  src={en} />
-    const ArIcon = () => <img  style={{width:'1.5rem', height:'1rem', marginRight:"0.5em" }}  src={ar} />
+    const TrIcon = () => <img  style={{width:'1.5rem', marginRight:"0.5em" }} src={tr} />
+    const EnIcon = () => <img  style={{width:'1.5rem', marginRight:"0.5em" }}  src={en} />
+    const ArIcon = () => <img  style={{width:'1.5rem', marginRight:"0.5em" }}  src={ar} />
 
     
     return(
