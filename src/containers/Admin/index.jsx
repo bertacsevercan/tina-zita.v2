@@ -12,8 +12,6 @@ const { Title } = Typography;
 const Admin = () => {
   const { t } = useTranslation();
 
-  const { t } = useTranslation();
-
   const [loading, setLoading] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
   const [note, setNote] = useState([]);
