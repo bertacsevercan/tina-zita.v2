@@ -33,28 +33,44 @@ export default function NoteCard( {noteData} ) {
         .catch((err)=> console.log("Error occured" , err))
       }
 
-      const editNote = () => {
-        
+      const confirmEdit= (key)=>{
+        db.collection("notes").doc(key)
+        .update(editNoteFormState).then(()=> console.log("Document updated succesfully!"))
+        .catch((err)=> console.log("Error occured" , err))
+      }
+
+      const editNote = (key) => {
+        return (
+          <Modal
+          title="Edit"
+          visible={modalVisible}
+          onOk={confirmEdit(key)}
+          onCancel={handleCancel}
+        >
+            <EditNoteForm editNoteFormState={editNoteFormState}
+                setEditNoteFormState={setEditNoteFormState} />
+        </Modal>
+        )
       }
     return (
         <div >
             <Card title={noteData.title} bordered={true} style={{ width: 300 }}>
             <p>{noteData.content}</p>
            
-            <Modal
-              title="Edit"
-              visible={modalVisible}
-              onOk={editNote}
-              onCancel={handleCancel}
-            >
-                <EditNoteForm editNoteFormState={editNoteFormState}
-                    setEditNoteFormState={setEditNoteFormState} />
-            </Modal>
+           
+            <Space>
             <Popconfirm title="Sure to delete?" onConfirm={()=> deleteNote(noteData.id)}>
-            <Button  type="primary" danger>
+            <Button   danger>
                 Delete
             </Button>
             </Popconfirm>
+{/*             
+            <Popconfirm title="Sure to Edit?" onConfirm={()=> editNote(noteData.id)}> */}
+            <Button type="primary">
+                Edit
+            </Button>
+            {/* </Popconfirm> */}
+            </Space>
             </Card>
             
         </div>

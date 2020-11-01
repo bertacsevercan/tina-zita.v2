@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input, Select } from 'antd';
+import { Form, Input } from 'antd';
 
 
 const EditNoteForm = ({ editNoteFormState, setEditNoteFormState}) => {
