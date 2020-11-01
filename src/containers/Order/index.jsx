@@ -20,7 +20,6 @@ const Order = () => {
   const [orderMultiplier, setOrderMultiplier] = useState(1)
   const [selectedOrder, setSelectedOrder] = useState("")
   const [orderedFood, setOrderedFood] = useState([]);
-  const insufficientIngredients = []; // instead of using a state, I use regular arr to contain the values.
 
   const [loading, setLoading] = useState(true);
   const fetchOrders = async () => {
@@ -35,23 +34,18 @@ const Order = () => {
   };
 
  
-  const success = () => {
-    message.success("Order successful!");
-  };
-
-  const error = type => {
-    //message.error("Insufficient ingredients!");
+  const showNotification = (type, content, title) => {
     notification[type]({
-      message: 'Insufficient ingredients:',
+      message: title,
       description:
-        insufficientIngredients
+        typeof content === "object" ? content.join(", ") : content
     });
   };
 
   const addOrder = async () => {
     if (orders.length > 0) {
       let isSufficient = true;
-      
+      const insufficientIngredients = [];
       const ingredientsArr = orders.find(
         (order) => order.recipeCode === selectedOrder
       ).ingredients;
@@ -87,9 +81,9 @@ const Order = () => {
               .recipeName,
           });
         }
-        success();
+        showNotification("success", "Order successful!", "Success!");
       } else {
-        error("error");
+        showNotification("error", insufficientIngredients, "Missing ingredients:");
       }
     } else {
       console.log("empty");
