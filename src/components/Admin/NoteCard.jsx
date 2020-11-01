@@ -19,34 +19,11 @@ export default function NoteCard({ noteData }) {
         .delete().then(()=> console.log("Document deleted succesfully!"))
         .catch((err)=> console.log("Error occured" , err))
       }
-     
-    
-      // const confirmEdit= (key)=>{
-      //   db.collection("notes").doc(key)
-      //   .update(editNoteFormState).then(()=> console.log("Document updated succesfully!"))
-      //   .catch((err)=> console.log("Error occured" , err))
-      // }
-
-      // const editNote = (key) => {
-      //   return (
-      //     <Modal
-      //     title="Edit"
-      //     visible={modalVisible}
-      //     onOk={confirmEdit(key)}
-      //     onCancel={handleCancel}
-      //   >
-      //       <EditNoteForm editNoteFormState={editNoteFormState}
-      //           setEditNoteFormState={setEditNoteFormState} />
-      //   </Modal>
-      //   )
-      // }
 
     return (
         <div >
             <Card title={noteData.title} bordered={true} style={{ width: 300 }}>
             <p>{noteData.content}</p>
-           
-           
             <Space>
             <Popconfirm title={t('adminDashboard.dltBttnWarning')} onConfirm={()=> deleteNote(noteData.id)}>
             <Button   danger>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import OutOfStockTable from "../../components/Admin/OutOfStockTable"
-import { Typography, Button, Spin, Modal } from 'antd';
+import { Typography, Button, Spin, Modal, Space } from 'antd';
 import db from "../../firebaseConfig"
 import NoteForm from "../../components/Admin/NoteForm"
 import Notes from "./Notes";
@@ -72,10 +72,12 @@ const Admin = () => {
     }, []);
     //console.log(note)
     //console.log(t('adminDashboard.dashboard'));
+
     return(
         <div>
+          <Space direction="vertical">
         <Title level={3}>{t('adminDashboard.dashboard')}</Title>
-        <h1>{t('adminDashboard.outOfStockTable')}</h1>
+        <h1 className="outOfStock">{t('adminDashboard.outOfStockTable')}</h1>
         <OutOfStockTable />
         <h1  className="notes">{t('adminDashboard.myNotes')}</h1>
         <Button onClick={showModal} className="button" type="primary">{t('adminDashboard.addBtn')}</Button>
@@ -89,6 +91,7 @@ const Admin = () => {
         </Modal>
         {loading ? <div className="spin"> <Spin size="large" tip="Loading..."/> </div> :
          <Notes notesData={note} />}
+         </Space>
        </div> 
     )
   }
