@@ -195,11 +195,11 @@ const InventoryTable = ({ item }) => {
       render: (record) => (
         <Space>
           <Button onClick={() => showModal(record.itemCode)} type="primary">{t('inventory.inventoryTable.actionBtns.edit')}</Button>
-          <Popconfirm title="Sure to delete?" onConfirm={()=> deleteItem(record.itemCode)}></Popconfirm>
+          <Popconfirm title="Sure to delete?" onConfirm={()=> deleteItem(record.itemCode)}>
           <Button  type="primary" danger>
-            {" "}
             {t('inventory.inventoryTable.actionBtns.delete')}
           </Button>
+          </Popconfirm>
         </Space>
       ),
     },

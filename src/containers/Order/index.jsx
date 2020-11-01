@@ -20,8 +20,8 @@ const Order = () => {
   const [orderMultiplier, setOrderMultiplier] = useState(1)
   const [selectedOrder, setSelectedOrder] = useState("")
   const [orderedFood, setOrderedFood] = useState([]);
-
   const [loading, setLoading] = useState(true);
+  
   const fetchOrders = async () => {
     const res = await db.collection("recipe").get();
     const data = res.docs.map((doc) => doc.data());
