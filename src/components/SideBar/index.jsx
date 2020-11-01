@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import ar from '../../assests/flags/arabic.png';
 import en from '../../assests/flags/english.png';
 import tr from '../../assests/flags/turkish.png';
+import i18next from "i18next";
 
 
 const { Sider } = Layout;
@@ -15,8 +16,8 @@ const { SubMenu } = Menu;
 
 const SideBar = () => {
 
-    const [t,i18n] = useTranslation();
-    const selectLanguage = (language) => {
+    const {t} = useTranslation();
+  /*   const selectLanguage = (language) => {
       if (language === 'ar') {
         i18n.changeLanguage('ar');
         document.documentElement.style.setProperty('direction', 'rtl'); 
@@ -24,7 +25,7 @@ const SideBar = () => {
         i18n.changeLanguage(language);
         document.documentElement.style.setProperty('direction', 'ltr');
       }
-    };
+    }; */
     
     const TrIcon = () => <img  style={{width:'1.5rem', marginRight:"0.5em" }} src={tr} />
     const EnIcon = () => <img  style={{width:'1.5rem', marginRight:"0.5em" }}  src={en} />
@@ -61,9 +62,9 @@ const SideBar = () => {
             <Link to="/recipe" >{t('links.recipe')}</Link>
           </Menu.Item>
           <SubMenu key="sub1" icon={<GlobalOutlined />} title={t("links.language.header0")}>
-              <Menu.Item icon={<TrIcon />} onClick={() => {selectLanguage('tr');}} key="5">{t("links.language.header1")}</Menu.Item>
-              <Menu.Item icon={<EnIcon />} onClick={() => {selectLanguage('en');}} key="6">{t("links.language.header2")}</Menu.Item>
-              <Menu.Item icon={<ArIcon />} onClick={() => {selectLanguage('ar');}} key="7">{t("links.language.header3")}</Menu.Item>
+              <Menu.Item icon={<TrIcon />} onClick={() => {i18next.changeLanguage('tr');}} key="5">{t("links.language.header1")}</Menu.Item>
+              <Menu.Item icon={<EnIcon />} onClick={() => {i18next.changeLanguage('en');}} key="6">{t("links.language.header2")}</Menu.Item>
+              <Menu.Item icon={<ArIcon />} onClick={() => {i18next.changeLanguage('ar');}} key="7">{t("links.language.header3")}</Menu.Item>
             </SubMenu>
           <Menu.Item key="8" icon={<LogoutOutlined />}>
             <Logout style={{paddingRight: "12px"}}/>

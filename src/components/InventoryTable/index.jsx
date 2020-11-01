@@ -7,7 +7,7 @@ import EditInventoryForm from "../EditInventoryForm";
 import { useTranslation } from 'react-i18next';
 
 const InventoryTable = ({ item }) => {
-  const [t,i18n] = useTranslation();
+  const {t} = useTranslation();
   
   const [search, setSearch] = useState({
     searchText: "",
