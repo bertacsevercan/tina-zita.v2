@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { Table, Button, Input, Space, Popconfirm, Modal, List } from "antd";
+import { Table, Button, Input, Space, Popconfirm, Modal, List, Typography } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import db from "../../firebaseConfig";
 import { useTranslation } from 'react-i18next';
 
+const { Link } = Typography;
 const RecipeTable = ({ recipe }) => {
 
-  const [t,i18n] = useTranslation();
+  const {t} = useTranslation();
 
   const [modalVisible, setModalVisible] = useState(false);
   const [ingredientList, setIngredientList] = useState([]);
@@ -129,7 +130,7 @@ const RecipeTable = ({ recipe }) => {
       dataIndex: "recipeName",
       key: "recipeName",
       ...getColumnSearchProps("recipeName"),
-      render: (text, record) => <a onClick={() => showModal(record)}>{text}</a>,
+      render: (text, record) => <Link href="#" onClick={() => showModal(record)}>{text}</Link>,
     },
     {
       title: t('recipe.code'),
@@ -160,7 +161,6 @@ const RecipeTable = ({ recipe }) => {
       <Modal
         destroyOnClose={true}
         title="Ingredient List"
-        destroyOnClose={true}
         visible={modalVisible}
         onOk={handleOk}
         onCancel={handleCancel}

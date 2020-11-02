@@ -11,7 +11,7 @@ const { Option } = Select;
 
 const RecipeForm = ({setDrawerVisible}) => {
 
-  const [t,i18n] = useTranslation();
+  const {t} = useTranslation();
 
   const [form] = Form.useForm();
   const [ingredientList, setIngredientList] = useState([]);

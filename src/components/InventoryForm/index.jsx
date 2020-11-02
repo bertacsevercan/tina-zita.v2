@@ -8,7 +8,7 @@ const { Option } = Select;
 const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
 const InventoryForm = () => {
-  const [t, i18n] = useTranslation();
+  const {t} = useTranslation();
 
   const [code, setCode] = useState({
     category: "SEB",
