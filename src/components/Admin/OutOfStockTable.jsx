@@ -60,7 +60,7 @@ const OutOfStockTable = () => {
     <div>
       {loading ? (
           <div className="spin">
-            <Spin size="large" tip="Loading..." />
+            <Spin size="large" tip={t('adminDashboard.loading')} />
           </div>
         ) : (
       <Table dataSource={outOfStock} columns={columns} /> )}

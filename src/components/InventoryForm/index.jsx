@@ -117,7 +117,7 @@ const InventoryForm = () => {
             rules={[
               {
                 required: true,
-                message: "Please input item name!",
+                message: t("inventory.addBtnModal.pleaseItemName"),
               },
             ]}
           >
@@ -184,7 +184,7 @@ const InventoryForm = () => {
             rules={[
               {
                 required: true,
-                message: "Please input item stock amount!",
+                message: t("inventory.addBtnModal.pleaseStockAmount"),
               },
             ]}
           >
@@ -203,7 +203,7 @@ const InventoryForm = () => {
             rules={[
               {
                 required: true,
-                message: "Please input the least stock limit to warn you!",
+                message: t("inventory.addBtnModal.pleaseStockLimit"),
               },
             ]}
           >
@@ -223,7 +223,7 @@ const InventoryForm = () => {
             rules={[
               {
                 required: true,
-                message: "Please select item measure unit!",
+                message: t("inventory.addBtnModal.pleaseItemMeasure"),
               },
             ]}
           >

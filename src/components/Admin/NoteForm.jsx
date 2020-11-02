@@ -3,7 +3,7 @@ import { Form, Input } from "antd";
 import { useTranslation } from 'react-i18next';
 
 const NoteForm = ({ noteFormState, setNoteFormState }) => {
-  const [size, setSize] = useState("default");
+  
   const {t} = useTranslation();
 
   const handleChange = (e, key) => {
@@ -54,7 +54,6 @@ const NoteForm = ({ noteFormState, setNoteFormState }) => {
             type="text"
             id="note"
             name="note"
-            size={size}
             value={noteFormState.note}
             onChange={(e) => handleChange(e, "content")}
           />
