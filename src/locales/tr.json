@@ -27,7 +27,8 @@
         "unit": "Birim",
         "remainingStock": "Kalan Miktar",
         "dltBttn": "Sil",
-        "dltBttnWarning": "Silmek istediğinize emin misiniz?"
+        "dltBttnWarning": "Silmek istediğinize emin misiniz?",
+        "loading": "Yükleniyor..."
     },
     "inventory": {
         "inventory": "Envanter",
@@ -58,7 +59,11 @@
                 "canned": "Konserve",
                 "dryFood": "Kuru Gıda",
                 "fruit": "Meyve"
-            }
+            },
+            "pleaseItemName": "Lütfen bir ürün adı giriniz!",
+            "pleaseStockAmount": "Lütfen ürüne ait stok miktarını giriniz!",
+            "pleaseStockLimit": "Lütfen uyarı almaya başlayacağınız minimum stok miktarını giriniz!",
+            "pleaseItemMeasure": "Lütfen ürünün ölçü birimini giriniz!"
         },
         "inventoryTable": {
             "name": "İsim",

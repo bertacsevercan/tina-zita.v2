@@ -27,7 +27,8 @@
         "unit": "الوحدة",
         "remainingStock": "الكمية المتبقية",
         "dltBttn": "حذف",
-        "dltBttnWarning": "هل انت متاكد؟"
+        "dltBttnWarning": "هل انت متاكد؟",
+        "loading": "Loading..."
     },
     "inventory": {
         "inventory": "المخزون",
@@ -58,7 +59,11 @@
                 "canned": "معلبات",
                 "dryFood": "اطعمه جافه",
                 "fruit": "فواكه"
-            }
+            },
+            "pleaseItemName": "Please input item name!",
+            "pleaseStockAmount": "Please input item stock amount!",
+            "pleaseStockLimit": "Please input the least stock limit to warn you!",
+            "pleaseItemMeasure": "Please select item measure unit!"
         },
         "inventoryTable": {
             "name": "الاسم",

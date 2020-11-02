@@ -27,7 +27,8 @@
         "unit": "Unit",
         "remainingStock": "Remaining Stock",
         "dltBttn": "Delete",
-        "dltBttnWarning": "Are you sure to delete?"
+        "dltBttnWarning": "Are you sure to delete?",
+        "loading": "Loading..."
     },
     "inventory": {
         "inventory": "Inventory",
@@ -58,7 +59,11 @@
                 "canned": "Canned Food",
                 "dryFood": "Dry Food",
                 "fruit": "Fruit"
-            }
+            },
+            "pleaseItemName": "Please input item name!",
+            "pleaseStockAmount": "Please input item stock amount!",
+            "pleaseStockLimit": "Please input the least stock limit to warn you!",
+            "pleaseItemMeasure": "Please select item measure unit!"
         },
         "inventoryTable": {
             "name": "Name",
