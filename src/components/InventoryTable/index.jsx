@@ -167,8 +167,8 @@ const InventoryTable = ({ item }) => {
           value: "gr",
         },
         {
-          text: "lt",
-          value: "lt",
+          text: "ml",
+          value: "ml",
         },
       ],
       onFilter: (value, record) => record.measurementUnit.indexOf(value) === 0,

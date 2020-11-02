@@ -5,7 +5,7 @@ import { Col, Row } from 'antd';
 export default function Notes( {notesData} ) {
     return (
         <div className="site-card-wrapper">
-            <Row gutter={16} className="notes">
+            <Row gutter={16} className="notes" justify="start">
             {notesData.map( note => 
                 <Col span={8}>
                 <NoteCard noteData={note}/>
