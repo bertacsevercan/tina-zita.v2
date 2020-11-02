@@ -60,7 +60,7 @@ const RecipeForm = ({setDrawerVisible}) => {
         .itemCode;
       return {
         itemName: item.itemName,
-        requiredAmount: item.requiredAmount,
+        requiredAmount: Math.round(item.requiredAmount),
         itemCode: code,
         itemDocRef: db.doc(`/inventory/${code}/`),
       };
