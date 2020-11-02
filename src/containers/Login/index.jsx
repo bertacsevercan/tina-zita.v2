@@ -33,7 +33,7 @@ const Login = ({
       <div className="loginContainer">
         <label>{t("login.label0")}</label>
         <Input
-          placeholder="e-mail"
+          placeholder={t("login.text6")}
           className="input"
           type="text"
           required
@@ -47,7 +47,7 @@ const Login = ({
           <>
             <label>{t("login.label1")}</label>
             <Input.Password
-              placeholder="input password"
+              placeholder={t("login.tex7")}
               maxLength="15"
               className="input"
               type="password"

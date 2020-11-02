@@ -10,7 +10,8 @@
             "header1": "Türkçe",
             "header2": "İngilizce",
             "header3": "Arapça"
-        }
+        },
+        "tutorials": "Öğreticiler"
     },
     "adminDashboard": {
         "dashboard": "Panel",
@@ -78,7 +79,10 @@
             "actionBtns": {
                 "edit": "Düzenle",
                 "delete": "Sil"
-            }
+            },
+            "sureToDelete": "Silmek istediğinize emin misiniz?",
+            "searchBox": "Ara",
+            "reset": "Vazgeç"
         }
 
     },
@@ -91,7 +95,14 @@
         "cancelBtn": "İptal",
         "tableHeader0": "Sipariş",
         "tableHeader1": "Tarih",
-        "tableHeader2": "Aksiyon"
+        "tableHeader2": "Aksiyon",
+        "sureToCancel": "Vazgeçmek istediğinize emin misiniz?",
+        "searchBox": "Ara",
+        "reset": "Vazgeç",
+        "successNotification": "Sipariş eklendi!",
+        "successNotification2": "Başarılı!",
+        "errorNotification": "Eksik Malzemeler:",
+        "loading": "Yükleniyor..."
     },
     "recipe": {
         "recipe": "Tarif",
@@ -111,9 +122,14 @@
             "selectIngMenu": "Malzeme seçiniz",
             "missingAmountMessage": "Yetersiz miktar",
             "submitBtn": "Gönder",
-            "cancelBtn": "İptal"
+            "cancelBtn": "İptal",
+            "warningMissingAmount": "Yeterli miktar yok!"
         },
-        "loading": "Yükleniyor..."
+        "loading": "Yükleniyor...",
+        "sureToDelete": "Silmek istediğinize emin misiniz?",
+        "searchBox": "Ara",
+        "reset": "Vazgeç",
+        "ok": "Tamam"
     },
     "signOut": {
         "title": "Çıkış yapılyor...",
@@ -135,7 +151,9 @@
         "text2": "Şifreyi Sıfırla",
         "text3": "Sıfırla",
         "text4": "Hesabınıza bir e-posta gönderildi.",
-        "text5": "Buradan giriş yapın:"
+        "text5": "Buradan giriş yapın:",
+        "text6": "e-posta giriniz",
+        "tex7": "şifre giriniz"
     }
 
 }

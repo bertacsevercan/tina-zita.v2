@@ -128,7 +128,7 @@ const RecipeForm = ({setDrawerVisible}) => {
                   label={t('recipe.addDrawer.amount')}
                   name={[field.name, 'requiredAmount']}
                   fieldKey={[field.fieldKey, 'requiredAmount']}
-                  rules={[{ required: true, message: 'Missing amount' }]}
+                  rules={[{ required: true, message: t('recipe.addDrawer.warningMissingAmount') }]}
                 >
                   <Input />
                 </Form.Item>

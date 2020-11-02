@@ -81,14 +81,14 @@ const InventoryTable = ({ item }) => {
             size="small"
             style={{ width: 90 }}
           >
-            Search
+            {t('inventory.inventoryTable.searchBox')}
           </Button>
           <Button
             onClick={() => handleReset(clearFilters)}
             size="small"
             style={{ width: 90 }}
           >
-            Reset
+            {t('inventory.inventoryTable.reset')}
           </Button>
         </Space>
       </div>
@@ -195,7 +195,7 @@ const InventoryTable = ({ item }) => {
       render: (record) => (
         <Space>
           <Button onClick={() => showModal(record.itemCode)} type="primary">{t('inventory.inventoryTable.actionBtns.edit')}</Button>
-          <Popconfirm title="Sure to delete?" onConfirm={()=> deleteItem(record.itemCode)}>
+          <Popconfirm title={t('inventory.inventoryTable.sureToDelete')} onConfirm={()=> deleteItem(record.itemCode)}>
           <Button  type="primary" danger>
             {t('inventory.inventoryTable.actionBtns.delete')}
           </Button>

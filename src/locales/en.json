@@ -10,7 +10,8 @@
             "header1": "Turkish",
             "header2": "English",
             "header3": "Arabic"
-        }
+        },
+        "tutorials": "Tutorials"
     },
     "adminDashboard": {
         "dashboard": "Dashboard",
@@ -78,7 +79,10 @@
             "actionBtns": {
                 "edit": "Edit",
                 "delete": "Delete"
-            }
+            },
+            "sureToDelete": "Sure to delete?",
+            "searchBox": "Search",
+            "reset": "Reset"
         }
     },
     "order": {
@@ -90,7 +94,14 @@
         "cancelBtn": "Cancel",
         "tableHeader0": "Order",
         "tableHeader1": "Date",
-        "tableHeader2": "Action"
+        "tableHeader2": "Action",
+        "sureToCancel": "Sure to cancel?",
+        "searchBox": "Search",
+        "reset": "Reset",
+        "successNotification": "Order successful!",
+        "successNotification2": "Success!",
+        "errorNotification": "Missing ingredients:",
+        "loading": "Loading..."
     },
     "recipe": {
         "recipe": "Recipe",
@@ -110,9 +121,14 @@
             "selectIngMenu": "Select an ingredient",
             "missingAmountMessage": "Missing amount",
             "submitBtn": "Submit",
-            "cancelBtn": "Cancel"
+            "cancelBtn": "Cancel",
+            "warningMissingAmount": "Missing amount!"
         },
-        "loading": "Loading..."
+        "loading": "Loading...",
+        "sureToDelete": "Sure to delete?",
+        "searchBox": "Search",
+        "reset": "Reset",
+        "ok": "OK"
     },
     "signOut": {
         "title": "Signing out...",
@@ -134,6 +150,8 @@
         "text2": "Reset Password",
         "text3": "Reset",
         "text4": "An email has been sent to you to reset the password",
-        "text5": "Sign in here:"
+        "text5": "Sign in here:",
+        "text6": "enter e-mail",
+        "tex7": "enter password"
     }
 }
