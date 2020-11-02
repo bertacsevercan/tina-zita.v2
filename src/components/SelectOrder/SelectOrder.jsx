@@ -6,7 +6,7 @@ const { Option } = Select;
 
 const SelectOrder = (props) => {
   const { onChange, onFocus, onBlur, onSearch, orders } = props
-  const [t,i18n] = useTranslation();
+  const {t} = useTranslation();
 
   useEffect(() => {
     console.log("i was rendered", orders);

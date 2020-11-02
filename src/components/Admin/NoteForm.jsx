@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 const NoteForm = ({ noteFormState, setNoteFormState }) => {
   const [size, setSize] = useState("default");
-  const [t,i18n] = useTranslation();
+  const {t} = useTranslation();
 
   const handleChange = (e, key) => {
     setNoteFormState({

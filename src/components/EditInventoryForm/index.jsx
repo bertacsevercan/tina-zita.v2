@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, Input, Select } from 'antd';
 import { useTranslation } from 'react-i18next';
 
@@ -16,7 +16,7 @@ const EditInventoryForm = ({
     });
   };
 
-    const [t,i18n] = useTranslation();
+    const {t} = useTranslation();
 
     const handleChange = (e, key) => {
         setEditInventoryFormState({

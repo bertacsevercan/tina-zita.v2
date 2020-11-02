@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SelectOrder from "../../components/SelectOrder/SelectOrder";
 import OrderTable from "../../components/OrderTable";
-import { Button, Input, Typography, message, Spin, notification } from "antd";
+import { Button, Input, Typography, Spin, notification } from "antd";
 import "./style.css";
 import db from "../../firebaseConfig";
 import { useTranslation } from 'react-i18next';
