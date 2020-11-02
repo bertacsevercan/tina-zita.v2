@@ -153,5 +153,8 @@
         "text5": "Sign in here:",
         "text6": "enter e-mail",
         "tex7": "enter password"
+    },
+    "tutorials": {
+        "header0": "Tutorials"
     }
 }

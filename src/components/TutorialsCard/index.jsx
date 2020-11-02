@@ -1,5 +1,4 @@
 import React from "react";
-import Tutorials from "../../containers/Tutorials";
 import { Card } from 'antd';
 
 const {Meta} = Card;
