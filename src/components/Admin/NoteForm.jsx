@@ -16,7 +16,7 @@ const NoteForm = ({ noteFormState, setNoteFormState }) => {
     <div>
       <Form
         layout="vertical"
-        name="inventoryForm"
+        name="noteForm"
         initialValues={{
           remember: true,
         }}

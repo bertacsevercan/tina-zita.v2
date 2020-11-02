@@ -75,8 +75,16 @@ const Admin = () => {
           title={t("adminDashboard.addBtn")}
           destroyOnClose={true}
           visible={modalVisible}
-          onOk={addItem}
+          //onOk={addItem}
           onCancel={handleCancel}
+          footer={[
+            <Button key="cancel" onClick={handleCancel}>
+            {t("inventory.addBtnModal.cancel")}
+          </Button>,
+            <Button key="ok" onClick={addItem}>
+              {t("inventory.addBtnModal.ok")}
+            </Button>,
+          ]}
         >
           <NoteForm
             noteFormState={noteFormState}

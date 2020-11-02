@@ -104,7 +104,7 @@ const InventoryForm = () => {
         //onOk={addItem}
         onCancel={handleCancel}
         footer={[
-          <Button onClick={handleCancel}>
+          <Button key="cancel" onClick={handleCancel}>
           {t("inventory.addBtnModal.cancel")}
         </Button>,
           <Button form="inventoryForm"  key="submit" htmlType="submit">
