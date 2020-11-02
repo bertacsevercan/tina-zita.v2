@@ -63,7 +63,9 @@
             "pleaseItemName": "Please input item name!",
             "pleaseStockAmount": "Please input item stock amount!",
             "pleaseStockLimit": "Please input the least stock limit to warn you!",
-            "pleaseItemMeasure": "Please select item measure unit!"
+            "pleaseItemMeasure": "Please select item measure unit!",
+            "ok": "OK",
+            "cancel": "Cancel"
         },
         "inventoryTable": {
             "name": "الاسم",

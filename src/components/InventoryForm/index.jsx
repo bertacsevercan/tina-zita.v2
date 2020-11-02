@@ -101,12 +101,21 @@ const InventoryForm = () => {
         destroyOnClose={true}
         title={t("inventory.addBtnModal.modalTitle")}
         visible={modalVisible}
-        onOk={addItem}
+        //onOk={addItem}
         onCancel={handleCancel}
+        footer={[
+          <Button onClick={handleCancel}>
+          {t("inventory.addBtnModal.cancel")}
+        </Button>,
+          <Button form="inventoryForm"  key="submit" htmlType="submit">
+            {t("inventory.addBtnModal.ok")}
+          </Button>,
+        ]}
       >
         <Form
           layout="vertical"
           name="inventoryForm"
+          onFinish={addItem}
           initialValues={{
             remember: true,
           }}
@@ -220,12 +229,12 @@ const InventoryForm = () => {
           <Form.Item
             label={t("inventory.addBtnModal.unit")}
             name="measurementUnit"
-            rules={[
+            /* rules={[
               {
                 required: true,
                 message: t("inventory.addBtnModal.pleaseItemMeasure"),
               },
-            ]}
+            ]} */
           >
             <Select
               defaultValue="gr"
