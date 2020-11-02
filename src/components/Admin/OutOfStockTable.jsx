@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Table} from 'antd';
+import { Table, Spin} from 'antd';
 import db from "../../firebaseConfig"
 import { useTranslation } from 'react-i18next';
+import "./style.css";
 
-export default function OutOfStockTable() {
+const OutOfStockTable = () => {
 
     const [outOfStock, setOutOfStock] = useState();
+    const [loading, setLoading] = useState(true);
     const {t} = useTranslation();
 
       const columns = [
@@ -47,6 +49,7 @@ export default function OutOfStockTable() {
               }
           });
           setOutOfStock(dataArr);
+          setLoading(false);
         });
         
       return OoS;
@@ -55,7 +58,14 @@ export default function OutOfStockTable() {
     
   return (
     <div>
-      <Table dataSource={outOfStock} columns={columns} />
+      {loading ? (
+          <div className="spin">
+            <Spin size="large" tip="Loading..." />
+          </div>
+        ) : (
+      <Table dataSource={outOfStock} columns={columns} /> )}
     </div>
   );
 }
+
+export default OutOfStockTable;
