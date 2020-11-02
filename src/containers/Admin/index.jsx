@@ -46,7 +46,6 @@ const Admin = () => {
       content: noteFormState.content,
     });
     handleOk();
-    //When I click add new item second time, last value remains there, it should be empty
   };
 
   useEffect(() => {
@@ -61,8 +60,6 @@ const Admin = () => {
     });
     return note;
   }, []);
-  //console.log(note)
-  //console.log(t('adminDashboard.dashboard'));
 
   return (
     <div>
@@ -88,7 +85,6 @@ const Admin = () => {
         </Modal>
         {loading ? (
           <div className="spin">
-            {" "}
             <Spin size="large" tip="Loading..." />{" "}
           </div>
         ) : (

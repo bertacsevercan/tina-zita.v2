@@ -51,7 +51,6 @@ export default function OutOfStockTable() {
         
       return OoS;
     }, []);
-    console.log(outOfStock)
     
   return (
     <div>

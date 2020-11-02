@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SelectOrder from "../../components/SelectOrder/SelectOrder";
 import OrderTable from "../../components/OrderTable";
-import { Button, Input, Typography, Spin, notification } from "antd";
+import { Button, Input, Typography, Spin, notification, Space } from "antd";
 import "./style.css";
 import db from "../../firebaseConfig";
 import { useTranslation } from 'react-i18next';
@@ -104,22 +104,24 @@ const Order = () => {
     <div>
       <Title level={3}>{t('order.orders')}</Title>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <SelectOrder onChange={onChange} orders={orders} />
-        <Input
-          style={{ width: "200px" }}
-          type="number"
-          onChange={(e) => setOrderMultiplier(e.target.value)}
-          value={orderMultiplier}
-          placeholder="number of orders"
-          min={1}
-        />
-        <Button
-          disabled={selectedOrder ? false : true}
-          onClick={addOrder}
-          type="primary"
-        >
-          {t('order.addOrder')}
-        </Button>
+        <Space>
+          <SelectOrder onChange={onChange} orders={orders} />
+          <Input
+            style={{ width: "200px" }}
+            type="number"
+            onChange={(e) => setOrderMultiplier(e.target.value)}
+            value={orderMultiplier}
+            placeholder="number of orders"
+            min={1}
+          />
+          <Button
+            disabled={selectedOrder ? false : true}
+            onClick={addOrder}
+            type="primary"
+          >
+            {t('order.addOrder')}
+          </Button>
+        </Space>
       </div>
       {loading ? (
         <div className="spin">

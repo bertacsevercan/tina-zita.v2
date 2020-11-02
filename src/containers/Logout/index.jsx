@@ -24,14 +24,13 @@ const Logout = () => {
         console.log("Sign-out successful.");
       })
       .catch(function (error) {
-        // An error happened.
         alert(error.message);
       });
     history.push("/");
   };
 
-  //we need the user state in other components too
   const [user, setUser] = useState("");
+  
   const authListener = () => {
     Auth().onAuthStateChanged((user) => {
       setUser("");
@@ -40,7 +39,7 @@ const Logout = () => {
 
   useEffect(() => {
     authListener();
-  }, []);
+  }, [user]);
 
   let history = useHistory();
 

@@ -18,8 +18,15 @@ const Login = ({
   setHasPassword,
   emailError,
   passwordError,
+  clearInputs
 }) => {
   const {t} = useTranslation();
+  const handleClick=()=>{
+    if(hasPassword || !hasPassword){
+      clearInputs()
+    }
+    return setHasPassword(!hasPassword)
+  }
 
   return (
     <section className="login">
@@ -65,9 +72,8 @@ const Login = ({
                 {t("login.text1")}
                 <Button
                   type="link"
-                  onClick={() => setHasPassword(!hasPassword)}
+                  onClick={handleClick}
                 >
-                  {" "}
                   {t("login.text2")}
                 </Button>
               </p>
@@ -83,9 +89,8 @@ const Login = ({
                 {t("login.text5")}
                 <Button
                   type="link"
-                  onClick={() => setHasPassword(!hasPassword)}
+                  onClick={handleClick}
                 >
-                  {" "}
                   {t("login.text0")}
                 </Button>
               </Text>

@@ -3,7 +3,7 @@ import { Form, Input } from "antd";
 import { useTranslation } from 'react-i18next';
 
 const NoteForm = ({ noteFormState, setNoteFormState }) => {
-  const [size, setSize] = useState("default");
+  const [size] = useState("default");
   const {t} = useTranslation();
 
   const handleChange = (e, key) => {
