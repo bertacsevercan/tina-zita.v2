@@ -157,7 +157,8 @@
     "tutorials": {
         "header0": "Tutorials",
         "loginScreen": "How to login to the system?",
-        "generalNav": "A quick look at the general layout!"
+        "generalNav": "A quick look at the general layout!",
+        "inventoryDetail": "A detailed look at inventory screen!"
 
     }
 }

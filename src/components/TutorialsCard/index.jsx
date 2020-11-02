@@ -9,7 +9,7 @@ const {Meta} = Card;
 const TutorialsCard = () => {
     const {t} = useTranslation();
 
-    const textList = [t("tutorials.loginScreen"), t("tutorials.generalNav")];
+    const textList = [t("tutorials.loginScreen"), t("tutorials.generalNav"), t("tutorials.inventoryDetail")];
     
     const videoObjList = []
 

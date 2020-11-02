@@ -158,7 +158,9 @@
     "tutorials": {
         "header0": "Öğreticiler",
         "loginScreen": "Sisteme nasıl giriş yapılır?",
-        "generalNav": "Genel dizilime kısa bir bakış!"
+        "generalNav": "Genel dizilime kısa bir bakış!",
+        "inventoryDetail": "Envanter ekranına detaylı bir bakış!"
+
 
     }
 

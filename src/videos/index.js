@@ -13,7 +13,14 @@ const videoList = [
     src="https://www.youtube.com/embed/XPHBn2mckTo" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen></iframe> 
+    allowfullscreen></iframe> ,
+
+    <iframe width="560" height="315" 
+    title="inventoryDetail"
+    src="https://www.youtube.com/embed/njfiKRixlWo"
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen></iframe>
 ]
 
 export default videoList;
