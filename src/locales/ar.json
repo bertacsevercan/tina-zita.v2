@@ -155,6 +155,9 @@
         "tex7": "enter password"
     },
     "tutorials": {
-        "header0": "Tutorials"
+        "header0": "Tutorials",
+        "loginScreen": "How to login to the system?",
+        "generalNav": "A quick look at the general layout!"
+
     }
 }

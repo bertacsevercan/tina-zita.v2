@@ -156,7 +156,10 @@
         "tex7": "şifre giriniz"
     },
     "tutorials": {
-        "header0": "Öğreticiler"
+        "header0": "Öğreticiler",
+        "loginScreen": "Sisteme nasıl giriş yapılır?",
+        "generalNav": "Genel dizilime kısa bir bakış!"
+
     }
 
 }
