@@ -1,7 +1,7 @@
 import React from "react";
 import "../SideBar/index.css";
 import { Layout, Menu} from 'antd';
-import { DropboxOutlined, UserOutlined, ShopOutlined, BookOutlined, LogoutOutlined, GlobalOutlined, VideoCameraAddOutlined } from '@ant-design/icons';
+import { DropboxOutlined, UserOutlined, ShopOutlined, BookOutlined, LogoutOutlined, GlobalOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import {Link}  from "react-router-dom";
 import Logout from "../../containers/Logout"
 import { useTranslation } from 'react-i18next';
