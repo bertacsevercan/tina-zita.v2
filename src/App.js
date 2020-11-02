@@ -9,6 +9,7 @@ import Order from "./containers/Order";
 import Inventory from "./containers/Inventory";
 import Recipe from "./containers/Recipe";
 import Home from "./containers/Home";
+import Tutorials from "./containers/Tutorials";
 import { Auth } from "./firebaseConfig";
 import i18n from "./i18n";
 import { I18nextProvider } from "react-i18next";
@@ -98,6 +99,7 @@ function App() {
                     <Route exact path="/inventory" component={Inventory} />
                     <Route exact path="/order" component={Order} />
                     <Route exact path="/recipe" component={Recipe} />
+                    <Route exact path="/tutorials" component={Tutorials} />
                   </div>
                 </Content>
                 <Footer style={{ textAlign: "center" }}>

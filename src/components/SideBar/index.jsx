@@ -1,7 +1,7 @@
 import React from "react";
 import "../SideBar/index.css";
 import { Layout, Menu} from 'antd';
-import { DropboxOutlined, UserOutlined, ShopOutlined, BookOutlined, LogoutOutlined, GlobalOutlined } from '@ant-design/icons';
+import { DropboxOutlined, UserOutlined, ShopOutlined, BookOutlined, LogoutOutlined, GlobalOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import {Link}  from "react-router-dom";
 import Logout from "../../containers/Logout"
 import { useTranslation } from 'react-i18next';
@@ -61,12 +61,15 @@ const SideBar = () => {
           <Menu.Item key="4" icon={<BookOutlined />}>
             <Link to="/recipe" >{t('links.recipe')}</Link>
           </Menu.Item>
+          <Menu.Item key="5" icon={<VideoCameraOutlined />}>
+            <Link to="/tutorials" >Tutorials</Link>
+          </Menu.Item>
           <SubMenu key="sub1" icon={<GlobalOutlined />} title={t("links.language.header0")}>
-              <Menu.Item icon={<TrIcon />} onClick={() => {i18next.changeLanguage('tr');}} key="5">{t("links.language.header1")}</Menu.Item>
-              <Menu.Item icon={<EnIcon />} onClick={() => {i18next.changeLanguage('en');}} key="6">{t("links.language.header2")}</Menu.Item>
-              <Menu.Item icon={<ArIcon />} onClick={() => {i18next.changeLanguage('ar');}} key="7">{t("links.language.header3")}</Menu.Item>
+              <Menu.Item icon={<TrIcon />} onClick={() => {i18next.changeLanguage('tr');}} key="6">{t("links.language.header1")}</Menu.Item>
+              <Menu.Item icon={<EnIcon />} onClick={() => {i18next.changeLanguage('en');}} key="7">{t("links.language.header2")}</Menu.Item>
+              <Menu.Item icon={<ArIcon />} onClick={() => {i18next.changeLanguage('ar');}} key="8">{t("links.language.header3")}</Menu.Item>
             </SubMenu>
-          <Menu.Item key="8" icon={<LogoutOutlined />}>
+          <Menu.Item key="9" icon={<LogoutOutlined />}>
             <Logout style={{paddingRight: "12px"}}/>
           </Menu.Item>
         </Menu>
