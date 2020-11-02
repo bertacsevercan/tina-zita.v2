@@ -75,7 +75,7 @@ const EditInventoryForm = ({
             <Select defaultValue="gr" value={editInventoryFormState.measurementUnit} 
  style={{ width: 120 }} onChange={(e) => handleChange(e, "measurementUnit")}>
       <Option  value="gr">Gr</Option>
-      <Option value="lt">Lt</Option>
+      <Option value="ml">Ml</Option>
     </Select>
         </Form.Item>
       </Form>
