@@ -72,9 +72,9 @@ const Order = () => {
               .recipeName,
           });
         }
-        showNotification("success", "Order successful!", "Success!");
+        showNotification("success", t('order.successNotification'), t('order.successNotification2'));
       } else {
-        showNotification("error", insufficientIngredients, "Missing ingredients:");
+        showNotification("error", insufficientIngredients, t('order.errorNotification'));
       }
     }
   };
@@ -125,7 +125,7 @@ const Order = () => {
       </div>
       {loading ? (
         <div className="spin">
-          <Spin size="large" tip="Loading..." />
+          <Spin size="large" tip={t('order.loading')} />
         </div>
       ) : (
         <div style={{ marginTop: "1em" }}>

@@ -63,14 +63,14 @@ const OrderTable = ({ orderedFood }) => {
             size="small"
             style={{ width: 90 }}
           >
-            Search
+            {t('order.searchBox')}
           </Button>
           <Button
             onClick={() => handleReset(clearFilters)}
             size="small"
             style={{ width: 90 }}
           >
-            Reset
+            {t('order.reset')}
           </Button>
         </Space>
       </div>
@@ -138,7 +138,7 @@ const OrderTable = ({ orderedFood }) => {
       render: (record) => (
         <Space>
           <Popconfirm
-            title="Sure to cancel?"
+            title={t('order.sureToCancel')}
             onConfirm={() => deleteOrder(record)}
           >
             <Button type="primary" danger>

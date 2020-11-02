@@ -10,7 +10,8 @@
             "header1": "التركية",
             "header2": "الإنجليزية",
             "header3": "العربية"
-        }
+        },
+        "tutorials": "Tutorials"
     },
     "adminDashboard": {
         "dashboard": "لوحة المشرف",
@@ -76,7 +77,10 @@
             "actionBtns": {
                 "edit": "تعديل",
                 "delete": "حذف"
-            }
+            },
+            "sureToDelete": "Sure to delete?",
+            "searchBox": "Search",
+            "reset": "Reset"
         }
     },
     "order": {
@@ -88,7 +92,14 @@
         "cancelBtn": "إلغاء",
         "tableHeader0": "الطلب",
         "tableHeader1": "التاريخ",
-        "tableHeader2": "تعديل"
+        "tableHeader2": "تعديل",
+        "sureToCancel": "Sure to cancel?",
+        "searchBox": "Search",
+        "reset": "Reset",
+        "successNotification": "Order successful!",
+        "successNotification2": "Success!",
+        "errorNotification": "Missing ingredients:",
+        "loading": "Loading..."
     },
     "recipe": {
         "recipe": "الوصفات",
@@ -108,9 +119,14 @@
             "selectIngMenu": "اختر مكوناً",
             "missingAmountMessage": "المقدار فارغ",
             "submitBtn": "تأكيد",
-            "cancelBtn": "إلغاء"
+            "cancelBtn": "إلغاء",
+            "warningMissingAmount": "Missing amount!"
         },
-        "loading": "...جار التحميل"
+        "loading": "...جار التحميل",
+        "sureToDelete": "Sure to delete?",
+        "searchBox": "Search",
+        "reset": "Reset",
+        "ok": "OK"
     },
     "signOut": {
         "title": "...جار تسجيل الخروج",
@@ -132,6 +148,8 @@
         "text2": "إعادة تعيين كلمة المرور",
         "text3": "إعادة تعيين",
         "text4": "تم إرسال بريد إلكتروني إليك لإعادة تعيين كلمة المرور",
-        "text5": "سجل الدخول من هنا"
+        "text5": "سجل الدخول من هنا",
+        "text6": "enter e-mail",
+        "tex7": "enter password"
     }
 }

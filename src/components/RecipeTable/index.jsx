@@ -71,14 +71,14 @@ const RecipeTable = ({ recipe }) => {
             size="small"
             style={{ width: 90 }}
           >
-            Search
+            {t('recipe.searchBox')}
           </Button>
           <Button
             onClick={() => handleReset(clearFilters)}
             size="small"
             style={{ width: 90 }}
           >
-            Reset
+            {t('recipe.reset')}
           </Button>
         </Space>
       </div>
@@ -144,7 +144,7 @@ const RecipeTable = ({ recipe }) => {
       responsive: ["md"],
       render: (record) => (
         <Space>
-          <Popconfirm title="Sure to delete?" onConfirm={()=> deleteRecipe(record.recipeCode)}>
+          <Popconfirm title={t('recipe.sureToDelete')} onConfirm={()=> deleteRecipe(record.recipeCode)}>
           <Button type="primary" danger>
             {" "}
            {t('recipe.deleteBtn')}
@@ -166,7 +166,7 @@ const RecipeTable = ({ recipe }) => {
         onCancel={handleCancel}
         footer={[
           <Button key="OK" type="primary" onClick={handleOk}>
-            OK
+            {t('recipe.ok')}
           </Button>,
         ]}
       >

@@ -85,7 +85,7 @@ const Admin = () => {
         </Modal>
         {loading ? (
           <div className="spin">
-            <Spin size="large" tip="Loading..." />{" "}
+            <Spin size="large" tip={t("adminDashboard.loading")} />{" "}
           </div>
         ) : (
           <Notes notesData={note} />
