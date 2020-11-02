@@ -9,7 +9,6 @@ import Order from "./containers/Order";
 import Inventory from "./containers/Inventory";
 import Recipe from "./containers/Recipe";
 import Home from "./containers/Home";
-import Login from "./containers/Login";
 import Tutorials from "./containers/Tutorials";
 import { Auth } from "./firebaseConfig";
 import i18n from "./i18n";
@@ -58,7 +57,6 @@ function App() {
 
   const authListener = () => {
     Auth().onAuthStateChanged((user) => {
-      clearInputs();
       if (user) {
         setUser(user);
       } else {
@@ -68,8 +66,8 @@ function App() {
   };
 
   useEffect(() => {
-    authListener();
-  }, []);
+   authListener();
+  });
 
   function handleResetPassword() {
     Auth()
@@ -102,7 +100,6 @@ function App() {
                     <Route exact path="/order" component={Order} />
                     <Route exact path="/recipe" component={Recipe} />
                     <Route exact path="/tutorials" component={Tutorials} />
-                    <Route exact path="/login" component={Login} />
                   </div>
                 </Content>
                 <Footer style={{ textAlign: "center" }}>
@@ -112,7 +109,7 @@ function App() {
             </Layout>
           ) : (
             <Layout>
-              <Route exact path="/">
+              <Route path="/">
                 <Home
                   email={email}
                   setEmail={setEmail}
@@ -125,6 +122,7 @@ function App() {
                   emailError={emailError}
                   passwordError={passwordError}
                   isEmailSend={isEmailSend}
+                  clearInputs={clearInputs}
                 />
               </Route>
             </Layout>

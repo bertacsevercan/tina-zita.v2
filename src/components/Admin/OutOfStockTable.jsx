@@ -54,7 +54,6 @@ const OutOfStockTable = () => {
         
       return OoS;
     }, []);
-    console.log(outOfStock)
     
   return (
     <div>

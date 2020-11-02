@@ -1,9 +1,11 @@
 .button{
     float: left;
     margin-bottom: 1em;
+    margin-top: 1rem;
 }
 .spin{
     text-align: center;
     padding: 30px 60px;
     margin: 100px 0;
 }
+

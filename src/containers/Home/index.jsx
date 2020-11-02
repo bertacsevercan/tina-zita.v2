@@ -21,6 +21,7 @@ const Home = ({
   setHasPassword,
   emailError,
   passwordError,
+  clearInputs
 }) => {
   const {t} = useTranslation();
 
@@ -44,6 +45,7 @@ const Home = ({
           emailError={emailError}
           passwordError={passwordError}
           isEmailSend={isEmailSend}
+          clearInputs={clearInputs}
         />
         <Text type="secondary">
          {t("home.text1")}

@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "antd";
-import { Button, Space, Popconfirm} from "antd";
+import { Button, Space, Popconfirm } from "antd";
 
 import db from '../../firebaseConfig';
 
