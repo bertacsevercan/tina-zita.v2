@@ -141,7 +141,7 @@ const RecipeTable = ({ recipe }) => {
     {
       title: t('recipe.action'),
       key: "action",
-      responsive: ["md"],
+      //responsive: ["md"],
       render: (record) => (
         <Space>
           <Popconfirm title={t('recipe.sureToDelete')}
