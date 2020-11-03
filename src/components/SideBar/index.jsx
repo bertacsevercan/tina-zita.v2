@@ -14,7 +14,7 @@ import i18next from "i18next";
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
-const SideBar = () => {
+const SideBar = ({clearInputs}) => {
 
     const {t} = useTranslation();
   /*   const selectLanguage = (language) => {
@@ -70,7 +70,7 @@ const SideBar = () => {
               <Menu.Item icon={<ArIcon />} onClick={() => {i18next.changeLanguage('ar');}} key="8">{t("links.language.header3")}</Menu.Item>
             </SubMenu>
           <Menu.Item key="9" icon={<LogoutOutlined />}>
-            <Logout style={{paddingRight: "12px"}}/>
+            <Logout style={{paddingRight: "12px"}} clearInputs={clearInputs}/>
           </Menu.Item>
         </Menu>
           </Sider>
