@@ -18,20 +18,23 @@ const TutorialsCard = () => {
     }
     
     return(
-        <div>
+        <>
             {videoObjList.map(obj => (
             <Col
-            span={8}>
+            //span={{lg: 12}}
+            // lg={{span: 12}}
+            // md={{span: 16}}
+            >
             <Card
             hoverable
-            style={{ width: "25rem"}}
+            style={{ width: "32rem"}}
             cover={obj.video}>
             <Meta title={obj.title} />
             </Card>
           </Col>
            
             ))}
-        </div>
+        </>
     )
 }
 
