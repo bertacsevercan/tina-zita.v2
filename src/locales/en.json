@@ -157,6 +157,10 @@
         "header0": "Tutorials",
         "loginScreen": "How to login to the system?",
         "generalNav": "A quick look at the general layout!",
-        "inventoryDetail": "A detailed look at the inventory screen!"
+        "inventoryDetail": "A detailed look at the inventory screen!",
+        "recipeDetail": "A detailed look at the recipe screen!",
+        "orderDetail": "A detailed look at the order screen!",
+        "adminDetail": "A detailed look at the admin dashboard!",
+        "tutorialDetail": "A detailed look at the tutorials screen!"
     }
 }

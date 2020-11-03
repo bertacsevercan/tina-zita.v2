@@ -11,8 +11,8 @@ const Tutorials = () => {
     return (
         <div className="site-card-wrapper">
             <Title level={3}>{t("tutorials.header0")}</Title>
-            <Row gutter={{xs: 8, sm: 16, md: 24, lg: 32 }}>
-                <TutorialsCard />
+            <Row style={{display: "flex", justifyContent: "center"}} gutter={{xs: 8, sm: 16, md: 24, lg: 32 }}>
+                <TutorialsCard sty />
             </Row>
         </div>
     )

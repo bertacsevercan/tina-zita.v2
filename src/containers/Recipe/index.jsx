@@ -48,6 +48,7 @@ const Recipe = () => {
       </Button>
 
       <Drawer
+          destroyOnClose={true}
           title={t('recipe.addDrawer.title')}
           width={720}
           onClose={onClose}

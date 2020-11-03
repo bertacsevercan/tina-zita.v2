@@ -157,6 +157,10 @@
         "header0": "التعليمات",
         "loginScreen": "كيفية تسجيل الدخول",
         "generalNav": "لمحة عامة عن التطبيق",
-        "inventoryDetail": "شرح تفصيلي لقائمة المخزون"
+        "inventoryDetail": "شرح تفصيلي لقائمة المخزون",
+        "recipeDetail": "A detailed look at the recipe screen!",
+        "orderDetail": "A detailed look at the order screen!",
+        "adminDetail": "A detailed look at the admin dashboard!",
+        "tutorialDetail": "A detailed look at the tutorials screen!"
     }
 }
