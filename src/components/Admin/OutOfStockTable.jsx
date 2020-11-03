@@ -24,11 +24,13 @@ const OutOfStockTable = () => {
         {
           title: t('adminDashboard.category'),
           dataIndex: 'category',
+          responsive: ["md"],
           key: 'category',
         },
         {
           title: t('adminDashboard.unit'),
           dataIndex: 'measurementUnit',
+          responsive: ["md"],
           key: 'measurementUnit',
         },
         {
