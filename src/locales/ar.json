@@ -82,9 +82,9 @@
             "sureToDelete": "هل أنت متأكد من الحذف؟",
             "searchBox": "بحث",
             "reset": "إعادة تعيين",
-            "triggerDesc": "Click sort by descend",
-            "triggerAsc": "Click sort by ascend",
-            "cancelSort": "Click to cancel sort"
+            "triggerDesc": "اضغط للترتيب تنازلياً",
+            "triggerAsc": "اضغط للترتيب تصاعدياً",
+            "cancelSort": "اضغط لإلغاء الترتيب"
         }
     },
     "order": {
@@ -161,13 +161,13 @@
         "loginScreen": "كيفية تسجيل الدخول",
         "generalNav": "لمحة عامة عن التطبيق",
         "inventoryDetail": "شرح تفصيلي لقائمة المخزون",
-        "recipeDetail": "A detailed look at the recipe screen!",
-        "orderDetail": "A detailed look at the order screen!",
-        "adminDetail": "A detailed look at the admin dashboard!",
-        "tutorialDetail": "A detailed look at the tutorials screen!"
+        "recipeDetail": "شرح تفصيلي لقائمة الوصفات",
+        "orderDetail": "شرح تفصيلي لقائمة الطلب",
+        "adminDetail": "شرح تفصيلي لقائمة لوحة المشرف",
+        "tutorialDetail": "شرح تفصيلي لقائمة التعليمات"
     },
     "deleteButton": {
-        "ok" : "Yes",
-        "cancel": "No"
+        "ok" : "نعم",
+        "cancel": "لا"
     }
 }
