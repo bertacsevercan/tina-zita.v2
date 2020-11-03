@@ -161,8 +161,7 @@
         "inventoryDetail": "A detailed look at inventory screen!",
         "recipeDetail": "A detailed look at the recipe screen!",
         "orderDetail": "A detailed look at the order screen!",
-        "adminDetail": "A detailed look at the admin dashboard!"
-
-
+        "adminDetail": "A detailed look at the admin dashboard!",
+        "tutorialsDetail": "A detailed look at the tutorials screen!"
     }
 }
