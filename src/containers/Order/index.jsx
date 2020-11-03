@@ -103,7 +103,7 @@ const Order = () => {
   return (
     <div>
       <Title level={3}>{t('order.orders')}</Title>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div className="orderInputs" /* style={{ display: "flex", justifyContent: "center" }} */>
         <Space>
           <SelectOrder onChange={onChange} orders={orders} />
           <Input

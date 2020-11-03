@@ -134,7 +134,7 @@ const OrderTable = ({ orderedFood }) => {
     {
       title: t("order.tableHeader2"),
       key: "action",
-      responsive: ["md"],
+      //responsive: ["md"],
       render: (record) => (
         <Space>
           <Popconfirm
