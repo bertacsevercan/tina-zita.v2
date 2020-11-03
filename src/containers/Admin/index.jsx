@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import OutOfStockTable from "../../components/Admin/OutOfStockTable";
-import { Typography, Button, Spin, Modal, Space } from "antd";
+import { Typography, Button, Spin, Modal } from "antd";
 import db from "../../firebaseConfig";
 import NoteForm from "../../components/Admin/NoteForm";
 import Notes from "./Notes";
@@ -105,4 +105,5 @@ const Admin = () => {
     </div>
   );
 };
+
 export default Admin;
