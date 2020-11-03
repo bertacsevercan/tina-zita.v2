@@ -162,6 +162,6 @@
         "recipeDetail": "A detailed look at the recipe screen!",
         "orderDetail": "A detailed look at the order screen!",
         "adminDetail": "A detailed look at the admin dashboard!",
-        "tutorialsDetail": "A detailed look at the tutorials screen!"
+        "tutorialDetail": "A detailed look at the tutorials screen!"
     }
 }

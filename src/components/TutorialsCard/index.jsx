@@ -11,7 +11,7 @@ const TutorialsCard = () => {
     const {t} = useTranslation();
 
     const textList = [t("tutorials.loginScreen"), t("tutorials.generalNav"), t("tutorials.inventoryDetail")
-,t("tutorials.recipeDetail"), t("tutorials.orderDetail")];
+,t("tutorials.recipeDetail"), t("tutorials.orderDetail"), t("tutorials.adminDetail")];
     
     const videoObjList = []
 
