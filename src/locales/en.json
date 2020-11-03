@@ -28,7 +28,7 @@
         "unit": "Unit",
         "remainingStock": "Remaining Stock",
         "dltBttn": "Delete",
-        "dltBttnWarning": "Are you sure to delete?",
+        "dltBttnWarning": "Sure to delete?",
         "loading": "Loading..."
     },
     "inventory": {
@@ -61,10 +61,9 @@
                 "dryFood": "Dry Food",
                 "fruit": "Fruit"
             },
-            "pleaseItemName": "Please input item name!",
-            "pleaseStockAmount": "Please input item stock amount!",
-            "pleaseStockLimit": "Please input the least stock limit to warn you!",
-            "pleaseItemMeasure": "Please select item measure unit!",
+            "pleaseItemName": "Please enter item name!",
+            "pleaseStockAmount": "Please enter the item's quantity in stock!",
+            "pleaseStockLimit": "Please enter the least stock limit to warn you!",
             "ok": "OK",
             "cancel": "Cancel"
         },

@@ -64,7 +64,6 @@
             "pleaseItemName": "Lütfen bir ürün adı giriniz!",
             "pleaseStockAmount": "Lütfen ürüne ait stok miktarını giriniz!",
             "pleaseStockLimit": "Lütfen uyarı almaya başlayacağınız minimum stok miktarını giriniz!",
-            "pleaseItemMeasure": "Lütfen ürünün ölçü birimini giriniz!",
             "ok": "Tamam",
             "cancel": "İptal"
         },
