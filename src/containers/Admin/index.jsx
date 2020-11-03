@@ -80,10 +80,10 @@ const Admin = () => {
             visible={modalVisible}
             onCancel={handleCancel}
             footer={[
-              <Button key="cancel" onClick={handleCancel}>
+              <Button danger key="cancel" onClick={handleCancel}>
                 {t("inventory.addBtnModal.cancel")}
               </Button>,
-              <Button key="ok" onClick={addItem}>
+              <Button type="primary" key="ok" onClick={addItem}>
                 {t("inventory.addBtnModal.ok")}
               </Button>,
             ]}

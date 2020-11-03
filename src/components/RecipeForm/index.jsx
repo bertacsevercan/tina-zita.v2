@@ -152,7 +152,7 @@ const RecipeForm = ({setDrawerVisible}) => {
         </Button>
       </Form.Item>
       <Form.Item >
-      <Button onClick={onClose} style={{marginLeft: "1em"}}>
+      <Button danger onClick={onClose} style={{marginLeft: "1em"}}>
       {t('recipe.addDrawer.cancelBtn')}
         </Button>
       </Form.Item>

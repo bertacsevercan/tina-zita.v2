@@ -218,10 +218,10 @@ const InventoryTable = ({ item }) => {
         onOk={editItem}
         onCancel={handleCancel}
         footer={[
-          <Button key="cancel" onClick={handleCancel}>
+          <Button danger key="cancel" onClick={handleCancel}>
           {t("inventory.addBtnModal.cancel")}
         </Button>,
-          <Button  key="ok" onClick={editItem} >
+          <Button  type="primary" key="ok" onClick={editItem} >
             {t("inventory.addBtnModal.ok")}
           </Button>,
         ]}
