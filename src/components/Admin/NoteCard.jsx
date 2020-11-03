@@ -17,7 +17,7 @@ export default function NoteCard({ noteData }) {
 
   return (
     <div>
-      <Card title={noteData.title} bordered={true} style={{ width: 300 }}>
+      <Card title={noteData.title} bordered={true} style={{ overflowWrap: "break-word" , width: 300 }}>
         <p>{noteData.content}</p>
         <Space>
           <Popconfirm
