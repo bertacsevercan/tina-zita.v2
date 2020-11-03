@@ -163,5 +163,9 @@
         "orderDetail": "Sipariş ekranına detaylı bir bakış!",
         "adminDetail": "Admin paneline detaylı bir bakış!",
         "tutorialDetail": "Öğretici ekranına detaylı bir bakış!"
+    },
+    "deleteButton": {
+        "ok" : "Tamam",
+        "cancel": "İptal"
     }
 }

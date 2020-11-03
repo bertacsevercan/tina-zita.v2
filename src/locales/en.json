@@ -162,5 +162,9 @@
         "orderDetail": "A detailed look at the order screen!",
         "adminDetail": "A detailed look at the admin dashboard!",
         "tutorialDetail": "A detailed look at the tutorials screen!"
+    },
+    "deleteButton": {
+        "ok" : "OK",
+        "cancel": "Cancel"
     }
 }

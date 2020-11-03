@@ -214,6 +214,14 @@ const InventoryTable = ({ item }) => {
         visible={modalVisible}
         onOk={editItem}
         onCancel={handleCancel}
+        footer={[
+          <Button key="cancel" onClick={handleCancel}>
+          {t("inventory.addBtnModal.cancel")}
+        </Button>,
+          <Button  key="ok" onClick={editItem} >
+            {t("inventory.addBtnModal.ok")}
+          </Button>,
+        ]}
       >
         <EditInventoryForm
           editInventoryFormState={editInventoryFormState}
