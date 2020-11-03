@@ -41,6 +41,13 @@ const videoList = [
     src="https://www.youtube.com/embed/7AjNWWop32s" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowFullScreen></iframe>,
+
+    <iframe width="560" height="315"
+    title="tutorialDetail" 
+    src="https://www.youtube.com/embed/BnZ6lw_L4aI" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
     allowFullScreen></iframe>
 ]
 
