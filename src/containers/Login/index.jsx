@@ -1,10 +1,10 @@
 import React from "react";
 import { Button, Input, Typography } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 import "./index.css";
 
-const {Text} = Typography;
+const { Text } = Typography;
 
 const Login = ({
   email,
@@ -18,33 +18,45 @@ const Login = ({
   setHasPassword,
   emailError,
   passwordError,
-  clearInputs
+  clearInputs,
 }) => {
-  const {t} = useTranslation();
-  const handleClick=()=>{
-    if(hasPassword || !hasPassword){
-      clearInputs()
+  const { t } = useTranslation();
+  const handleClick = () => {
+    if (hasPassword || !hasPassword) {
+      clearInputs();
     }
-    return setHasPassword(!hasPassword)
-  }
+    return setHasPassword(!hasPassword);
+  };
+
+  const handleKeyDownEnterLogin = (e) => {
+    if (e.key === "Enter") {
+      handleLogin();
+    }
+  };
+
+  const handleKeyDownEnterReset = (e) => {
+    if (e.key === "Enter") {
+      handleResetPassword();
+    }
+  };
 
   return (
     <section className="login">
       <div className="loginContainer">
-        <label>{t("login.label0")}</label>
-        <Input
-          placeholder="e-mail"
-          className="input"
-          type="text"
-          required
-          autoFocus
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <p className="errorMsg">{emailError}</p>
-
         {hasPassword ? (
           <>
+            <label>{t("login.label0")}</label>
+            <Input
+              placeholder="e-mail"
+              className="input"
+              type="text"
+              required
+              autoFocus
+              value={email}
+              onKeyPress={(e) => handleKeyDownEnterLogin(e)}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <p className="errorMsg">{emailError}</p>
             <label>{t("login.label1")}</label>
             <Input.Password
               placeholder="input password"
@@ -53,13 +65,29 @@ const Login = ({
               type="password"
               required
               value={password}
+              onKeyPress={(e) => handleKeyDownEnterLogin(e)}
               onChange={(e) => setPassword(e.target.value)}
               iconRender={(visible) =>
                 visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
               }
             />
           </>
-        ) : null}
+        ) : (
+          <>
+            <label>{t("login.label0")}</label>
+            <Input
+              placeholder="e-mail"
+              className="input"
+              type="text"
+              required
+              autoFocus
+              value={email}
+              onKeyPress={(e) => handleKeyDownEnterReset(e)}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <p className="errorMsg">{emailError}</p>
+          </>
+        )}
 
         <p className="errorMsg">{passwordError}</p>
         <div className="btnContainer">
@@ -70,10 +98,7 @@ const Login = ({
               </Button>
               <p>
                 {t("login.text1")}
-                <Button
-                  type="link"
-                  onClick={handleClick}
-                >
+                <Button type="link" onClick={handleClick}>
                   {t("login.text2")}
                 </Button>
               </p>
@@ -84,16 +109,13 @@ const Login = ({
                 {t("login.text3")}
               </Button>
               <div>
-              {isEmailSend ? <Text>{t("login.text4")}</Text> : null}
-              <Text>
-                {t("login.text5")}
-                <Button
-                  type="link"
-                  onClick={handleClick}
-                >
-                  {t("login.text0")}
-                </Button>
-              </Text>
+                {isEmailSend ? <Text>{t("login.text4")}</Text> : null}
+                <Text>
+                  {t("login.text5")}
+                  <Button type="link" onClick={handleClick}>
+                    {t("login.text0")}
+                  </Button>
+                </Text>
               </div>
             </>
           )}
