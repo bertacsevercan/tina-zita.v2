@@ -159,9 +159,7 @@
         "header0": "Öğreticiler",
         "loginScreen": "Sisteme nasıl giriş yapılır?",
         "generalNav": "Genel dizilime kısa bir bakış!",
-        "inventoryDetail": "Envanter ekranına detaylı bir bakış!"
-
-
+        "inventoryDetail": "Envanter ekranına detaylı bir bakış!",
+        "recipeDetail": "Tarif ekranına detaylı bir bakış!"
     }
-
 }
