@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import OutOfStockTable from "../../components/Admin/OutOfStockTable";
-import { Typography, Button, Spin, Modal, Space } from "antd";
+import { Typography, Button, Spin, Modal } from "antd";
 import db from "../../firebaseConfig";
 import NoteForm from "../../components/Admin/NoteForm";
 import Notes from "./Notes";
@@ -63,82 +63,47 @@ const Admin = () => {
 
   return (
     <div>
-      <Space direction="vertical">
-        <Title level={3}>{t("adminDashboard.dashboard")}</Title>
-        <h1 className="outOfStock">{t("adminDashboard.outOfStockTable")}</h1>
-        <OutOfStockTable />
-        <h1 className="notes">{t("adminDashboard.myNotes")}</h1>
-        <Button onClick={showModal} className="button" type="primary">
-          {t("adminDashboard.addBtn")}
-        </Button>
-        <Modal
-          title={t("adminDashboard.addBtn")}
-          destroyOnClose={true}
-          visible={modalVisible}
-          //onOk={addItem}
-          onCancel={handleCancel}
-          footer={[
-            <Button key="cancel" onClick={handleCancel}>
-            {t("inventory.addBtnModal.cancel")}
-          </Button>,
-            <Button key="ok" onClick={addItem}>
-              {t("inventory.addBtnModal.ok")}
-            </Button>,
-          ]}
-        >
-          <NoteForm
-            noteFormState={noteFormState}
-            setNoteFormState={setNoteFormState}
-          />
-        </Modal>
-        {loading ? (
-          <div className="spin">
-            <Spin size="large" tip={t("adminDashboard.loading")} />{" "}
-          </div>
-        ) : (
-          <Notes notesData={note} />
-        )}
-      </Space>
+      <Title level={3}>{t("adminDashboard.dashboard")}</Title>
+      <h1 className="outOfStock">{t("adminDashboard.outOfStockTable")}</h1>
+      <OutOfStockTable />
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <div style={{ marginLeft: "0.3rem" }}>
+          <h1 className="notes">{t("adminDashboard.myNotes")}</h1>
+          <Button onClick={showModal} className="button" type="primary">
+            {t("adminDashboard.addBtn")}
+          </Button>
+        </div>
+        <div>
+          <Modal
+            title={t("adminDashboard.addBtn")}
+            destroyOnClose={true}
+            visible={modalVisible}
+            onCancel={handleCancel}
+            footer={[
+              <Button key="cancel" onClick={handleCancel}>
+                {t("inventory.addBtnModal.cancel")}
+              </Button>,
+              <Button key="ok" onClick={addItem}>
+                {t("inventory.addBtnModal.ok")}
+              </Button>,
+            ]}
+          >
+            <NoteForm
+              noteFormState={noteFormState}
+              setNoteFormState={setNoteFormState}
+            />
+          </Modal>
+          {loading ? (
+            <div className="spin">
+              <Spin size="large" tip={t("adminDashboard.loading")} />{" "}
+            </div>
+          ) : (
+            <Notes notesData={note} />
+          )}
+        </div>
+      </div>
     </div>
   );
 };
-export default Admin;
 
-/* useEffect(() => {
-    const note = db.collection("notes").onSnapshot((snapshot) => {
-      const dataArr = [];
-      snapshot.forEach((doc) => {
-        dataArr.push({ ...doc.data(), id: doc.id });
-      });
-      console.log(dataArr);
-      setNote(dataArr);
-      setLoading(false);
-    });
-    return note;
-  }, []);
-  console.log(note);
-  return (
-    <div>
-      <Title level={3}>Dashboard</Title>
-      <OutOfStockTable />
-      <Button onClick={showModal} className="button" type="primary">
-        Add new note
-      </Button>
-      <Modal
-        destroyOnClose={true}
-        title="Add new note"
-        visible={modalVisible}
-        onOk={addItem}
-        onCancel={handleCancel}
-      >
-        <NoteForm
-          noteFormState={noteFormState}
-          setNoteFormState={setNoteFormState}
-        />
-      </Modal>
-      {/* {loading ? <div className="spin"> <Spin size="large" tip="Loading..."/> </div> :
-        <NoteCard /> } */
-/* <Notes notesData={note} />
-    </div>
-  );
-}; */
+export default Admin;

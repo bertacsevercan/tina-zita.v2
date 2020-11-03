@@ -1,10 +1,9 @@
 import React from "react";
 import { Form, Input } from "antd";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 const NoteForm = ({ noteFormState, setNoteFormState }) => {
-  
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const handleChange = (e, key) => {
     setNoteFormState({
@@ -22,12 +21,12 @@ const NoteForm = ({ noteFormState, setNoteFormState }) => {
         }}
       >
         <Form.Item
-          label={t('adminDashboard.noteTitle')}
+          label={t("adminDashboard.noteTitle")}
           name="title"
           rules={[
             {
               required: true,
-              message: t('adminDashboard.pleaseEnterTitle'),
+              message: t("adminDashboard.pleaseEnterTitle"),
             },
           ]}
         >
@@ -41,12 +40,12 @@ const NoteForm = ({ noteFormState, setNoteFormState }) => {
         </Form.Item>
 
         <Form.Item
-          label={t('adminDashboard.note')}
+          label={t("adminDashboard.note")}
           name="note"
           rules={[
             {
               required: true,
-              message: t('adminDashboard.pleaseEnterNote'),
+              message: t("adminDashboard.pleaseEnterNote"),
             },
           ]}
         >
