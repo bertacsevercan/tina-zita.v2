@@ -11,7 +11,7 @@
             "header2": "الإنجليزية",
             "header3": "العربية"
         },
-        "tutorials": "Tutorials"
+        "tutorials": "التعليمات"
     },
     "adminDashboard": {
         "dashboard": "لوحة المشرف",
@@ -29,7 +29,7 @@
         "remainingStock": "الكمية المتبقية",
         "dltBttn": "حذف",
         "dltBttnWarning": "هل انت متاكد؟",
-        "loading": "Loading..."
+        "loading": "...جار التحميل"
     },
     "inventory": {
         "inventory": "المخزون",
@@ -61,12 +61,11 @@
                 "dryFood": "اطعمه جافه",
                 "fruit": "فواكه"
             },
-            "pleaseItemName": "Please input item name!",
-            "pleaseStockAmount": "Please input item stock amount!",
-            "pleaseStockLimit": "Please input the least stock limit to warn you!",
-            "pleaseItemMeasure": "Please select item measure unit!",
-            "ok": "OK",
-            "cancel": "Cancel"
+            "pleaseItemName": "!الرجاء إدخال اسم العنصر",
+            "pleaseStockAmount": "!الرجاء إدخال كمية  العنصر في المخزون",
+            "pleaseStockLimit": "!الرجاء ادخال الحد الأدنى للعنصر في المخزون",
+            "ok": "تأكيد",
+            "cancel": "إلغاء"
         },
         "inventoryTable": {
             "name": "الاسم",
@@ -80,9 +79,9 @@
                 "edit": "تعديل",
                 "delete": "حذف"
             },
-            "sureToDelete": "Sure to delete?",
-            "searchBox": "Search",
-            "reset": "Reset"
+            "sureToDelete": "هل أنت متأكد من الحذف؟",
+            "searchBox": "بحث",
+            "reset": "إعادة تعيين"
         }
     },
     "order": {
@@ -95,13 +94,13 @@
         "tableHeader0": "الطلب",
         "tableHeader1": "التاريخ",
         "tableHeader2": "تعديل",
-        "sureToCancel": "Sure to cancel?",
-        "searchBox": "Search",
-        "reset": "Reset",
-        "successNotification": "Order successful!",
-        "successNotification2": "Success!",
-        "errorNotification": "Missing ingredients:",
-        "loading": "Loading..."
+        "sureToCancel": "متأكد من الإلغاء؟",
+        "searchBox": "بحث",
+        "reset": "إعادة تعيين",
+        "successNotification": "!تم اضافة الطلب بنجاح",
+        "successNotification2": "!تم",
+        "errorNotification": "مكونات مفقودة",
+        "loading": "...جار التحميل"
     },
     "recipe": {
         "recipe": "الوصفات",
@@ -113,22 +112,22 @@
         "addDrawer": {
             "title": "إنشاء وصفة جديدة",
             "nameInput": "اسم الوصفة",
-            "missingRecMessage": "اسم الوصفة فارغ",
+            "missingRecMessage": "!اسم الوصفة فارغ",
             "addIngInp": "أضف المكونات",
             "ingredient": "المكون",
             "amount": "المقدار",
-            "missingIngMessage": "المكون فارغ",
+            "missingIngMessage": "!المكون فارغ",
             "selectIngMenu": "اختر مكوناً",
-            "missingAmountMessage": "المقدار فارغ",
+            "missingAmountMessage": "!المقدار فارغ",
             "submitBtn": "تأكيد",
             "cancelBtn": "إلغاء",
-            "warningMissingAmount": "Missing amount!"
+            "warningMissingAmount": "!المقدار فارغ"
         },
         "loading": "...جار التحميل",
-        "sureToDelete": "Sure to delete?",
-        "searchBox": "Search",
-        "reset": "Reset",
-        "ok": "OK"
+        "sureToDelete": "هل أنت متأكد من الحذف؟",
+        "searchBox": "بحث",
+        "reset": "إعادة تعيين",
+        "ok": "حسناً"
     },
     "signOut": {
         "title": "...جار تسجيل الخروج",
@@ -146,19 +145,19 @@
         "label0": "البريد الإلكتروني",
         "label1": "كلمة المرور",
         "text0": "تسجيل الدخول",
-        "text1": "هل نسيت كلمة السر؟",
+        "text1": "هل نسيت كلمة المرور؟",
         "text2": "إعادة تعيين كلمة المرور",
         "text3": "إعادة تعيين",
         "text4": "تم إرسال بريد إلكتروني إليك لإعادة تعيين كلمة المرور",
         "text5": "سجل الدخول من هنا",
-        "text6": "enter e-mail",
-        "tex7": "enter password"
+        "text6": "أدخل البريد الإلكتروني",
+        "tex7": "أدخل كلمة المرور"
     },
     "tutorials": {
-        "header0": "Tutorials",
-        "loginScreen": "How to login to the system?",
-        "generalNav": "A quick look at the general layout!",
-        "inventoryDetail": "A detailed look at inventory screen!",
+        "header0": "التعليمات",
+        "loginScreen": "كيفية تسجيل الدخول",
+        "generalNav": "لمحة عامة عن التطبيق",
+        "inventoryDetail": "شرح تفصيلي لقائمة المخزون",
         "recipeDetail": "A detailed look at the recipe screen!",
         "orderDetail": "A detailed look at the order screen!",
         "adminDetail": "A detailed look at the admin dashboard!",

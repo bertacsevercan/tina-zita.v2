@@ -229,12 +229,6 @@ const InventoryForm = () => {
           <Form.Item
             label={t("inventory.addBtnModal.unit")}
             name="measurementUnit"
-            /* rules={[
-              {
-                required: true,
-                message: t("inventory.addBtnModal.pleaseItemMeasure"),
-              },
-            ]} */
           >
             <Select
               defaultValue="gr"

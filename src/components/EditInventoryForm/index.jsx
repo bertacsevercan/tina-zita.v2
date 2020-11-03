@@ -12,7 +12,7 @@ const EditInventoryForm = ({
   const handleChangeInput = (e) => {
     setEditInventoryFormState({
       ...editInventoryFormState,
-      [e.target.id]: e.target.value < 0 ? 0 : e.target.value,
+      [e.target.id]: e.target.value < 0 ? 0 : Math.round(e.target.value),
     });
   };
 
