@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Col } from 'antd';
 import {useTranslation} from "react-i18next";
 import videoList from "../../videos";
+import "./style.css";
 
 const {Meta} = Card;
 
@@ -26,8 +27,9 @@ const TutorialsCard = () => {
             // md={{span: 16}}
             >
             <Card
+            className="tutorialCard"
             hoverable
-            style={{ width: "32rem"}}
+            //style={{ width: "32rem"}}
             cover={obj.video}>
             <Meta title={obj.title} />
             </Card>
