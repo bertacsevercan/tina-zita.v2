@@ -165,7 +165,7 @@
         "tutorialDetail": "Öğretici ekranına detaylı bir bakış!"
     },
     "deleteButton": {
-        "ok" : "Tamam",
-        "cancel": "İptal"
+        "ok" : "Evet",
+        "cancel": "Hayır"
     }
 }

@@ -139,6 +139,8 @@ const OrderTable = ({ orderedFood }) => {
         <Space>
           <Popconfirm
             title={t('order.sureToCancel')}
+            okText={t("deleteButton.ok")}
+            cancelText={t("deleteButton.cancel")}
             onConfirm={() => deleteOrder(record)}
           >
             <Button type="primary" danger>

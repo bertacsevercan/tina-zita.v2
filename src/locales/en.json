@@ -164,7 +164,7 @@
         "tutorialDetail": "A detailed look at the tutorials screen!"
     },
     "deleteButton": {
-        "ok" : "OK",
-        "cancel": "Cancel"
+        "ok" : "Yes",
+        "cancel": "No"
     }
 }

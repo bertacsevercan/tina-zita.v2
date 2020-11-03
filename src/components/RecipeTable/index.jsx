@@ -144,7 +144,10 @@ const RecipeTable = ({ recipe }) => {
       responsive: ["md"],
       render: (record) => (
         <Space>
-          <Popconfirm title={t('recipe.sureToDelete')} onConfirm={()=> deleteRecipe(record.recipeCode)}>
+          <Popconfirm title={t('recipe.sureToDelete')}
+          okText={t("deleteButton.ok")}
+          cancelText={t("deleteButton.cancel")} 
+          onConfirm={()=> deleteRecipe(record.recipeCode)}>
           <Button type="primary" danger>
             {" "}
            {t('recipe.deleteBtn')}

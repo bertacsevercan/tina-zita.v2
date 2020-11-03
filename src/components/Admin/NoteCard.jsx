@@ -24,6 +24,8 @@ export default function NoteCard({ noteData }) {
         <Space>
           <Popconfirm
             title={t("adminDashboard.dltBttnWarning")}
+            okText={t("deleteButton.ok")}
+            cancelText={t("deleteButton.cancel")}
             onConfirm={() => deleteNote(noteData.id)}
           >
             <Button danger>{t("adminDashboard.dltBttn")}</Button>
