@@ -23,20 +23,14 @@ t("tutorials.tutorialDetail")];
     return(
         <>
             {videoObjList.map(obj => (
-            <Col
-            //span={{lg: 12}}
-            // lg={{span: 12}}
-            // md={{span: 16}}
-            >
+            <Col>
             <Card
             className="tutorialCard"
             hoverable
-            //style={{ width: "32rem"}}
             cover={obj.video}>
             <Meta title={obj.title} />
             </Card>
           </Col>
-           
             ))}
         </>
     )

@@ -13,8 +13,6 @@ export default function NoteCard({ noteData }) {
     db.collection("notes")
       .doc(key)
       .delete()
-      .then(() => console.log("Document deleted succesfully!"))
-      .catch((err) => console.log("Error occured", err));
   };
 
   return (
