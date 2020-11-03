@@ -81,7 +81,10 @@
             },
             "sureToDelete": "هل أنت متأكد من الحذف؟",
             "searchBox": "بحث",
-            "reset": "إعادة تعيين"
+            "reset": "إعادة تعيين",
+            "triggerDesc": "Click sort by descend",
+            "triggerAsc": "Click sort by ascend",
+            "cancelSort": "Click to cancel sort"
         }
     },
     "order": {

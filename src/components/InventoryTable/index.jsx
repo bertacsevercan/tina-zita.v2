@@ -29,8 +29,6 @@ const InventoryTable = ({ item }) => {
     db.collection("inventory")
       .doc(key)
       .delete()
-      .then(() => console.log("Document deleted succesfully!"))
-      .catch((err) => console.log("Error occured", err));
   };
   const editItem = () => {
     db.collection("inventory").doc(keyCode).update({
@@ -210,7 +208,14 @@ const InventoryTable = ({ item }) => {
 
   return (
     <>
-      <Table columns={columns} dataSource={item} />
+      <Table 
+      locale={{triggerAsc: t("inventory.inventoryTable.triggerAsc"),
+      filterConfirm: t("inventory.addBtnModal.ok"),
+      filterReset: t("inventory.inventoryTable.reset"),
+      triggerDesc: t("inventory.inventoryTable.triggerDesc"),
+      cancelSort: t("inventory.inventoryTable.cancelSort") }} 
+      columns={columns} 
+      dataSource={item} />
       <Modal
         destroyOnClose
         title={t('inventory.editModal.editItemInfo')}

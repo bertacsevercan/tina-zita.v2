@@ -81,7 +81,10 @@
             },
             "sureToDelete": "Silmek istediğinize emin misiniz?",
             "searchBox": "Ara",
-            "reset": "Vazgeç"
+            "reset": "Vazgeç",
+            "triggerDesc": "Aşağı doğru sıralamak için tıkla",
+            "triggerAsc": "Yukarı doğru sıralamak için tıkla",
+            "cancelSort": "Sıralamayı iptal etmek için tıkla"
         }
 
     },
