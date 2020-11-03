@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { Button, Modal } from 'antd';
 import { useTranslation } from 'react-i18next';
 
-const Logout = () => {
+const Logout = ({clearInputs}) => {
 
   const {t} = useTranslation();
   const [visible, setVisibility] = useState(false);
@@ -22,6 +22,7 @@ const Logout = () => {
       .signOut()
       .then(function () {
         console.log("Sign-out successful.");
+        clearInputs()
       })
       .catch(function (error) {
         alert(error.message);

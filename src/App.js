@@ -88,7 +88,7 @@ function App() {
         <Router>
           {user ? (
             <Layout>
-              <SideBar />
+              <SideBar clearInputs={clearInputs}/>
               <Layout>
                 <Content style={{ margin: "24px 16px 0" }}>
                   <div
