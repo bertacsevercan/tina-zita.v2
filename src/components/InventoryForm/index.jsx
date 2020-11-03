@@ -101,12 +101,21 @@ const InventoryForm = () => {
         destroyOnClose={true}
         title={t("inventory.addBtnModal.modalTitle")}
         visible={modalVisible}
-        onOk={addItem}
+        //onOk={addItem}
         onCancel={handleCancel}
+        footer={[
+          <Button key="cancel" onClick={handleCancel}>
+          {t("inventory.addBtnModal.cancel")}
+        </Button>,
+          <Button form="inventoryForm"  key="submit" htmlType="submit">
+            {t("inventory.addBtnModal.ok")}
+          </Button>,
+        ]}
       >
         <Form
           layout="vertical"
           name="inventoryForm"
+          onFinish={addItem}
           initialValues={{
             remember: true,
           }}
@@ -117,7 +126,7 @@ const InventoryForm = () => {
             rules={[
               {
                 required: true,
-                message: "Please input item name!",
+                message: t("inventory.addBtnModal.pleaseItemName"),
               },
             ]}
           >
@@ -184,7 +193,7 @@ const InventoryForm = () => {
             rules={[
               {
                 required: true,
-                message: "Please input item stock amount!",
+                message: t("inventory.addBtnModal.pleaseStockAmount"),
               },
             ]}
           >
@@ -203,7 +212,7 @@ const InventoryForm = () => {
             rules={[
               {
                 required: true,
-                message: "Please input the least stock limit to warn you!",
+                message: t("inventory.addBtnModal.pleaseStockLimit"),
               },
             ]}
           >
@@ -220,12 +229,12 @@ const InventoryForm = () => {
           <Form.Item
             label={t("inventory.addBtnModal.unit")}
             name="measurementUnit"
-            rules={[
+            /* rules={[
               {
                 required: true,
-                message: "Please select item measure unit!",
+                message: t("inventory.addBtnModal.pleaseItemMeasure"),
               },
-            ]}
+            ]} */
           >
             <Select
               defaultValue="gr"

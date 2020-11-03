@@ -59,7 +59,7 @@ const Login = ({
             <p className="errorMsg">{emailError}</p>
             <label>{t("login.label1")}</label>
             <Input.Password
-              placeholder="input password"
+              placeholder={t("login.tex7")}
               maxLength="15"
               className="input"
               type="password"

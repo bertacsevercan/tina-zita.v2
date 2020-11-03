@@ -10,7 +10,8 @@
             "header1": "Türkçe",
             "header2": "İngilizce",
             "header3": "Arapça"
-        }
+        },
+        "tutorials": "Öğreticiler"
     },
     "adminDashboard": {
         "dashboard": "Panel",
@@ -27,7 +28,8 @@
         "unit": "Birim",
         "remainingStock": "Kalan Miktar",
         "dltBttn": "Sil",
-        "dltBttnWarning": "Silmek istediğinize emin misiniz?"
+        "dltBttnWarning": "Silmek istediğinize emin misiniz?",
+        "loading": "Yükleniyor..."
     },
     "inventory": {
         "inventory": "Envanter",
@@ -58,7 +60,13 @@
                 "canned": "Konserve",
                 "dryFood": "Kuru Gıda",
                 "fruit": "Meyve"
-            }
+            },
+            "pleaseItemName": "Lütfen bir ürün adı giriniz!",
+            "pleaseStockAmount": "Lütfen ürüne ait stok miktarını giriniz!",
+            "pleaseStockLimit": "Lütfen uyarı almaya başlayacağınız minimum stok miktarını giriniz!",
+            "pleaseItemMeasure": "Lütfen ürünün ölçü birimini giriniz!",
+            "ok": "Tamam",
+            "cancel": "İptal"
         },
         "inventoryTable": {
             "name": "İsim",
@@ -71,7 +79,10 @@
             "actionBtns": {
                 "edit": "Düzenle",
                 "delete": "Sil"
-            }
+            },
+            "sureToDelete": "Silmek istediğinize emin misiniz?",
+            "searchBox": "Ara",
+            "reset": "Vazgeç"
         }
 
     },
@@ -84,7 +95,14 @@
         "cancelBtn": "İptal",
         "tableHeader0": "Sipariş",
         "tableHeader1": "Tarih",
-        "tableHeader2": "Aksiyon"
+        "tableHeader2": "Aksiyon",
+        "sureToCancel": "Vazgeçmek istediğinize emin misiniz?",
+        "searchBox": "Ara",
+        "reset": "Vazgeç",
+        "successNotification": "Sipariş eklendi!",
+        "successNotification2": "Başarılı!",
+        "errorNotification": "Eksik Malzemeler:",
+        "loading": "Yükleniyor..."
     },
     "recipe": {
         "recipe": "Tarif",
@@ -104,9 +122,14 @@
             "selectIngMenu": "Malzeme seçiniz",
             "missingAmountMessage": "Yetersiz miktar",
             "submitBtn": "Gönder",
-            "cancelBtn": "İptal"
+            "cancelBtn": "İptal",
+            "warningMissingAmount": "Yeterli miktar yok!"
         },
-        "loading": "Yükleniyor..."
+        "loading": "Yükleniyor...",
+        "sureToDelete": "Silmek istediğinize emin misiniz?",
+        "searchBox": "Ara",
+        "reset": "Vazgeç",
+        "ok": "Tamam"
     },
     "signOut": {
         "title": "Çıkış yapılyor...",
@@ -128,7 +151,18 @@
         "text2": "Şifreyi Sıfırla",
         "text3": "Sıfırla",
         "text4": "Hesabınıza bir e-posta gönderildi.",
-        "text5": "Buradan giriş yapın:"
+        "text5": "Buradan giriş yapın:",
+        "text6": "e-posta giriniz",
+        "tex7": "şifre giriniz"
+    },
+    "tutorials": {
+        "header0": "Öğreticiler",
+        "loginScreen": "Sisteme nasıl giriş yapılır?",
+        "generalNav": "Genel dizilime kısa bir bakış!",
+        "inventoryDetail": "Envanter ekranına detaylı bir bakış!",
+        "recipeDetail": "Tarif ekranına detaylı bir bakış!",
+        "orderDetail": "Sipariş ekranına detaylı bir bakış!",
+        "adminDetail": "Admin paneline detaylı bir bakış!",
+        "tutorialDetail": "Öğretici ekranına detaylı bir bakış!"
     }
-
 }

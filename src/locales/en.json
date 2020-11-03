@@ -10,7 +10,8 @@
             "header1": "Turkish",
             "header2": "English",
             "header3": "Arabic"
-        }
+        },
+        "tutorials": "Tutorials"
     },
     "adminDashboard": {
         "dashboard": "Dashboard",
@@ -27,7 +28,8 @@
         "unit": "Unit",
         "remainingStock": "Remaining Stock",
         "dltBttn": "Delete",
-        "dltBttnWarning": "Are you sure to delete?"
+        "dltBttnWarning": "Are you sure to delete?",
+        "loading": "Loading..."
     },
     "inventory": {
         "inventory": "Inventory",
@@ -58,7 +60,13 @@
                 "canned": "Canned Food",
                 "dryFood": "Dry Food",
                 "fruit": "Fruit"
-            }
+            },
+            "pleaseItemName": "Please input item name!",
+            "pleaseStockAmount": "Please input item stock amount!",
+            "pleaseStockLimit": "Please input the least stock limit to warn you!",
+            "pleaseItemMeasure": "Please select item measure unit!",
+            "ok": "OK",
+            "cancel": "Cancel"
         },
         "inventoryTable": {
             "name": "Name",
@@ -71,7 +79,10 @@
             "actionBtns": {
                 "edit": "Edit",
                 "delete": "Delete"
-            }
+            },
+            "sureToDelete": "Sure to delete?",
+            "searchBox": "Search",
+            "reset": "Reset"
         }
     },
     "order": {
@@ -83,7 +94,14 @@
         "cancelBtn": "Cancel",
         "tableHeader0": "Order",
         "tableHeader1": "Date",
-        "tableHeader2": "Action"
+        "tableHeader2": "Action",
+        "sureToCancel": "Sure to cancel?",
+        "searchBox": "Search",
+        "reset": "Reset",
+        "successNotification": "Order successful!",
+        "successNotification2": "Success!",
+        "errorNotification": "Missing ingredients:",
+        "loading": "Loading..."
     },
     "recipe": {
         "recipe": "Recipe",
@@ -103,9 +121,14 @@
             "selectIngMenu": "Select an ingredient",
             "missingAmountMessage": "Missing amount",
             "submitBtn": "Submit",
-            "cancelBtn": "Cancel"
+            "cancelBtn": "Cancel",
+            "warningMissingAmount": "Missing amount!"
         },
-        "loading": "Loading..."
+        "loading": "Loading...",
+        "sureToDelete": "Sure to delete?",
+        "searchBox": "Search",
+        "reset": "Reset",
+        "ok": "OK"
     },
     "signOut": {
         "title": "Signing out...",
@@ -127,6 +150,18 @@
         "text2": "Reset Password",
         "text3": "Reset",
         "text4": "An email has been sent to you to reset the password",
-        "text5": "Sign in here:"
+        "text5": "Sign in here:",
+        "text6": "enter e-mail",
+        "tex7": "enter password"
+    },
+    "tutorials": {
+        "header0": "Tutorials",
+        "loginScreen": "How to login to the system?",
+        "generalNav": "A quick look at the general layout!",
+        "inventoryDetail": "A detailed look at the inventory screen!",
+        "recipeDetail": "A detailed look at the recipe screen!",
+        "orderDetail": "A detailed look at the order screen!",
+        "adminDetail": "A detailed look at the admin dashboard!",
+        "tutorialDetail": "A detailed look at the tutorials screen!"
     }
 }

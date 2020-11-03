@@ -10,7 +10,8 @@
             "header1": "التركية",
             "header2": "الإنجليزية",
             "header3": "العربية"
-        }
+        },
+        "tutorials": "Tutorials"
     },
     "adminDashboard": {
         "dashboard": "لوحة المشرف",
@@ -27,7 +28,8 @@
         "unit": "الوحدة",
         "remainingStock": "الكمية المتبقية",
         "dltBttn": "حذف",
-        "dltBttnWarning": "هل انت متاكد؟"
+        "dltBttnWarning": "هل انت متاكد؟",
+        "loading": "Loading..."
     },
     "inventory": {
         "inventory": "المخزون",
@@ -58,7 +60,13 @@
                 "canned": "معلبات",
                 "dryFood": "اطعمه جافه",
                 "fruit": "فواكه"
-            }
+            },
+            "pleaseItemName": "Please input item name!",
+            "pleaseStockAmount": "Please input item stock amount!",
+            "pleaseStockLimit": "Please input the least stock limit to warn you!",
+            "pleaseItemMeasure": "Please select item measure unit!",
+            "ok": "OK",
+            "cancel": "Cancel"
         },
         "inventoryTable": {
             "name": "الاسم",
@@ -71,7 +79,10 @@
             "actionBtns": {
                 "edit": "تعديل",
                 "delete": "حذف"
-            }
+            },
+            "sureToDelete": "Sure to delete?",
+            "searchBox": "Search",
+            "reset": "Reset"
         }
     },
     "order": {
@@ -83,7 +94,14 @@
         "cancelBtn": "إلغاء",
         "tableHeader0": "الطلب",
         "tableHeader1": "التاريخ",
-        "tableHeader2": "تعديل"
+        "tableHeader2": "تعديل",
+        "sureToCancel": "Sure to cancel?",
+        "searchBox": "Search",
+        "reset": "Reset",
+        "successNotification": "Order successful!",
+        "successNotification2": "Success!",
+        "errorNotification": "Missing ingredients:",
+        "loading": "Loading..."
     },
     "recipe": {
         "recipe": "الوصفات",
@@ -103,9 +121,14 @@
             "selectIngMenu": "اختر مكوناً",
             "missingAmountMessage": "المقدار فارغ",
             "submitBtn": "تأكيد",
-            "cancelBtn": "إلغاء"
+            "cancelBtn": "إلغاء",
+            "warningMissingAmount": "Missing amount!"
         },
-        "loading": "...جار التحميل"
+        "loading": "...جار التحميل",
+        "sureToDelete": "Sure to delete?",
+        "searchBox": "Search",
+        "reset": "Reset",
+        "ok": "OK"
     },
     "signOut": {
         "title": "...جار تسجيل الخروج",
@@ -127,6 +150,18 @@
         "text2": "إعادة تعيين كلمة المرور",
         "text3": "إعادة تعيين",
         "text4": "تم إرسال بريد إلكتروني إليك لإعادة تعيين كلمة المرور",
-        "text5": "سجل الدخول من هنا"
+        "text5": "سجل الدخول من هنا",
+        "text6": "enter e-mail",
+        "tex7": "enter password"
+    },
+    "tutorials": {
+        "header0": "Tutorials",
+        "loginScreen": "How to login to the system?",
+        "generalNav": "A quick look at the general layout!",
+        "inventoryDetail": "A detailed look at inventory screen!",
+        "recipeDetail": "A detailed look at the recipe screen!",
+        "orderDetail": "A detailed look at the order screen!",
+        "adminDetail": "A detailed look at the admin dashboard!",
+        "tutorialDetail": "A detailed look at the tutorials screen!"
     }
 }

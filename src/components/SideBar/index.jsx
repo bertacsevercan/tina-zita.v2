@@ -36,12 +36,6 @@ const SideBar = ({clearInputs}) => {
          <Sider
         breakpoint="lg"
         collapsedWidth="0"
-        onBreakpoint={broken => {
-          console.log(broken);
-        }}
-        onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
-        }}
       >
          
         <div className="logo" >
@@ -62,7 +56,7 @@ const SideBar = ({clearInputs}) => {
             <Link to="/recipe" >{t('links.recipe')}</Link>
           </Menu.Item>
           <Menu.Item key="5" icon={<VideoCameraOutlined />}>
-            <Link to="/tutorials" >Tutorials</Link>
+            <Link to="/tutorials" >{t('links.tutorials')}</Link>
           </Menu.Item>
           <SubMenu key="sub1" icon={<GlobalOutlined />} title={t("links.language.header0")}>
               <Menu.Item icon={<TrIcon />} onClick={() => {i18next.changeLanguage('tr');}} key="6">{t("links.language.header1")}</Menu.Item>
