@@ -160,6 +160,7 @@
         "generalNav": "A quick look at the general layout!",
         "inventoryDetail": "A detailed look at the inventory screen!",
         "recipeDetail": "A detailed look at the recipe screen!",
-        "orderDetail": "A detailed look at the order screen!"
+        "orderDetail": "A detailed look at the order screen!",
+        "adminDetail": "A detailed look at the admin dashboard!"
     }
 }
