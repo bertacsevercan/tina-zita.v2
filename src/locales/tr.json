@@ -160,6 +160,8 @@
         "loginScreen": "Sisteme nasıl giriş yapılır?",
         "generalNav": "Genel dizilime kısa bir bakış!",
         "inventoryDetail": "Envanter ekranına detaylı bir bakış!",
-        "recipeDetail": "Tarif ekranına detaylı bir bakış!"
+        "recipeDetail": "Tarif ekranına detaylı bir bakış!",
+        "orderDetail": "Sipariş ekranına detaylı bir bakış!"
+
     }
 }

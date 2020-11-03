@@ -27,6 +27,13 @@ const videoList = [
     src="https://www.youtube.com/embed/UylLaMnT5S8" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen></iframe>,
+
+    <iframe width="560" height="315"
+    title="orderDetail"
+    src="https://www.youtube.com/embed/PsXdRnJxFBU" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
     allowfullscreen></iframe>
 ]
 

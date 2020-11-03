@@ -159,6 +159,8 @@
         "loginScreen": "How to login to the system?",
         "generalNav": "A quick look at the general layout!",
         "inventoryDetail": "A detailed look at inventory screen!",
-        "recipeDetail": "A detailed look at the recipe screen!"
+        "recipeDetail": "A detailed look at the recipe screen!",
+        "orderDetail": "A detailed look at the order screen!"
+
     }
 }
