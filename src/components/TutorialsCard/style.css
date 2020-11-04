@@ -1,9 +1,9 @@
 .tutorialCard {
-    width: 32rem;
+  width: 32rem;
 }
 
-@media (max-width: 576px){
-    .tutorialCard {
-        width: fit-content;
-    }
+@media (max-width: 576px) {
+  .tutorialCard {
+    width: 100%;
+  }
 }
