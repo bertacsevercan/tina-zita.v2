@@ -50,7 +50,7 @@ const Recipe = () => {
       <Drawer
           destroyOnClose={true}
           title={t('recipe.addDrawer.title')}
-          width={window.innerWidth > 576 ? 720 : 350}
+          width={window.innerWidth > 576 ? 740 : 350}
           onClose={onClose}
           visible={drawerVisible}
           bodyStyle={{ paddingBottom: 80 }}
