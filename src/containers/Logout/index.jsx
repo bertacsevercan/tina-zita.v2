@@ -55,8 +55,8 @@ const Logout = ({clearInputs}) => {
          onOk={handleOk}
          onCancel={handleCancel}
          footer={[
-          <Button key="Cancel" onClick={handleCancel}>{t("signOut.cancel")}</Button>,
-           <Button key="Ok" onClick={handleOk}>{t("signOut.ok")}</Button>,
+          <Button danger key="Cancel" onClick={handleCancel}>{t("signOut.cancel")}</Button>,
+           <Button type="primary" key="Ok" onClick={handleOk}>{t("signOut.ok")}</Button>,
          ]}
        >
          <p>{t('signOut.modalMessage')}</p>
