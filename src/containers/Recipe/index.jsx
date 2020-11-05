@@ -23,6 +23,8 @@ const Recipe = () => {
     setDrawerVisible(false);
   };
 
+ 
+
   useEffect(() => {
     const unsubscribe = db
       .collection("recipe")
@@ -41,6 +43,7 @@ const Recipe = () => {
 
   return (
     <div>
+
       <Title level={3}>{t('recipe.recipe')}</Title>
 
       <Button className="button" type="primary" onClick={showDrawer}>
