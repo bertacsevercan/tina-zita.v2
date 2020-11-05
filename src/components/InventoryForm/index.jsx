@@ -8,7 +8,7 @@ const { Option } = Select;
 const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
 const InventoryForm = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const [code, setCode] = useState({
     category: "SEB",
@@ -50,8 +50,17 @@ const InventoryForm = () => {
     });
 
     handleOk();
+    setInventoryFormState({
+      category: "sebze",
+      itemCode: "",
+      itemName: "",
+      measurementUnit: "gr",
+      price: 0,
+      stock: 0,
+      stockLimit: 0,
+    });
   };
-
+  console.log(inventoryFormState);
   const handleChangeName = (e, key) => {
     const threeLetterName = e.target.value.slice(0, 3).toUpperCase();
     setCode({
@@ -105,9 +114,14 @@ const InventoryForm = () => {
         onCancel={handleCancel}
         footer={[
           <Button danger key="cancel" onClick={handleCancel}>
-          {t("inventory.addBtnModal.cancel")}
-        </Button>,
-          <Button type="primary" form="inventoryForm"  key="submit" htmlType="submit">
+            {t("inventory.addBtnModal.cancel")}
+          </Button>,
+          <Button
+            type="primary"
+            form="inventoryForm"
+            key="submit"
+            htmlType="submit"
+          >
             {t("inventory.addBtnModal.ok")}
           </Button>,
         ]}
@@ -150,7 +164,7 @@ const InventoryForm = () => {
             ]}
           >
             <Select
-             // defaultValue="sebze"
+              defaultValue="sebze"
               value={inventoryFormState.category}
               style={{ width: 120 }}
               onChange={(e) => handleChangeCategory(e, "category")}
@@ -243,7 +257,6 @@ const InventoryForm = () => {
             ]}
           >
             <Select
-              //defaultValue="gr"
               value={inventoryFormState.measurementUnit}
               style={{ width: 120 }}
               onChange={(e) => handleChange(e, "measurementUnit")}
