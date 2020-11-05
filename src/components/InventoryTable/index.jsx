@@ -30,14 +30,7 @@ const InventoryTable = ({ item }) => {
       .doc(key)
       .delete()
   };
-  const editItem = () => {
-    db.collection("inventory").doc(keyCode).update({
-      measurementUnit: editInventoryFormState.measurementUnit,
-      price: editInventoryFormState.price,
-      stock: editInventoryFormState.stock,
-    });
-    handleOk();
-  };
+
   const showModal = (key) => {
     setModalVisible(true);
     setKeyCode(key);
@@ -220,13 +213,12 @@ const InventoryTable = ({ item }) => {
         destroyOnClose
         title={t('inventory.editModal.editItemInfo')}
         visible={modalVisible}
-        onOk={editItem}
         onCancel={handleCancel}
         footer={[
           <Button danger key="cancel" onClick={handleCancel}>
           {t("inventory.addBtnModal.cancel")}
         </Button>,
-          <Button  type="primary" key="ok" onClick={editItem} >
+          <Button  type="primary"  form="editInventoryForm"  key="submit" htmlType="submit">
             {t("inventory.addBtnModal.ok")}
           </Button>,
         ]}
@@ -234,6 +226,8 @@ const InventoryTable = ({ item }) => {
         <EditInventoryForm
           editInventoryFormState={editInventoryFormState}
           setEditInventoryFormState={setEditInventoryFormState}
+          keyCode={keyCode}
+          handleOk={handleOk}
         />
       </Modal>
     </>
