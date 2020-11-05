@@ -142,9 +142,15 @@ const InventoryForm = () => {
           <Form.Item
             label={t("inventory.addBtnModal.category")}
             name="category"
+            rules={[
+              {
+                required: true,
+                message: t("inventory.addBtnModal.pleaseSelectCategory"),
+              },
+            ]}
           >
             <Select
-              defaultValue="sebze"
+             // defaultValue="sebze"
               value={inventoryFormState.category}
               style={{ width: 120 }}
               onChange={(e) => handleChangeCategory(e, "category")}
@@ -229,9 +235,15 @@ const InventoryForm = () => {
           <Form.Item
             label={t("inventory.addBtnModal.unit")}
             name="measurementUnit"
+            rules={[
+              {
+                required: true,
+                message: t("inventory.addBtnModal.pleaseSelectUnit"),
+              },
+            ]}
           >
             <Select
-              defaultValue="gr"
+              //defaultValue="gr"
               value={inventoryFormState.measurementUnit}
               style={{ width: 120 }}
               onChange={(e) => handleChange(e, "measurementUnit")}

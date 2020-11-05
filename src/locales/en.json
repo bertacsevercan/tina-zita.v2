@@ -64,6 +64,8 @@
             "pleaseItemName": "Please enter item name!",
             "pleaseStockAmount": "Please enter the item's quantity in stock!",
             "pleaseStockLimit": "Please enter the least stock limit to warn you!",
+            "pleaseSelectCategory" : "Please select the category for the item!",
+            "pleaseSelectUnit" : "Please select the unit for the item!",
             "ok": "OK",
             "cancel": "Cancel"
         },

@@ -64,6 +64,8 @@
             "pleaseItemName": "!الرجاء إدخال اسم العنصر",
             "pleaseStockAmount": "!الرجاء إدخال كمية  العنصر في المخزون",
             "pleaseStockLimit": "!الرجاء ادخال الحد الأدنى للعنصر في المخزون",
+            "pleaseSelectCategory" : "Please select the category for the item!",
+            "pleaseSelectUnit" : "Please select the unit for the item!",
             "ok": "تأكيد",
             "cancel": "إلغاء"
         },
