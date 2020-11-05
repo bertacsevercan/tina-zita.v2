@@ -23,7 +23,6 @@ const RecipeForm = ({setDrawerVisible}) => {
     const datas = res.docs.map((data) => {
       return { itemName: data.data().itemName, itemCode: data.data().itemCode };
     });
-    console.log("datas", datas);
     setIngredientList(datas);
     setIngredientNames(onlyNames);
   };
@@ -37,7 +36,6 @@ const RecipeForm = ({setDrawerVisible}) => {
   };
 
   const onFinish = (values) => {
-    console.log("Received values of form:", values);
     const space = " ";
     const rForRecipe = "R";
     const firstThreeLetter = values.recipeName
@@ -53,10 +51,8 @@ const RecipeForm = ({setDrawerVisible}) => {
       values.recipeName && values.recipeName.includes(space)
         ? rForRecipe + firstThreeLetter + lettersAfterSpace
         : rForRecipe + firstThreeLetter;
-    console.log(generatedCode);
-    // const ingredientsArr = [...values.ingredients]
     const modifiedIngredients = values.ingredients.map((item) => {
-      const code = ingredientList.find((x) => x.itemName === item.itemName)
+    const code = ingredientList.find((x) => x.itemName === item.itemName)
         .itemCode;
       return {
         itemName: item.itemName,
@@ -65,7 +61,6 @@ const RecipeForm = ({setDrawerVisible}) => {
         itemDocRef: db.doc(`/inventory/${code}/`),
       };
     });
-    console.log("marr", modifiedIngredients);
     db.collection("recipe")
       .doc(generatedCode)
       .set({

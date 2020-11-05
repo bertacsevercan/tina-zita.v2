@@ -54,7 +54,6 @@ const Admin = () => {
       snapshot.forEach((doc) => {
         dataArr.push({ ...doc.data(), id: doc.id });
       });
-      console.log(dataArr);
       setNote(dataArr);
       setLoading(false);
     });

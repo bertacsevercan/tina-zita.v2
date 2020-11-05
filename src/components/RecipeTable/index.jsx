@@ -39,8 +39,6 @@ const RecipeTable = ({ recipe }) => {
     db.collection("recipe")
       .doc(key)
       .delete()
-      .then(() => console.log("Document deleted succesfully!"))
-      .catch((err) => console.log("Error occured", err));
   };
 
   const getColumnSearchProps = (dataIndex) => ({

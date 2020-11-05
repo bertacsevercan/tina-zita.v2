@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Select } from 'antd';
 import { useTranslation } from 'react-i18next';
 
@@ -8,9 +8,6 @@ const SelectOrder = (props) => {
   const { onChange, onFocus, onBlur, onSearch, orders } = props
   const {t} = useTranslation();
 
-  useEffect(() => {
-    console.log("i was rendered", orders);
-  });
   return (
     <div>
       <Select

@@ -21,7 +21,6 @@ const Logout = ({clearInputs}) => {
     Auth()
       .signOut()
       .then(function () {
-        console.log("Sign-out successful.");
         clearInputs()
       })
       .catch(function (error) {

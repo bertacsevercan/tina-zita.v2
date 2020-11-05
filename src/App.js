@@ -39,7 +39,6 @@ function App() {
     clearErrors();
     Auth()
       .signInWithEmailAndPassword(email, password)
-      .then(console.log("Signed in successfully"))
       .catch((err) => {
         switch (err.code) {
           case "auth/invalid-email":
@@ -77,7 +76,6 @@ function App() {
         setIsEmailSend(true);
       })
       .catch(function (error) {
-        console.log("An error happened", error);
         setPasswordError(error.message);
       });
   }
