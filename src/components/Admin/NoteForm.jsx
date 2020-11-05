@@ -1,9 +1,23 @@
 import React from "react";
 import { Form, Input } from "antd";
 import { useTranslation } from "react-i18next";
+import db from "../../firebaseConfig";
 
-const NoteForm = ({ noteFormState, setNoteFormState }) => {
+const NoteForm = ({ noteFormState, setNoteFormState, handleOk }) => {
   const { t } = useTranslation();
+
+  const addNote = () => {
+    db.collection("notes").doc().set({
+      title: noteFormState.title,
+      content: noteFormState.content,
+    });
+    handleOk();
+    setNoteFormState({
+      title: "",
+      content: "",
+    });
+  };
+
 
   const handleChange = (e, key) => {
     setNoteFormState({
@@ -14,6 +28,7 @@ const NoteForm = ({ noteFormState, setNoteFormState }) => {
   return (
     <div>
       <Form
+        onFinish={addNote}
         layout="vertical"
         name="noteForm"
         initialValues={{

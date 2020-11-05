@@ -19,34 +19,20 @@ const Admin = () => {
     title: "",
     content: "",
   });
-  const clearInputs = () => {
-    setNoteFormState({
-      title: "",
-      content: "",
-    });
-  };
+ 
 
   const showModal = () => {
-    clearInputs();
     setModalVisible(true);
   };
 
   const handleOk = (e) => {
     setModalVisible(false);
-    clearInputs();
   };
 
   const handleCancel = (e) => {
     setModalVisible(false);
   };
 
-  const addItem = () => {
-    db.collection("notes").doc().set({
-      title: noteFormState.title,
-      content: noteFormState.content,
-    });
-    handleOk();
-  };
 
   useEffect(() => {
     const note = db.collection("notes").onSnapshot((snapshot) => {
@@ -82,7 +68,7 @@ const Admin = () => {
               <Button danger key="cancel" onClick={handleCancel}>
                 {t("inventory.addBtnModal.cancel")}
               </Button>,
-              <Button type="primary" key="ok" onClick={addItem}>
+              <Button type="primary" form="noteForm"  key="submit" htmlType="submit">
                 {t("inventory.addBtnModal.ok")}
               </Button>,
             ]}
@@ -90,6 +76,7 @@ const Admin = () => {
             <NoteForm
               noteFormState={noteFormState}
               setNoteFormState={setNoteFormState}
+              handleOk={handleOk}
             />
           </Modal>
           {loading ? (
