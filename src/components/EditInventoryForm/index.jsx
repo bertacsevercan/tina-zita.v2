@@ -67,7 +67,7 @@ const EditInventoryForm = ({
           rules={[
             {
               required: true,
-              message: t("inventory.addBtnModal.pleaseStockLimit"),
+              message: t("inventory.addBtnModal.pleaseStockAmount"),
             },
           ]}
         >
@@ -87,12 +87,13 @@ const EditInventoryForm = ({
           name="measurementUnit"
           rules={[
             {
-              required: true,
+              required: false,
               message: t("inventory.addBtnModal.pleaseSelectUnit"),
             },
           ]}
         >
           <Select
+            defaultValue="gr"
             value={editInventoryFormState.measurementUnit}
             style={{ width: 120 }}
             onChange={(e) => handleChange(e, "measurementUnit")}

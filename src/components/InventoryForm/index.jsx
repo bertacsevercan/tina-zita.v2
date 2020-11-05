@@ -59,6 +59,11 @@ const InventoryForm = () => {
       stock: 0,
       stockLimit: 0,
     });
+    setCode({
+      category: "SEB",
+    name: "",
+    generatedCode: "",}
+    );
   };
   console.log(inventoryFormState);
   const handleChangeName = (e, key) => {
@@ -158,7 +163,7 @@ const InventoryForm = () => {
             name="category"
             rules={[
               {
-                required: true,
+                required: false,
                 message: t("inventory.addBtnModal.pleaseSelectCategory"),
               },
             ]}
@@ -251,12 +256,13 @@ const InventoryForm = () => {
             name="measurementUnit"
             rules={[
               {
-                required: true,
+                required: false,
                 message: t("inventory.addBtnModal.pleaseSelectUnit"),
               },
             ]}
           >
             <Select
+              defaultValue="gr"
               value={inventoryFormState.measurementUnit}
               style={{ width: 120 }}
               onChange={(e) => handleChange(e, "measurementUnit")}
