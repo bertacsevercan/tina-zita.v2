@@ -15,7 +15,7 @@ In the recipes section, admin can collect their recipes, can add/edit new recipe
 Lastly, the tutorials tab offers detailed explanations about the system for our users.
 ## We plan to improve M.Y-Inventory in the future with:
 - Different user access rights.
-- Improvements on the admin dashboard. E.g. charts, graphs, summary of other modules.
+- Improvements on the admin dashboard. E.g. charts, graphs, summary of other modules.
 - Messaging feature within the system with other users in the organization.
 - Processing the orders automatically from the organization’s website.
 - Predicting future inventory status using machine learning.
