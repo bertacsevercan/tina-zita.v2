@@ -1,68 +1,45 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# [M.Y-Inventory](https://github.com/bertacsevercan/tina-zita.v2)
 
-## Available Scripts
+![license](https://img.shields.io/badge/license-MIT-blue.svg) ![version](https://img.shields.io/badge/version-0.4.9-blue.svg)
 
-In the project directory, you can run:
+## We won 3'rd place in the Impact HUB Istanbul Innovation Hackathon with M.Y-Inventory!
 
-### `npm start`
+## Description
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+M.Y-Inventory is an Inventory Management System that contains user-friendly modules which are Admin Dashboard, Inventory, Orders, Recipes, and Tutorials with 3 different language supports and fully responsive across all devices featuring different use cases for mobile use.
+The system helps Tina-Zita to manage their inventory and it's restricted outside of the organization.
+It tracks the remaining amount when order is received and adds amount when something is added to stock.
+The admin can see some additional features in Admin-Dashboard like trending recipes, expiring products, products out of stock, today's orders, notes
+and monthly summary of their business.
+The order tab helps the user to add new orders they received and all orders they have had throughout the day. When a new order is added,
+the ingredients for the orders are automatically subtracted from the inventory.
+In the recipes section, admin can collect their recipes, can add/edit new recipes with a form that is specialized for adding necessary ingredients separately.
+Lastly, the tutorials tab offers detailed explanations about the system for our users.
+## We plan to improve M.Y-Inventory in the future with:
+- Different user access rights.
+- Improvements on the admin dashboard. E.g. charts, graphs, summary of other modules.
+- Messaging feature within the system with other users in the organization.
+- Processing the orders automatically from the organization’s website.
+- Predicting future inventory status using machine learning.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Currently M.Y-Inventory can only be accessed through authorized accounts.
 
-### `npm test`
+We are looking for investors for further development.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies used
 
-### `npm run build`
+- React
+- Ant Design
+- Firebase Cloud Firestore
+- Netlify
+- Sentry.io
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## M.Y-Inventory
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+https://my-inventory.netlify.app
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Licensing
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Copyright 2020 Kardesler Coding
+- Licensed under MIT (https://github.com/creativetimofficial/material-dashboard-react/blob/master/LICENSE.md)
