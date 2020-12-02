@@ -28,9 +28,11 @@ const Home = ({
   return (
     <div className="home">
       <div className="hero-text">
-        <Title>{t("home.title0")}</Title>
+        <Title>M.Y Inventory</Title>
         <Title level={4} type="secondary">
-          {t("home.title1")}
+          To log in <br/>
+          User: demo@mail.com <br/>
+          Password : demo1234
         </Title>
           <Text> {t("home.text0")}</Text>
         <Login
