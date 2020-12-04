@@ -3,6 +3,7 @@
 ![license](https://img.shields.io/badge/license-MIT-blue.svg) ![version](https://img.shields.io/badge/version-0.4.9-blue.svg)
 
 ## We won 3'rd place in the Impact HUB Istanbul Innovation Hackathon with M.Y-Inventory!
+https://www.linkedin.com/posts/impact-hub-istanbul_on-demo-day-finalist-teams-of-the-innovation-activity-6730510532140376065-7H6Y
 
 ## Description
 
